@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
-import { SITE_URL, SITE_NAME, localBusinessSchema } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, GOOGLE_SITE_VERIFICATION, localBusinessSchema } from "@/lib/seo";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -53,6 +53,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+  },
+  verification: {
+    google: GOOGLE_SITE_VERIFICATION,
   },
   robots: {
     index: true,
