@@ -62,33 +62,33 @@ export default function BentoGridSection() {
           <div className="md:col-span-2 relative min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
             {/* Top row */}
             <div className="flex items-center justify-between z-10">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow font-bold">
                 <span>✦ Edge SSR Engine</span>
               </div>
-              <span className="font-mono text-xs text-sage/40">FEATURE 01</span>
+              <span className="font-mono text-xs text-sage/70 font-semibold">FEATURE 01</span>
             </div>
 
             {/* Middle: Abstract UI element - Speed Gauge & Animated Pulse Blocks */}
             <div className="my-6 grid grid-cols-1 sm:grid-cols-3 gap-4 z-10">
               <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col justify-between">
-                <div className="font-mono text-[10px] uppercase text-sage/60">Lighthouse Score</div>
+                <div className="font-mono text-[10px] uppercase text-sage/80">Lighthouse Score</div>
                 <div className="font-anton text-4xl text-yellow mt-2">99/100</div>
                 <div className="flex items-center gap-1.5 mt-2">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-mono text-[10px] text-white/80">Performance Passed</span>
+                  <span className="font-mono text-[10px] text-white/90">Performance Passed</span>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col justify-between">
-                <div className="font-mono text-[10px] uppercase text-sage/60">Time to First Byte</div>
+                <div className="font-mono text-[10px] uppercase text-sage/80">Time to First Byte</div>
                 <div className="font-anton text-4xl text-white mt-2">0.18s</div>
-                <div className="font-mono text-[10px] text-sage/60 mt-2">Sub-Second Global Edge</div>
+                <div className="font-mono text-[10px] text-sage/80 mt-2">Sub-Second Global Edge</div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col justify-between">
-                <div className="font-mono text-[10px] uppercase text-sage/60">Interaction to Next Paint</div>
+                <div className="font-mono text-[10px] uppercase text-sage/80">Interaction to Next Paint</div>
                 <div className="font-anton text-4xl text-yellow mt-2">24ms</div>
-                <div className="font-mono text-[10px] text-sage/60 mt-2">Zero Input Lag</div>
+                <div className="font-mono text-[10px] text-sage/80 mt-2">Zero Input Lag</div>
               </div>
             </div>
 
@@ -97,7 +97,7 @@ export default function BentoGridSection() {
               <h3 className="font-anton text-3xl md:text-4xl text-white tracking-tight">
                 NEXT.JS 14 SERVER-SIDE RENDERING
               </h3>
-              <p className="mt-2 font-satoshi text-sm text-sage/80 max-w-xl">
+              <p className="mt-2 font-satoshi text-sm text-sage/90 max-w-xl">
                 We reject slow, bloated website themes. Every page is statically or server rendered with zero layout shift and instant edge caching.
               </p>
             </div>
@@ -109,10 +109,10 @@ export default function BentoGridSection() {
           {/* Card 2: 1 COLUMN - Light/Dark adapted */}
           <div className="relative min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
             <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-semibold">
+              <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-bold">
                 <span>💬 24/7 Lead Capture</span>
               </div>
-              <span className="font-mono text-xs text-charcoal/40 dark:text-sage/40">FEATURE 02</span>
+              <span className="font-mono text-xs text-charcoal/70 dark:text-sage/70 font-semibold">FEATURE 02</span>
             </div>
 
             {/* Interactive WhatsApp mini simulator */}
@@ -145,7 +145,7 @@ export default function BentoGridSection() {
               <h3 className="font-anton text-3xl text-charcoal dark:text-white tracking-tight">
                 WHATSAPP AUTOMATION
               </h3>
-              <p className="mt-2 font-satoshi text-xs text-charcoal/70 dark:text-sage/80 leading-relaxed">
+              <p className="mt-2 font-satoshi text-xs text-charcoal/80 dark:text-sage/85 leading-relaxed">
                 Connect patient appointments, restaurant tables, and customer inquiries directly to WhatsApp with zero missed calls.
               </p>
             </div>
@@ -154,15 +154,15 @@ export default function BentoGridSection() {
           {/* Card 3: 1 COLUMN */}
           <div className="relative min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
             <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-semibold">
+              <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-bold">
                 <span>📍 Local Pack Radar</span>
               </div>
-              <span className="font-mono text-xs text-charcoal/40 dark:text-sage/40">FEATURE 03</span>
+              <span className="font-mono text-xs text-charcoal/70 dark:text-sage/70 font-semibold">FEATURE 03</span>
             </div>
 
             {/* GeoGrid Rank Visualizer */}
             <div className="my-4 rounded-2xl border border-charcoal/10 dark:border-white/10 bg-white dark:bg-darkgray p-4 shadow-sm">
-              <div className="font-mono text-[10px] text-charcoal/50 dark:text-sage/60 uppercase mb-2">
+              <div className="font-mono text-[10px] text-charcoal/70 dark:text-sage/70 uppercase mb-2 font-semibold">
                 City Grid Geo-Rank (5km Radius)
               </div>
               <div className="grid grid-cols-5 gap-1.5 text-center font-anton text-xs">
@@ -177,7 +177,7 @@ export default function BentoGridSection() {
                   )
                 )}
               </div>
-              <div className="mt-2 text-center font-mono text-[10px] text-charcoal/60 dark:text-sage/60">
+              <div className="mt-2 text-center font-mono text-[10px] text-charcoal/70 dark:text-sage/75 font-semibold">
                 #1 Dominance across 96% of City Search Grid
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function BentoGridSection() {
               <h3 className="font-anton text-3xl text-charcoal dark:text-white tracking-tight">
                 GOOGLE MAPS 3-PACK
               </h3>
-              <p className="mt-2 font-satoshi text-xs text-charcoal/70 dark:text-sage/80 leading-relaxed">
+              <p className="mt-2 font-satoshi text-xs text-charcoal/80 dark:text-sage/85 leading-relaxed">
                 Rank in the top 3 spots on Google Maps for high-intent local queries in Sri Ganganagar, Rajasthan &amp; across India.
               </p>
             </div>
@@ -195,10 +195,10 @@ export default function BentoGridSection() {
           {/* Card 4: Feature 4 (SPANS 2 COLUMNS) - bg-#171e19 (Contrast dark) */}
           <div className="md:col-span-2 relative min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
             <div className="flex items-center justify-between z-10">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow font-bold">
                 <span>⚡ AI Search Optimization</span>
               </div>
-              <span className="font-mono text-xs text-sage/40">FEATURE 04</span>
+              <span className="font-mono text-xs text-sage/70 font-semibold">FEATURE 04</span>
             </div>
 
             {/* Dark interactive code snippet */}
@@ -206,7 +206,7 @@ export default function BentoGridSection() {
               <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-yellow" />
-                  <span className="text-[11px] text-sage/70">schema-injector.json-ld</span>
+                  <span className="text-[11px] text-sage/80 font-semibold">schema-injector.json-ld</span>
                 </div>
                 <div className="flex gap-2">
                   {Object.keys(schemas).map((key) => (
@@ -215,7 +215,7 @@ export default function BentoGridSection() {
                       type="button"
                       onClick={() => setSchemaTab(key)}
                       className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
-                        schemaTab === key ? "bg-yellow text-charcoal font-bold" : "text-sage/60 hover:text-white"
+                        schemaTab === key ? "bg-yellow text-charcoal font-bold" : "text-sage/70 hover:text-white"
                       }`}
                     >
                       {key}
@@ -232,7 +232,7 @@ export default function BentoGridSection() {
               <h3 className="font-anton text-3xl md:text-4xl text-white tracking-tight">
                 AEO &amp; GEO GENERATIVE SEARCH READY
               </h3>
-              <p className="mt-2 font-satoshi text-sm text-sage/80 max-w-xl">
+              <p className="mt-2 font-satoshi text-sm text-sage/90 max-w-xl">
                 We structure your business entity data so ChatGPT, Perplexity, and Google AI Overviews cite and recommend your brand directly to searchers.
               </p>
             </div>

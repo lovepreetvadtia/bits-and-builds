@@ -49,7 +49,7 @@ export default function Footer() {
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-bottom opacity-85 dark:opacity-40 transition-opacity duration-500"
           style={{
-            backgroundImage: `url('/images/footer-hills.jpg')`,
+            backgroundImage: `url('/images/footer-hills.webp')`,
             backgroundPosition: "center 68%",
           }}
         />
@@ -87,7 +87,7 @@ export default function Footer() {
             </h3>
 
             {/* Short Studio Description */}
-            <p className="font-satoshi text-xs text-charcoal/70 dark:text-sage/80 leading-relaxed max-w-sm">
+            <p className="font-satoshi text-xs text-charcoal/80 dark:text-sage/85 leading-relaxed max-w-sm">
               Bits and Builds brings sub-second Next.js engineering, Google Maps 3-Pack rankings, paid ads, and automated workflows into one studio.
             </p>
 
@@ -105,13 +105,13 @@ export default function Footer() {
             </div>
 
             {/* Copyright & Founder Signature */}
-            <div className="pt-3 space-y-1.5 text-xs text-charcoal/60 dark:text-sage/60">
+            <div className="pt-3 space-y-1.5 text-xs text-charcoal/70 dark:text-sage/70">
               <div>
                 © {currentYear} Bits and Builds Studio · All rights reserved
               </div>
 
               {/* Founder Avatar Badge (like "Built with 💛 by Solt Wagner") */}
-              <div className="flex items-center gap-1.5 text-xs text-charcoal/75 dark:text-sage/80">
+              <div className="flex items-center gap-1.5 text-xs text-charcoal/80 dark:text-sage/85">
                 <span>Built with</span>
                 <span className="text-yellow">💛</span>
                 <span>by</span>
@@ -120,7 +120,7 @@ export default function Footer() {
                     L
                   </span>
                   <span>Lavi</span>
-                  <span className="text-charcoal/40 dark:text-white/40">&amp;</span>
+                  <span className="text-charcoal/60 dark:text-white/60">&amp;</span>
                   <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-charcoal dark:bg-white text-yellow dark:text-charcoal text-[9px] font-bold">
                     J
                   </span>
@@ -135,7 +135,7 @@ export default function Footer() {
             <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
               Menu
             </h4>
-            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
+            <ul className="space-y-2 text-xs text-charcoal/80 dark:text-sage/85">
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
@@ -154,7 +154,7 @@ export default function Footer() {
             <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
+            <ul className="space-y-2 text-xs text-charcoal/80 dark:text-sage/85">
               <li>
                 <Link href="/" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
                   Home
@@ -199,7 +199,7 @@ export default function Footer() {
             <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
               Capabilities
             </h4>
-            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
+            <ul className="space-y-2 text-xs text-charcoal/80 dark:text-sage/85">
               <li>
                 <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
                   Next.js 14 Server-Side (SSR)
@@ -233,7 +233,7 @@ export default function Footer() {
             </ul>
 
             {/* Quick Location & Time */}
-            <div className="pt-2 text-[11px] font-mono text-charcoal/60 dark:text-sage/70 space-y-0.5">
+            <div className="pt-2 text-[11px] font-mono text-charcoal/70 dark:text-sage/80 space-y-0.5">
               <div>📍 {AGENCY_LOCATION}</div>
               <div className="text-charcoal dark:text-yellow font-medium">⏱ {time || "IST"} · Open for Sprints</div>
             </div>
@@ -260,9 +260,9 @@ export default function Footer() {
 
       {/* 4. REFINED BOTTOM TYPOGRAPHY WORDMARK ("Bits and Builds" in clean modern geometric sans) */}
       <div className="relative w-full overflow-hidden select-none pointer-events-none text-center px-6 sm:px-10 md:px-14 pt-6 sm:pt-10 md:pt-14 pb-2 sm:pb-4 z-10">
-        <h2 className="font-satoshi font-black tracking-tighter text-[9vw] sm:text-[9.2vw] md:text-[9.5vw] leading-[0.88] text-white/70 dark:text-yellow/50 drop-shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_6px_30px_rgba(255,225,124,0.15)] transition-all duration-300">
+        <p aria-hidden="true" className="font-satoshi font-black tracking-tighter text-[9vw] sm:text-[9.2vw] md:text-[9.5vw] leading-[0.88] text-white/70 dark:text-yellow/50 drop-shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_6px_30px_rgba(255,225,124,0.15)] transition-all duration-300">
           Bits and Builds
-        </h2>
+        </p>
       </div>
 
       {/* Back to top floating pill button at bottom right */}

@@ -81,13 +81,13 @@ export default function TestimonialSection() {
                 {REVIEWS[0].avatarText}
               </div>
               <div>
-                <h4 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
+                <h3 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
                   {REVIEWS[0].author}
-                </h4>
-                <p className="font-satoshi text-xs text-charcoal/60 dark:text-sage/70 line-clamp-1">
+                </h3>
+                <p className="font-satoshi text-xs text-charcoal/75 dark:text-sage/80 line-clamp-1">
                   {REVIEWS[0].role}
                 </p>
-                <p className="font-mono text-[10px] text-charcoal/40 dark:text-sage/50 mt-0.5">
+                <p className="font-mono text-[10px] text-charcoal/60 dark:text-sage/60 mt-0.5">
                   {REVIEWS[0].location}
                 </p>
               </div>
@@ -122,13 +122,13 @@ export default function TestimonialSection() {
                 {REVIEWS[1].avatarText}
               </div>
               <div>
-                <h4 className="font-anton text-base text-yellow tracking-wide">
+                <h3 className="font-anton text-base text-yellow tracking-wide">
                   {REVIEWS[1].author}
-                </h4>
+                </h3>
                 <p className="font-satoshi text-xs text-sage/80 line-clamp-1">
                   {REVIEWS[1].role}
                 </p>
-                <p className="font-mono text-[10px] text-sage/50 mt-0.5">
+                <p className="font-mono text-[10px] text-sage/60 mt-0.5">
                   {REVIEWS[1].location}
                 </p>
               </div>
@@ -159,13 +159,13 @@ export default function TestimonialSection() {
                 {REVIEWS[2].avatarText}
               </div>
               <div>
-                <h4 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
+                <h3 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
                   {REVIEWS[2].author}
-                </h4>
-                <p className="font-satoshi text-xs text-charcoal/60 dark:text-sage/70 line-clamp-1">
+                </h3>
+                <p className="font-satoshi text-xs text-charcoal/75 dark:text-sage/80 line-clamp-1">
                   {REVIEWS[2].role}
                 </p>
-                <p className="font-mono text-[10px] text-charcoal/40 dark:text-sage/50 mt-0.5">
+                <p className="font-mono text-[10px] text-charcoal/60 dark:text-sage/60 mt-0.5">
                   {REVIEWS[2].location}
                 </p>
               </div>

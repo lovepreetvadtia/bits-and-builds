@@ -1,20 +1,19 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles, Layers, Cpu, MessageSquare } from "lucide-react";
 import RevealLayer from "./RevealLayer";
 import { WHATSAPP_URL, AGENCY_LOCATION } from "@/lib/seo";
 
-// High-resolution architectural assets for cursor spotlight reveal
-const BG_IMAGE_1 =
-  "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85";
-const BG_IMAGE_2 =
-  "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_201152_bba90a12-bf12-459f-91f0-51f237dbaf3b.png&w=1280&q=85";
+// High-resolution local WebP architectural assets for instant LCP
+const BG_IMAGE_1 = "/images/hero-base.webp";
+const BG_IMAGE_2 = "/images/hero-reveal.webp";
 
 /**
  * Next.js Clean & High-Impact Spotlight Reveal Hero Section for Bits & Builds.
- * Implements 60fps RAF mouse lerp smoothing + HTML5 Canvas radial gradient dynamic mask.
+ * Implements 60fps RAF mouse lerp smoothing + hardware-accelerated CSS radial gradient dynamic mask.
  */
 export default function NextSpotlightHero() {
   const [cursorPos, setCursorPos] = useState({ x: -999, y: -999 });
@@ -86,16 +85,21 @@ export default function NextSpotlightHero() {
       className="relative w-full overflow-hidden bg-charcoal text-white selection:bg-yellow selection:text-charcoal z-0"
       style={{ height: "100dvh", minHeight: "100dvh" }}
     >
-      {/* Layer 1: Base Image (z-1) with hero-zoom Ken Burns */}
-      <div
-        className="absolute inset-0 bg-center bg-cover bg-no-repeat hero-zoom pointer-events-none opacity-90"
-        style={{
-          backgroundImage: `url(${BG_IMAGE_1})`,
-          zIndex: 1,
-        }}
-      />
+      {/* Layer 1: Base Image (z-1) with next/image priority for instant LCP */}
+      <div className="absolute inset-0 z-[1] pointer-events-none opacity-90 overflow-hidden">
+        <Image
+          src={BG_IMAGE_1}
+          alt="Bits & Builds Digital Architecture"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          quality={85}
+          className="object-cover object-center hero-zoom"
+        />
+      </div>
 
-      {/* Layer 2: Reveal Layer (z-2) - Dynamic Radial Gradient Canvas Mask */}
+      {/* Layer 2: Reveal Layer (z-2) - Dynamic Radial Gradient Mask */}
       <RevealLayer
         image={BG_IMAGE_2}
         cursorX={cursorPos.x}

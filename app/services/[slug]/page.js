@@ -106,7 +106,7 @@ export default function ServiceDetailPage({ params }) {
                   {service.problemSolved}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-sage/50">
+              <div className="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-sage/75 font-semibold">
                 LACK OF ENGINEERED CONVERSION SYSTEMS
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function ServiceDetailPage({ params }) {
                   {service.description}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-yellow">
+              <div className="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-yellow font-semibold">
                 HIGH CRAFT · SUB-SECOND SPEED · DIRECT FOUNDER EXECUTION
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function ServiceDetailPage({ params }) {
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow text-charcoal font-anton text-sm font-bold shadow-xs">
                   ✓
                 </span>
-                <span className="font-satoshi text-sm text-charcoal/80 dark:text-sage/90 leading-relaxed font-medium">
+                <span className="font-satoshi text-sm text-charcoal/85 dark:text-sage/90 leading-relaxed font-medium">
                   {item}
                 </span>
               </div>
@@ -174,7 +174,7 @@ export default function ServiceDetailPage({ params }) {
                 TOOLS WE DEPLOY FOR THIS <span className="highlight-yellow">ENGINE.</span>
               </h2>
             </div>
-            <p className="font-satoshi text-sm md:text-base text-charcoal/70 dark:text-sage/80 max-w-md">
+            <p className="font-satoshi text-sm md:text-base text-charcoal/80 dark:text-sage/85 max-w-md">
               We execute exclusively on industry-standard, professional software stacks — zero amateur templates, no shortcuts, and full master asset delivery.
             </p>
           </div>
@@ -199,19 +199,19 @@ export default function ServiceDetailPage({ params }) {
                     ) : (
                       <span className="text-2xl">{tool.icon || "⚡"}</span>
                     )}
-                    <span className="rounded-full border border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-charcoal/70 dark:text-yellow font-semibold">
+                    <span className="rounded-full border border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-charcoal/80 dark:text-yellow font-bold">
                       {tool.category || "Production Tool"}
                     </span>
                   </div>
                   <h3 className="font-anton text-2xl text-charcoal dark:text-white tracking-wide group-hover:text-charcoal dark:group-hover:text-yellow transition-colors">
                     {tool.name}
                   </h3>
-                  <p className="mt-3 font-satoshi text-xs sm:text-sm text-charcoal/70 dark:text-sage/80 leading-relaxed">
+                  <p className="mt-3 font-satoshi text-xs sm:text-sm text-charcoal/80 dark:text-sage/85 leading-relaxed">
                     {tool.desc}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-charcoal/10 dark:border-white/10 flex items-center justify-between font-mono text-[10px] text-charcoal/50 dark:text-sage/60">
+                <div className="mt-6 pt-4 border-t border-charcoal/10 dark:border-white/10 flex items-center justify-between font-mono text-[10px] text-charcoal/70 dark:text-sage/75 font-semibold">
                   <div className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     <span>Production Grade</span>
@@ -250,7 +250,7 @@ export default function ServiceDetailPage({ params }) {
                     {step.title}
                   </h3>
                 </div>
-                <p className="mt-4 font-satoshi text-xs sm:text-sm leading-relaxed text-charcoal/70 dark:text-sage/75">
+                <p className="mt-4 font-satoshi text-xs sm:text-sm leading-relaxed text-charcoal/80 dark:text-sage/85">
                   {step.desc}
                 </p>
               </div>

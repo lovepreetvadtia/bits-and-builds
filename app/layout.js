@@ -1,4 +1,4 @@
-import { Anton, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Anton, JetBrains_Mono, Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,6 +12,7 @@ const anton = Anton({
   weight: ["400"],
   variable: "--font-anton",
   display: "swap",
+  preload: true,
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -19,6 +20,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-satoshi",
   display: "swap",
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -26,6 +28,16 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "700"],
   variable: "--font-mono",
   display: "swap",
+  preload: true,
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["italic", "normal"],
+  variable: "--font-playfair",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata = {
@@ -71,12 +83,15 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${anton.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
+      className={`${anton.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable}`}
     >
       <head>
         <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+          rel="preload"
+          as="image"
+          href="/images/hero-base.webp"
+          type="image/webp"
+          fetchPriority="high"
         />
         <script
           dangerouslySetInnerHTML={{

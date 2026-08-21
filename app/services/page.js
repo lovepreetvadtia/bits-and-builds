@@ -93,10 +93,10 @@ export default function ServicesPage() {
           <div className="overflow-x-auto rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-2 shadow-xl">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 font-mono text-xs uppercase tracking-wider text-charcoal/70 dark:text-sage/60">
+                <tr className="border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 font-mono text-xs uppercase tracking-wider text-charcoal/80 dark:text-sage/80 font-semibold">
                   <th className="p-6">Capability Metric</th>
                   <th className="p-6 text-charcoal dark:text-yellow font-anton text-sm tracking-wide">Bits &amp; Builds</th>
-                  <th className="p-6 text-charcoal/50 dark:text-sage/50">Typical Agencies</th>
+                  <th className="p-6 text-charcoal/70 dark:text-sage/70 font-semibold">Typical Agencies</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-charcoal/10 dark:divide-white/10 text-xs font-mono">
@@ -105,10 +105,10 @@ export default function ServicesPage() {
                     <td className="p-6 font-anton text-charcoal dark:text-white text-base tracking-wide">
                       {row.feature}
                     </td>
-                    <td className="p-6 text-charcoal dark:text-yellow font-medium bg-yellow/20 dark:bg-yellow/10 rounded-xl">
+                    <td className="p-6 text-charcoal dark:text-yellow font-bold bg-yellow/20 dark:bg-yellow/10 rounded-xl">
                       ✓ {row.us}
                     </td>
-                    <td className="p-6 text-charcoal/60 dark:text-sage/60">
+                    <td className="p-6 text-charcoal/75 dark:text-sage/80">
                       ✕ {row.others}
                     </td>
                   </tr>

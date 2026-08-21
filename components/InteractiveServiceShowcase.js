@@ -61,7 +61,7 @@ export default function InteractiveServiceShowcase() {
                   <span
                     className={`font-anton text-sm font-bold transition-colors ${isActive
                         ? "text-yellow"
-                        : "text-charcoal/50 dark:text-sage/50 group-hover:text-charcoal dark:group-hover:text-yellow"
+                        : "text-charcoal/70 dark:text-sage/70 group-hover:text-charcoal dark:group-hover:text-yellow"
                       }`}
                   >
                     {s.tag}
@@ -69,25 +69,25 @@ export default function InteractiveServiceShowcase() {
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
-                      <h3
-                        className={`font-anton text-lg sm:text-xl tracking-wide transition-colors ${isActive
+                      <span
+                        className={`font-anton text-lg sm:text-xl tracking-wide transition-colors block ${isActive
                             ? "text-white"
                             : "text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow"
                           }`}
                       >
                         {s.title}
-                      </h3>
+                      </span>
                       <span
                         className={`font-mono text-xs transition-transform duration-300 shrink-0 ${isActive
                             ? "translate-x-1 text-yellow"
-                            : "text-charcoal/40 dark:text-sage/40 group-hover:text-charcoal"
+                            : "text-charcoal/60 dark:text-sage/60 group-hover:text-charcoal"
                           }`}
                       >
                         →
                       </span>
                     </div>
                     <p
-                      className={`mt-1 font-satoshi text-xs line-clamp-1 leading-relaxed ${isActive ? "text-sage/90" : "text-charcoal/70 dark:text-sage/70"
+                      className={`mt-1 font-satoshi text-xs line-clamp-1 leading-relaxed ${isActive ? "text-sage/90" : "text-charcoal/75 dark:text-sage/80"
                         }`}
                     >
                       {s.short}
@@ -107,16 +107,16 @@ export default function InteractiveServiceShowcase() {
                   <span className="font-mono text-xs text-yellow uppercase tracking-wider font-semibold">
                     {activeService.badge} · {activeService.tag}
                   </span>
-                  <h4 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white mt-1 tracking-tight">
+                  <h3 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white mt-1 tracking-tight">
                     {activeService.title}
-                  </h4>
+                  </h3>
                 </div>
 
                 <div className="rounded-xl border border-yellow/40 bg-yellow/10 px-4 py-2 text-right">
                   <div className="font-anton text-xl sm:text-2xl text-yellow">
                     {activeService.caseHighlight.metric}
                   </div>
-                  <div className="text-[10px] font-mono text-sage/70 uppercase">
+                  <div className="text-[10px] font-mono text-sage/80 uppercase">
                     {activeService.caseHighlight.label}
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function InteractiveServiceShowcase() {
 
               {/* Core Deliverables */}
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-sage/50 mb-3">
+                <p className="font-mono text-xs uppercase tracking-widest text-sage/80 mb-3">
                   Delivered in Every Sprint:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">

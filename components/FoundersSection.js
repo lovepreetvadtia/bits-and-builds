@@ -50,10 +50,10 @@ export default function FoundersSection() {
                   </p>
                 </div>
               </div>
-              <span className="font-mono text-xs text-charcoal/40 dark:text-sage/40">01</span>
+              <span className="font-mono text-xs text-charcoal/70 dark:text-sage/70 font-bold">01</span>
             </div>
 
-            <p className="mt-6 font-satoshi text-sm text-charcoal/80 dark:text-sage/85 leading-relaxed">
+            <p className="mt-6 font-satoshi text-sm text-charcoal/85 dark:text-sage/90 leading-relaxed">
               &quot;My focus is technical precision: engineering websites on Next.js Server-Side
               Rendering that load in sub-second speeds, dominating Google Maps 3-Pack rankings for
               local businesses, and configuring AI search schemas (AEO &amp; GEO) so your brand is
@@ -61,7 +61,7 @@ export default function FoundersSection() {
             </p>
 
             <div className="mt-8 border-t border-charcoal/10 dark:border-white/10 pt-6">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal/50 dark:text-sage/50 mb-3">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal/70 dark:text-sage/70 mb-3 font-semibold">
                 Core Domains:
               </p>
               <div className="flex flex-wrap gap-2">
@@ -99,10 +99,10 @@ export default function FoundersSection() {
                   </p>
                 </div>
               </div>
-              <span className="font-mono text-xs text-charcoal/40 dark:text-sage/40">02</span>
+              <span className="font-mono text-xs text-charcoal/70 dark:text-sage/70 font-bold">02</span>
             </div>
 
-            <p className="mt-6 font-satoshi text-sm text-charcoal/80 dark:text-sage/85 leading-relaxed">
+            <p className="mt-6 font-satoshi text-sm text-charcoal/85 dark:text-sage/90 leading-relaxed">
               &quot;Great technology needs captivating storytelling and aggressive distribution. I
               architect paid acquisition campaigns on Meta and Google Ads, direct viral short-form
               Reels, and craft visual identities that make local clinics, restaurants, and brands look
@@ -110,7 +110,7 @@ export default function FoundersSection() {
             </p>
 
             <div className="mt-8 border-t border-charcoal/10 dark:border-white/10 pt-6">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal/50 dark:text-sage/50 mb-3">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal/70 dark:text-sage/70 mb-3 font-semibold">
                 Core Domains:
               </p>
               <div className="flex flex-wrap gap-2">

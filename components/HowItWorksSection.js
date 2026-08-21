@@ -76,8 +76,8 @@ export default function HowItWorksSection() {
                     {step.desc}
                   </p>
 
-                  <div className="pt-3 font-mono text-xs text-yellow/90">
-                    <span className="text-sage/40">DELIVERABLES: </span>
+                  <div className="pt-3 font-mono text-xs text-yellow">
+                    <span className="text-white/70 font-semibold">DELIVERABLES: </span>
                     <span>{step.highlight}</span>
                   </div>
                 </div>

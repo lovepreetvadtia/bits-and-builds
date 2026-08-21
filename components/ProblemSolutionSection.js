@@ -54,9 +54,9 @@ export default function ProblemSolutionSection() {
                 <span>✕ The Status Quo</span>
               </div>
               <h2 className="font-anton text-5xl md:text-6xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
-                THE OLD <span className="text-charcoal/40 dark:text-sage/50">WAY.</span>
+                THE OLD <span className="text-charcoal/60 dark:text-sage/60">WAY.</span>
               </h2>
-              <p className="mt-4 font-satoshi text-sm md:text-base text-charcoal/70 dark:text-sage/80 max-w-lg leading-relaxed">
+              <p className="mt-4 font-satoshi text-sm md:text-base text-charcoal/80 dark:text-sage/85 max-w-lg leading-relaxed">
                 Why most local clinics, restaurants, and growing businesses waste thousands of dollars on disconnected digital agencies.
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function ProblemSolutionSection() {
                     <h3 className="font-anton text-lg text-charcoal dark:text-white/90 tracking-wide">
                       {item.title}
                     </h3>
-                    <p className="mt-1 font-satoshi text-xs md:text-sm text-charcoal/70 dark:text-sage/70 leading-relaxed">
+                    <p className="mt-1 font-satoshi text-xs md:text-sm text-charcoal/80 dark:text-sage/80 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -81,7 +81,7 @@ export default function ProblemSolutionSection() {
             </div>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-charcoal/10 dark:border-white/10 font-mono text-xs text-charcoal/50 dark:text-sage/50">
+          <div className="mt-10 pt-6 border-t border-charcoal/10 dark:border-white/10 font-mono text-xs text-charcoal/70 dark:text-sage/75 font-semibold">
             RESULT: High customer acquisition costs &amp; stagnant local revenue.
           </div>
         </div>
