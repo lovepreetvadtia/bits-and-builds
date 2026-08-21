@@ -2,23 +2,26 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { services } from "@/lib/services";
 import {
   AGENCY_PHONE,
   AGENCY_EMAIL,
   AGENCY_LOCATION,
   WHATSAPP_URL,
-  FOUNDERS,
 } from "@/lib/seo";
 
 export default function Footer() {
+  const pathname = usePathname();
   const [time, setTime] = useState("");
-  const [copied, setCopied] = useState(false);
   const currentYear = new Date().getFullYear();
+
+  if (pathname === "/lithos" || pathname === "/spotlight") {
+    return null;
+  }
 
   useEffect(() => {
     const updateTime = () => {
-      // Indian Standard Time (IST / Asia/Kolkata)
       const options = {
         timeZone: "Asia/Kolkata",
         hour: "2-digit",
@@ -34,126 +37,110 @@ export default function Footer() {
     return () => clearInterval(interval);
   }, []);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(AGENCY_EMAIL);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="relative border-t border-white/10 bg-ink pt-24 pb-12 px-6 md:px-10 overflow-hidden">
-      {/* Background ambient lighting */}
-      <div
-        className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 h-[450px] w-[800px] rounded-full bg-teal/10 blur-[160px]"
-        aria-hidden="true"
-      />
-      <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-25" aria-hidden="true" />
+    <footer className="relative w-full overflow-hidden bg-[#f4f5f2] dark:bg-[#121814] text-charcoal dark:text-white transition-colors duration-300 pt-12 md:pt-16 border-t border-charcoal/10 dark:border-white/10 font-satoshi">
+      {/* 1. SCENIC ROLLING HILLS BACKGROUND LAYER */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Landscape Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center md:bg-bottom opacity-85 dark:opacity-40 transition-opacity duration-500"
+          style={{
+            backgroundImage: `url('/images/footer-hills.jpg')`,
+            backgroundPosition: "center 68%",
+          }}
+        />
 
-      <div className="relative mx-auto max-w-[1440px]">
-        {/* Top Callout & Massive Typography (Produx Design style) */}
-        <div className="mb-20 border-b border-white/10 pb-16">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/5 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-teal mb-6">
-                <span className="h-2 w-2 rounded-full bg-teal animate-ping" />
-                <span>Ready to scale your brand?</span>
+        {/* Top Smooth Fade Mask (blends from page bg into landscape) */}
+        <div className="absolute inset-x-0 top-0 h-36 md:h-52 bg-gradient-to-b from-[#f4f5f2] via-[#f4f5f2]/80 to-transparent dark:from-[#121814] dark:via-[#121814]/85 dark:to-transparent" />
+
+        {/* Subtle Ambient Color Tint */}
+        <div className="absolute inset-0 bg-yellow/[0.02] dark:bg-charcoal/50 mix-blend-multiply" />
+
+        {/* Bottom Atmospheric Mist Overlay */}
+        <div className="absolute inset-x-0 bottom-0 h-24 md:h-36 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-[#121814] dark:via-[#121814]/60 dark:to-transparent" />
+      </div>
+
+      {/* 2. MAIN FOOTER CONTENT CONTAINER */}
+      <div className="relative z-10 mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-12">
+        {/* 4-Column SaaS / Studio Clean Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 md:pb-16 items-start">
+          
+          {/* Column 1: Brand Info & Primary Action (Span 5) */}
+          <div className="lg:col-span-5 space-y-4">
+            {/* Brand Logo & Name */}
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-charcoal dark:bg-white text-yellow dark:text-charcoal font-anton text-xs font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
+                BB
               </div>
-              <h2 className="font-display text-clampHero font-bold leading-[0.92] tracking-tightest2 text-paper">
-                Let's build your
-                <br />
-                next <span className="text-teal">breakthrough.</span>
-              </h2>
-            </div>
+              <span className="font-satoshi font-bold text-base tracking-tight text-charcoal dark:text-white">
+                Bits and Builds
+              </span>
+            </Link>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-text="WHATSAPP"
-                className="flex items-center justify-center gap-3 rounded-full border border-teal/40 bg-teal/10 px-8 py-5 font-mono text-xs font-bold uppercase tracking-widest text-teal transition-all hover:bg-teal hover:text-ink hover:shadow-[0_0_30px_rgba(0,242,213,0.4)]"
-              >
-                <span>Chat on WhatsApp</span>
-                <span>💬</span>
-              </a>
+            {/* Tagline / Subheading */}
+            <h3 className="font-satoshi font-bold text-xl sm:text-2xl text-charcoal dark:text-white tracking-tight leading-snug max-w-sm">
+              Your high-contrast web &amp; digital growth engine.
+            </h3>
 
+            {/* Short Studio Description */}
+            <p className="font-satoshi text-xs text-charcoal/70 dark:text-sage/80 leading-relaxed max-w-sm">
+              Bits and Builds brings sub-second Next.js engineering, Google Maps 3-Pack rankings, paid ads, and automated workflows into one studio.
+            </p>
+
+            {/* Black Pill CTA Button (like Cooldock "Download for macOS") */}
+            <div className="pt-1">
               <Link
                 href="/contact"
                 data-cursor-text="START"
-                className="group flex items-center justify-center gap-3 rounded-full bg-paper px-8 py-5 font-mono text-xs font-bold uppercase tracking-widest text-ink transition-all hover:bg-teal hover:text-ink hover:shadow-[0_0_30px_rgba(0,242,213,0.4)]"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-charcoal dark:bg-white text-white dark:text-charcoal px-4 py-2 font-satoshi text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
               >
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow animate-pulse" />
                 <span>Start a Project</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
             </div>
-          </div>
 
-          {/* Quick Copy Email Bar */}
-          <div className="mt-12 flex flex-wrap items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-md">
-            <span className="font-mono text-xs text-paper/40 uppercase tracking-wider">
-              Direct Contact:
-            </span>
-            <button
-              onClick={copyEmail}
-              data-cursor-text="COPY"
-              className="group flex items-center gap-2 rounded-lg bg-white/5 px-3 py-1.5 font-mono text-sm text-paper hover:bg-teal/20 hover:text-teal transition-all"
-            >
-              <span>{AGENCY_EMAIL}</span>
-              <span className="text-xs text-teal">{copied ? "✓ Copied!" : "📋 Copy"}</span>
-            </button>
-            <span className="text-paper/20">|</span>
-            <a
-              href={`tel:${AGENCY_PHONE.replace(/\s+/g, "")}`}
-              data-cursor-text="CALL"
-              className="font-mono text-sm text-paper/80 hover:text-teal transition-colors"
-            >
-              {AGENCY_PHONE}
-            </a>
-          </div>
-        </div>
+            {/* Copyright & Founder Signature */}
+            <div className="pt-3 space-y-1.5 text-xs text-charcoal/60 dark:text-sage/60">
+              <div>
+                © {currentYear} Bits and Builds Studio · All rights reserved
+              </div>
 
-        {/* 5-Column Navigation Matrix */}
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5 lg:gap-12">
-          {/* Col 1: Studio info */}
-          <div className="col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 font-display text-2xl font-bold">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 border border-teal/30 text-teal font-mono text-sm font-bold">
-                B&B
-              </span>
-              <span>
-                Bits<span className="text-teal">&</span>Builds
-              </span>
-            </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-paper/60">
-              High-performance digital marketing, server-rendered Next.js web systems, SEO & local
-              automation. Founded by <strong>Lavi and Jass</strong> in Sri Ganganagar, Rajasthan.
-            </p>
-
-            {/* Live Clock (Sri Ganganagar IST) */}
-            <div className="mt-6 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-mono text-paper/70">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal"></span>
-              </span>
-              <span>Sri Ganganagar (IST):</span>
-              <span className="font-bold text-teal">{time || "11:00:00 AM"}</span>
+              {/* Founder Avatar Badge (like "Built with 💛 by Solt Wagner") */}
+              <div className="flex items-center gap-1.5 text-xs text-charcoal/75 dark:text-sage/80">
+                <span>Built with</span>
+                <span className="text-yellow">💛</span>
+                <span>by</span>
+                <div className="flex items-center gap-1 font-semibold text-charcoal dark:text-white">
+                  <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-yellow text-charcoal text-[9px] font-bold">
+                    L
+                  </span>
+                  <span>Lavi</span>
+                  <span className="text-charcoal/40 dark:text-white/40">&amp;</span>
+                  <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-charcoal dark:bg-white text-yellow dark:text-charcoal text-[9px] font-bold">
+                    J
+                  </span>
+                  <span>Jass</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Col 2: Services */}
-          <div>
-            <p className="eyebrow mb-4">Capabilities</p>
-            <ul className="space-y-2.5 text-sm text-paper/60">
+          {/* Column 2: Services / Menu (Span 2) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
+              Menu
+            </h4>
+            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
-                    data-cursor-text="VIEW"
-                    className="hover:text-teal transition-colors"
+                    className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block font-normal"
                   >
                     {s.title}
                   </Link>
@@ -162,28 +149,35 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Company */}
-          <div>
-            <p className="eyebrow mb-4">Studio</p>
-            <ul className="space-y-2.5 text-sm text-paper/60">
+          {/* Column 3: Navigation (Span 2) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
+              Navigation
+            </h4>
+            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
               <li>
-                <Link href="/about" data-cursor-text="ABOUT" className="hover:text-teal transition-colors">
-                  About & Founders
+                <Link href="/" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/services" data-cursor-text="SERVICES" className="hover:text-teal transition-colors">
-                  All Services
+                <Link href="/about" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
+                  About Founders
                 </Link>
               </li>
               <li>
-                <Link href="/blog" data-cursor-text="BLOG" className="hover:text-teal transition-colors">
-                  Blog & Insights
+                <Link href="/services" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
+                  Service Catalog
                 </Link>
               </li>
               <li>
-                <Link href="/contact" data-cursor-text="CONTACT" className="hover:text-teal transition-colors">
-                  Contact & Brief
+                <Link href="/blog" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
+                  Knowledge Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-block">
+                  Contact Studio
                 </Link>
               </li>
               <li>
@@ -191,48 +185,96 @@ export default function Footer() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teal hover:underline inline-flex items-center gap-1 font-mono text-xs"
+                  className="hover:text-charcoal dark:hover:text-yellow transition-colors hover:translate-x-0.5 inline-flex items-center gap-1"
                 >
-                  WhatsApp Fast Track ↗
+                  <span>WhatsApp Direct</span>
+                  <span className="text-[10px]">↗</span>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Location & Coverage */}
-          <div>
-            <p className="eyebrow mb-4">HQ & Coverage</p>
-            <div className="space-y-3 text-sm text-paper/60">
-              <div>
-                <p className="font-semibold text-paper">Headquarters</p>
-                <p className="mt-0.5 text-xs text-paper/50">{AGENCY_LOCATION}</p>
-              </div>
-              <div>
-                <p className="font-semibold text-paper">Service Reach</p>
-                <p className="mt-0.5 text-xs text-paper/50">Pan-India & Worldwide Remote Delivery</p>
-              </div>
-              <div className="pt-2">
-                <p className="font-mono text-[11px] text-teal">Founders: {FOUNDERS.map(f => f.name).join(" & ")}</p>
-              </div>
+          {/* Column 4: Capabilities (Span 3) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-satoshi font-semibold text-sm text-charcoal dark:text-white">
+              Capabilities
+            </h4>
+            <ul className="space-y-2 text-xs text-charcoal/70 dark:text-sage/80">
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  Next.js 14 Server-Side (SSR)
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  Google Maps 3-Pack Dominance
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  Meta Ads &amp; Server-Side CAPI
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  WhatsApp Cloud API Automation
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  Generative Engine Optimization (GEO)
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-charcoal dark:hover:text-yellow transition-colors cursor-default">
+                  Figma Vector Design Systems
+                </span>
+              </li>
+            </ul>
+
+            {/* Quick Location & Time */}
+            <div className="pt-2 text-[11px] font-mono text-charcoal/60 dark:text-sage/70 space-y-0.5">
+              <div>📍 {AGENCY_LOCATION}</div>
+              <div className="text-charcoal dark:text-yellow font-medium">⏱ {time || "IST"} · Open for Sprints</div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Bar with Back to Top */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-paper/40 sm:flex-row">
-          <p>© {currentYear} Bits and Builds. All rights reserved. Crafted with Next.js SSR.</p>
-          <div className="flex items-center gap-6">
-            <span className="font-mono">Sri Ganganagar 335002</span>
-            <button
-              onClick={scrollToTop}
-              data-cursor-text="TOP"
-              className="flex items-center gap-1 font-mono text-teal hover:underline"
-            >
-              Back to top ↑
-            </button>
-          </div>
         </div>
       </div>
+
+      {/* 3. FLOATING SOARING BIRD SILHOUETTE (Micro-Aesthetic from Reference Image) */}
+      <div
+        className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-8 pointer-events-none select-none opacity-35 dark:opacity-25 hidden md:block"
+        aria-hidden="true"
+      >
+        <svg
+          width="40"
+          height="26"
+          viewBox="0 0 100 65"
+          fill="currentColor"
+          className="text-charcoal/80 dark:text-white/60"
+        >
+          <path d="M0,28 C18,20 35,5 50,22 C65,5 82,20 100,28 C80,34 65,30 50,45 C35,30 20,34 0,28 Z" />
+        </svg>
+      </div>
+
+      {/* 4. REFINED BOTTOM TYPOGRAPHY WORDMARK ("Bits and Builds" in clean modern geometric sans) */}
+      <div className="relative w-full overflow-hidden select-none pointer-events-none text-center px-6 sm:px-10 md:px-14 pt-6 sm:pt-10 md:pt-14 pb-2 sm:pb-4 z-10">
+        <h2 className="font-satoshi font-black tracking-tighter text-[9vw] sm:text-[9.2vw] md:text-[9.5vw] leading-[0.88] text-white/70 dark:text-yellow/50 drop-shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_6px_30px_rgba(255,225,124,0.15)] transition-all duration-300">
+          Bits and Builds
+        </h2>
+      </div>
+
+      {/* Back to top floating pill button at bottom right */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        data-cursor-text="TOP"
+        className="absolute bottom-5 right-5 sm:bottom-6 sm:right-8 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/85 dark:bg-black/60 backdrop-blur-md border border-charcoal/15 dark:border-white/20 text-charcoal dark:text-white font-satoshi text-xs font-bold shadow-md hover:scale-110 hover:bg-yellow hover:text-charcoal transition-all duration-300"
+        aria-label="Back to top"
+      >
+        ↑
+      </button>
     </footer>
   );
 }

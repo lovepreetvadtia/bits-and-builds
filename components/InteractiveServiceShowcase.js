@@ -3,43 +3,46 @@
 import { useState } from "react";
 import Link from "next/link";
 import { services } from "@/lib/services";
+import GsapTextReveal from "@/components/GsapTextReveal";
 
 export default function InteractiveServiceShowcase() {
   const [activeSlug, setActiveSlug] = useState("web-development");
   const activeService = services.find((s) => s.slug === activeSlug) || services[0];
 
   return (
-    <section className="relative border-t border-white/10 bg-ink-card/50 py-28 px-6 md:px-10 overflow-hidden">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute top-1/2 -right-40 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-teal/10 blur-[150px]" />
-
+    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal py-28 px-6 md:px-10 text-charcoal dark:text-white overflow-hidden grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
         {/* Section Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-8">
           <div>
-            <div className="eyebrow-pill mb-4">
-              <span>Interactive Capabilities</span>
+            <div className="badge-editorial-light dark:badge-editorial mb-4">
+              <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
+              <span>Full-Stack Capabilities</span>
             </div>
-            <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-              Engineered for <span className="text-teal">measurable impact.</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-paper/60 text-base">
-              Explore our full-stack capabilities. Click through each service to see the technical
-              deliverables and live simulation.
+            <GsapTextReveal
+              as="h2"
+              variant="words"
+              text="ENGINEERED FOR MEASURABLE REVENUE."
+              highlightWord="MEASURABLE"
+              highlightClass="highlight-yellow"
+              className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+            />
+            <p className="mt-4 max-w-xl font-satoshi text-base text-charcoal/70 dark:text-sage/80 leading-relaxed">
+              Explore our core growth engines. Click through each service to inspect live technical simulators, deliverables, and performance benchmarks.
             </p>
           </div>
 
           <Link
             href="/services"
             data-cursor-text="ALL"
-            className="font-mono text-xs uppercase tracking-widest text-teal hover:underline inline-flex items-center gap-2"
+            className="font-anton text-xs uppercase tracking-widest text-charcoal dark:text-yellow hover:text-charcoal/70 dark:hover:text-white transition-colors inline-flex items-center gap-2 underline decoration-yellow decoration-2 underline-offset-4"
           >
-            <span>View detailed catalog</span>
+            <span>View Detailed Catalog</span>
             <span>→</span>
           </Link>
         </div>
 
-        {/* 2-Column Interactive Hub (LXL Creative style) */}
+        {/* 2-Column Interactive Hub */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Interactive Service Navigation Tabs */}
           <div className="lg:col-span-5 flex flex-col gap-2.5">
@@ -50,16 +53,16 @@ export default function InteractiveServiceShowcase() {
                   key={s.slug}
                   onClick={() => setActiveSlug(s.slug)}
                   data-cursor-text="PREVIEW"
-                  className={`group relative flex items-start gap-4 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300 ${
-                    isActive
-                      ? "border border-teal/40 bg-teal/10 shadow-[0_0_30px_rgba(0,242,213,0.15)]"
-                      : "border border-white/5 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]"
-                  }`}
+                  className={`group relative flex items-start gap-4 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300 ${isActive
+                      ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-[#222a24] text-white shadow-brutalist dark:shadow-brutalist-yellow"
+                      : "border border-charcoal/15 dark:border-white/10 bg-[#f8f9fa] dark:bg-darkgray text-charcoal dark:text-white hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10"
+                    }`}
                 >
                   <span
-                    className={`font-mono text-xs font-bold transition-colors ${
-                      isActive ? "text-teal" : "text-paper/40 group-hover:text-paper"
-                    }`}
+                    className={`font-anton text-sm font-bold transition-colors ${isActive
+                        ? "text-yellow"
+                        : "text-charcoal/50 dark:text-sage/50 group-hover:text-charcoal dark:group-hover:text-yellow"
+                      }`}
                   >
                     {s.tag}
                   </span>
@@ -67,21 +70,28 @@ export default function InteractiveServiceShowcase() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
                       <h3
-                        className={`font-display text-base sm:text-lg font-semibold truncate transition-colors ${
-                          isActive ? "text-paper" : "text-paper/80 group-hover:text-teal"
-                        }`}
+                        className={`font-anton text-lg sm:text-xl tracking-wide transition-colors ${isActive
+                            ? "text-white"
+                            : "text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow"
+                          }`}
                       >
                         {s.title}
                       </h3>
                       <span
-                        className={`font-mono text-xs transition-transform duration-300 shrink-0 ${
-                          isActive ? "translate-x-1 text-teal" : "text-paper/20 group-hover:text-paper"
-                        }`}
+                        className={`font-mono text-xs transition-transform duration-300 shrink-0 ${isActive
+                            ? "translate-x-1 text-yellow"
+                            : "text-charcoal/40 dark:text-sage/40 group-hover:text-charcoal"
+                          }`}
                       >
                         →
                       </span>
                     </div>
-                    <p className="mt-1 text-xs text-paper/50 line-clamp-1">{s.short}</p>
+                    <p
+                      className={`mt-1 font-satoshi text-xs line-clamp-1 leading-relaxed ${isActive ? "text-sage/90" : "text-charcoal/70 dark:text-sage/70"
+                        }`}
+                    >
+                      {s.short}
+                    </p>
                   </div>
                 </button>
               );
@@ -90,30 +100,30 @@ export default function InteractiveServiceShowcase() {
 
           {/* Right Column: Live Interactive Visualizer Preview */}
           <div className="lg:col-span-7 sticky top-28">
-            <div className="rounded-3xl border border-white/10 bg-ink/90 p-5 sm:p-7 md:p-8 backdrop-blur-xl shadow-2xl">
+            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray text-white p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
               {/* Header Info */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5 sm:pb-6">
                 <div>
-                  <span className="font-mono text-[11px] sm:text-xs text-teal uppercase tracking-wider font-semibold">
+                  <span className="font-mono text-xs text-yellow uppercase tracking-wider font-semibold">
                     {activeService.badge} · {activeService.tag}
                   </span>
-                  <h4 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-paper mt-1">
+                  <h4 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white mt-1 tracking-tight">
                     {activeService.title}
                   </h4>
                 </div>
 
-                <div className="rounded-xl border border-teal/30 bg-teal/5 px-3 sm:px-4 py-2 text-right">
-                  <div className="font-display text-lg sm:text-xl font-bold text-teal">
+                <div className="rounded-xl border border-yellow/40 bg-yellow/10 px-4 py-2 text-right">
+                  <div className="font-anton text-xl sm:text-2xl text-yellow">
                     {activeService.caseHighlight.metric}
                   </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono text-paper/60 uppercase">
+                  <div className="text-[10px] font-mono text-sage/70 uppercase">
                     {activeService.caseHighlight.label}
                   </div>
                 </div>
               </div>
 
               {/* Dynamic Service Simulator Preview */}
-              <div className="my-5 sm:my-6 rounded-2xl border border-white/5 bg-ink-elevated/70 p-4 sm:p-5">
+              <div className="my-6 rounded-2xl border border-white/10 bg-black/50 p-5">
                 {activeSlug === "web-development" && <WebDevSimulator />}
                 {activeSlug === "social-media-marketing" && <SocialSimulator />}
                 {activeSlug === "ppc" && <PpcSimulator />}
@@ -125,16 +135,16 @@ export default function InteractiveServiceShowcase() {
 
               {/* Core Deliverables */}
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-paper/40 mb-3">
-                  What's Included:
+                <p className="font-mono text-xs uppercase tracking-widest text-sage/50 mb-3">
+                  Delivered in Every Sprint:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {activeService.deliverables.slice(0, 4).map((d, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-white/[0.02] p-3 text-xs text-paper/80"
+                      className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-white/[0.03] p-3 font-satoshi text-xs text-sage/90"
                     >
-                      <span className="text-teal font-bold shrink-0">✓</span>
+                      <span className="text-yellow font-bold shrink-0">✓</span>
                       <span className="leading-snug">{d}</span>
                     </div>
                   ))}
@@ -142,25 +152,36 @@ export default function InteractiveServiceShowcase() {
               </div>
 
               {/* Action Button */}
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10 pt-5 sm:pt-6">
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  {activeService.tools.slice(0, 4).map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-lg bg-white/5 px-2.5 py-1 font-mono text-[10px] sm:text-[11px] text-paper/60"
-                    >
-                      {tool}
-                    </span>
-                  ))}
+              <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10 pt-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeService.tools.slice(0, 5).map((toolName) => {
+                    const toolObj = activeService.toolStack?.find((t) => t.name === toolName);
+                    return (
+                      <span
+                        key={toolName}
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 px-2.5 py-1 font-mono text-xs text-white/80 border border-white/10"
+                      >
+                        {toolObj?.svgIcon ? (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img
+                            src={toolObj.svgIcon}
+                            alt={toolName}
+                            className="h-3.5 w-3.5 object-contain inline-block"
+                          />
+                        ) : null}
+                        <span>{toolName}</span>
+                      </span>
+                    );
+                  })}
                 </div>
 
                 <Link
                   href={`/services/${activeService.slug}`}
                   data-cursor-text="DETAILS"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-teal px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-transform hover:scale-105"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-6 py-3 font-anton text-sm uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95"
                 >
                   <span>Explore Service</span>
-                  <span>→</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
                 </Link>
               </div>
             </div>
@@ -171,47 +192,36 @@ export default function InteractiveServiceShowcase() {
   );
 }
 
-// Mini interactive mockups for the preview container with responsive layouts
 function WebDevSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
         <div className="flex items-center gap-1.5 min-w-0">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-500/80 shrink-0" />
-          <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80 shrink-0" />
-          <span className="h-2.5 w-2.5 rounded-full bg-green-500/80 shrink-0" />
-          <span className="text-paper/50 ml-1.5 text-[11px] truncate">page.server.jsx</span>
+          <span className="h-2.5 w-2.5 rounded-full bg-red-500 shrink-0" />
+          <span className="h-2.5 w-2.5 rounded-full bg-yellow-400 shrink-0" />
+          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shrink-0" />
+          <span className="text-sage/60 ml-1.5 text-[11px] truncate">next.config.server.js</span>
         </div>
-        <span className="rounded-md border border-teal/40 bg-teal/10 px-2 py-0.5 text-[11px] font-bold text-teal shrink-0">
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow shrink-0 font-anton">
           Lighthouse 100/100
         </span>
       </div>
 
-      <div className="overflow-x-auto space-y-1 text-paper/70 text-[11px] leading-relaxed py-1">
-        <p><span className="text-electric-violet">export default async function</span> <span className="text-electric-blue">ServerPage</span>() &#123;</p>
-        <p className="pl-3 sm:pl-4"><span className="text-paper/40">// Zero client-side hydration delay, pure SSR</span></p>
-        <p className="pl-3 sm:pl-4"><span className="text-teal">const</span> data = <span className="text-electric-violet">await</span> fetchSSRSchema();</p>
-        <p className="pl-3 sm:pl-4"><span className="text-electric-violet">return</span> &lt;<span className="text-teal">SpeedWrapper</span> lcp=&quot;450ms&quot; /&gt;;</p>
+      <div className="overflow-x-auto space-y-1 text-sage/90 text-[11px] leading-relaxed py-1">
+        <p><span className="text-yellow">export default async function</span> ServerPage() &#123;</p>
+        <p className="pl-4 text-sage/40">// Zero client-side hydration delay, pure Edge SSR</p>
+        <p className="pl-4"><span className="text-yellow">const</span> schema = <span className="text-yellow">await</span> fetchJSONLDSchema();</p>
+        <p className="pl-4"><span className="text-yellow">return</span> &lt;<span className="text-white">EdgeSpeedWrapper</span> ttfb=&quot;0.18s&quot; /&gt;;</p>
         <p>&#125;</p>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
-        <div className="flex flex-col items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-2 text-emerald-400">
-          <span className="font-bold text-sm sm:text-base">100</span>
-          <span className="text-[10px] text-paper/70 font-mono mt-0.5">Performance</span>
-        </div>
-        <div className="flex flex-col items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-2 text-emerald-400">
-          <span className="font-bold text-sm sm:text-base">100</span>
-          <span className="text-[10px] text-paper/70 font-mono mt-0.5">Accessibility</span>
-        </div>
-        <div className="flex flex-col items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-2 text-emerald-400">
-          <span className="font-bold text-sm sm:text-base">100</span>
-          <span className="text-[10px] text-paper/70 font-mono mt-0.5">Best Practices</span>
-        </div>
-        <div className="flex flex-col items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-2 text-emerald-400">
-          <span className="font-bold text-sm sm:text-base">100</span>
-          <span className="text-[10px] text-paper/70 font-mono mt-0.5">SEO</span>
-        </div>
+        {["Performance: 100", "Accessibility: 100", "Best Practices: 100", "SEO Schema: 100"].map((item, i) => (
+          <div key={i} className="flex flex-col items-center justify-center rounded-xl bg-yellow/10 border border-yellow/30 p-2 text-yellow">
+            <span className="font-anton text-lg">100</span>
+            <span className="text-[10px] text-sage/80 font-mono mt-0.5">{item.split(":")[0]}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -220,28 +230,28 @@ function WebDevSimulator() {
 function SocialSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">Instagram Organic Growth Engine</span>
-        <span className="rounded-md border border-teal/40 bg-teal/10 px-2 py-0.5 text-[11px] font-bold text-teal">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">Instagram Viral Growth Engine</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
           Viral Hook Matrix
         </span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center">
-          <div className="text-base sm:text-lg font-bold text-paper">1.4M</div>
-          <div className="text-[10px] text-paper/40">Reels Plays</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center">
+          <div className="font-anton text-2xl text-white">1.4M+</div>
+          <div className="text-[10px] text-sage/50 uppercase">Reels Plays</div>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center">
-          <div className="text-base sm:text-lg font-bold text-teal">+8.2K</div>
-          <div className="text-[10px] text-paper/40">Local Followers</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center">
+          <div className="font-anton text-2xl text-yellow">+8.2K</div>
+          <div className="text-[10px] text-sage/50 uppercase">Local Followers</div>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center">
-          <div className="text-base sm:text-lg font-bold text-electric-blue">420+</div>
-          <div className="text-[10px] text-paper/40">Direct DMs/Leads</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center">
+          <div className="font-anton text-2xl text-white">420+</div>
+          <div className="text-[10px] text-sage/50 uppercase">Direct DMs / Leads</div>
         </div>
       </div>
-      <div className="rounded-lg bg-white/5 p-2.5 text-[11px] text-paper/70 leading-relaxed">
-        🔥 Strategy: Localized geo-hooks + high-retention audio pairing for Rajasthan &amp; Pan-India.
+      <div className="rounded-lg bg-white/5 p-2.5 font-satoshi text-xs text-sage/90 leading-relaxed">
+        🔥 Strategy: Localized geo-hooks + retention pacing for clinic &amp; restaurant audiences.
       </div>
     </div>
   );
@@ -250,28 +260,28 @@ function SocialSimulator() {
 function PpcSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">Meta &amp; Google Ads Live Feed</span>
-        <span className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-400">
-          ● Active 4.8x ROAS
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">Meta &amp; Google Ads Live Feed</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
+          Active 4.8x ROAS
         </span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center sm:text-left">
-          <div className="text-[10px] text-paper/40">Ad Spend</div>
-          <div className="text-base font-bold text-paper">₹25,000</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+          <div className="text-[10px] text-sage/50 uppercase">Ad Spend</div>
+          <div className="font-anton text-xl text-white">₹25,000</div>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center sm:text-left">
-          <div className="text-[10px] text-paper/40">Revenue Return</div>
-          <div className="text-base font-bold text-teal">₹1,20,000</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+          <div className="text-[10px] text-sage/50 uppercase">Tracked Revenue</div>
+          <div className="font-anton text-xl text-yellow">₹1,20,000</div>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center sm:text-left">
-          <div className="text-[10px] text-paper/40">Cost Per Lead</div>
-          <div className="text-base font-bold text-electric-cyan">₹42.50</div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+          <div className="text-[10px] text-sage/50 uppercase">Cost Per Lead</div>
+          <div className="font-anton text-xl text-white">₹42.50</div>
         </div>
       </div>
-      <div className="text-[11px] text-paper/60 leading-relaxed">
-        Targeted audiences: High-intent local geo-radius + Meta Lookalikes + Google Search Call-Only ads.
+      <div className="font-satoshi text-xs text-sage/80 leading-relaxed">
+        Targeted radius campaigns: Local geo-fencing + Meta lookalikes + Google Search call-only intent.
       </div>
     </div>
   );
@@ -280,22 +290,22 @@ function PpcSimulator() {
 function SeoSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">Google Maps 3-Pack &amp; AEO Ranker</span>
-        <span className="rounded-md border border-teal/40 bg-teal/10 px-2 py-0.5 text-[11px] font-bold text-teal">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">Google Maps 3-Pack &amp; AEO Ranker</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
           #1 Map Pack Verified
         </span>
       </div>
-      <div className="rounded-xl border border-teal/20 bg-teal/5 p-3.5 space-y-2">
+      <div className="rounded-xl border border-yellow/30 bg-yellow/5 p-4 space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-1">
-          <span className="font-bold text-paper text-xs sm:text-sm">1. Bits and Builds (Your Brand)</span>
-          <span className="text-amber-400 text-[11px]">★★★★★ (4.9 / 50+ reviews)</span>
+          <span className="font-anton text-base text-white">1. Bits and Builds (Your Brand)</span>
+          <span className="text-yellow text-xs">★★★★★ (4.9 / 50+ reviews)</span>
         </div>
-        <div className="text-[11px] text-paper/60">Sri Ganganagar, Rajasthan · 335002 · Open 9AM - 8PM</div>
-        <div className="text-[11px] text-teal">✓ GMB Optimized · Geo-Grid Verified · AEO Schema Active</div>
+        <div className="font-satoshi text-xs text-sage/70">Sri Ganganagar, Rajasthan · 335002 · Open 9AM - 8PM</div>
+        <div className="font-mono text-[11px] text-yellow font-bold">✓ GMB Optimized · Geo-Grid Verified · AEO Schema Active</div>
       </div>
-      <div className="text-[11px] text-paper/50 leading-relaxed">
-        AI Search (ChatGPT, Perplexity &amp; Gemini) citations structured via JSON-LD LocalBusiness entities.
+      <div className="font-satoshi text-xs text-sage/60 leading-relaxed">
+        Structured citations enabling ChatGPT, Perplexity &amp; Gemini to quote your business directly.
       </div>
     </div>
   );
@@ -304,19 +314,19 @@ function SeoSimulator() {
 function DesignSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">Vector Identity &amp; Design Kit</span>
-        <span className="rounded-md border border-teal/40 bg-teal/10 px-2 py-0.5 text-[11px] font-bold text-teal">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">Vector Identity &amp; Editorial Design Kit</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
           Figma Masters
         </span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px]">
-        <div className="rounded-xl border border-white/10 bg-[#07090e] p-2.5 text-paper">Dark #07090E</div>
-        <div className="rounded-xl border border-white/10 bg-[#00f2d5] p-2.5 text-ink font-bold">Teal #00F2D5</div>
-        <div className="rounded-xl border border-white/10 bg-[#38bdf8] p-2.5 text-ink font-bold">Cyan #38BDF8</div>
-        <div className="rounded-xl border border-white/10 bg-[#f8fafc] p-2.5 text-ink font-bold">Paper #F8FAFC</div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+        <div className="rounded-xl border border-white/10 bg-[#171e19] p-3 text-white font-mono">Charcoal #171E19</div>
+        <div className="rounded-xl border border-white/10 bg-[#ffe17c] p-3 text-charcoal font-bold font-mono">Yellow #FFE17C</div>
+        <div className="rounded-xl border border-white/10 bg-[#272727] p-3 text-white font-mono">DarkGray #272727</div>
+        <div className="rounded-xl border border-white/10 bg-[#ffffff] p-3 text-charcoal font-bold font-mono">Paper #FFFFFF</div>
       </div>
-      <div className="text-[11px] text-paper/60 leading-relaxed">
+      <div className="font-satoshi text-xs text-sage/70 leading-relaxed">
         Deliverables: Responsive Vector Logos, Social Media Design Systems, Menus, Signage &amp; Collateral.
       </div>
     </div>
@@ -324,26 +334,57 @@ function DesignSimulator() {
 }
 
 function VideoSimulator() {
+  const videoTools = [
+    { name: "Premiere Pro", icon: "/icons/tools/premiere-pro.svg", role: "NLE Suite" },
+    { name: "After Effects", icon: "/icons/tools/after-effects.svg", role: "Motion/VFX" },
+    { name: "DaVinci", icon: "/icons/tools/davinci-resolve.svg", role: "Color Master" },
+    { name: "Audition", icon: "/icons/tools/adobe-audition.svg", role: "Studio Audio" },
+    { name: "CapCut Pro", icon: "/icons/tools/capcut.svg", role: "Viral Velocity" },
+  ];
+
   return (
-    <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">Viral Short-Form Timeline</span>
-        <span className="rounded-md border border-teal/40 bg-teal/10 px-2 py-0.5 text-[11px] font-bold text-teal">
+    <div className="space-y-3.5 font-mono text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">Production Suite &amp; Viral Timeline</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
           4K 60FPS Render
         </span>
       </div>
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 space-y-2">
+
+      {/* SVG Tool Suite Badges */}
+      <div className="grid grid-cols-5 gap-2">
+        {videoTools.map((t) => (
+          <div
+            key={t.name}
+            className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] p-2 text-center transition-all duration-300 hover:border-yellow/50 hover:bg-yellow/10 group"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={t.icon}
+              alt={t.name}
+              className="h-6 w-6 object-contain transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="font-anton text-[10px] text-white mt-1.5 group-hover:text-yellow transition-colors truncate max-w-full">
+              {t.name}
+            </span>
+            <span className="text-[8px] text-sage/60 font-mono hidden sm:block mt-0.5">{t.role}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Timeline Sequence */}
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-2">
         <div className="flex items-start sm:items-center gap-2">
-          <span className="rounded bg-teal/20 px-2 py-0.5 text-teal text-[10px] shrink-0">00:00 - 00:02</span>
-          <span className="text-paper/80 text-[11px] leading-snug">Hook Cut + Sound FX + Kinetic Text Pop</span>
+          <span className="rounded bg-yellow/20 px-2 py-0.5 text-yellow text-[10px] shrink-0 font-bold font-mono">00:00 - 00:02</span>
+          <span className="font-satoshi text-xs text-white">Attention Hook Cut + SFX + Kinetic Text Pop</span>
         </div>
         <div className="flex items-start sm:items-center gap-2">
-          <span className="rounded bg-electric-blue/20 px-2 py-0.5 text-electric-blue text-[10px] shrink-0">00:03 - 00:28</span>
-          <span className="text-paper/80 text-[11px] leading-snug">Fast Pacing + B-roll zooms + Subtitles</span>
+          <span className="rounded bg-white/10 px-2 py-0.5 text-white text-[10px] shrink-0 font-bold font-mono">00:03 - 00:28</span>
+          <span className="font-satoshi text-xs text-sage/90">Fast Pacing + B-roll zooms + Dynamic Subtitles</span>
         </div>
         <div className="flex items-start sm:items-center gap-2">
-          <span className="rounded bg-electric-violet/20 px-2 py-0.5 text-electric-violet text-[10px] shrink-0">00:29 - 00:35</span>
-          <span className="text-paper/80 text-[11px] leading-snug">Action CTA (Book / Visit / DM for pricing)</span>
+          <span className="rounded bg-yellow/20 px-2 py-0.5 text-yellow text-[10px] shrink-0 font-bold font-mono">00:29 - 00:35</span>
+          <span className="font-satoshi text-xs text-yellow font-medium">Conversion CTA Trigger (Book / DM / WhatsApp)</span>
         </div>
       </div>
     </div>
@@ -353,24 +394,24 @@ function VideoSimulator() {
 function AutomationPreviewSimulator() {
   return (
     <div className="space-y-3 font-mono text-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-        <span className="text-paper/60 text-[11px]">WhatsApp Cloud API Workflow</span>
-        <span className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-400">
-          ● 24/7 Autopilot Booking
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
+        <span className="text-sage/70 text-[11px]">WhatsApp Cloud API Workflow</span>
+        <span className="rounded-md border border-yellow/40 bg-yellow/10 px-2 py-0.5 text-[11px] font-bold text-yellow font-anton">
+          24/7 Autopilot Booking
         </span>
       </div>
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 space-y-2 text-[11px]">
-        <div className="flex items-center gap-2 text-paper/70">
-          <span className="text-teal font-bold">1.</span> Patient / Customer sends &quot;Hi, I need an appointment&quot;
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-2 font-satoshi text-xs">
+        <div className="flex items-center gap-2 text-sage/80">
+          <span className="text-yellow font-bold font-mono">1.</span> Patient / Customer sends &quot;Hi, I need an appointment&quot;
         </div>
-        <div className="flex items-center gap-2 text-paper/70">
-          <span className="text-teal font-bold">2.</span> Bot returns doctor slots + date selection in 1.2s
+        <div className="flex items-center gap-2 text-sage/80">
+          <span className="text-yellow font-bold font-mono">2.</span> Bot returns doctor slots + date selection in 1.2s
         </div>
-        <div className="flex items-center gap-2 text-paper/70">
-          <span className="text-teal font-bold">3.</span> Calendar syncs automatically + confirmation PDF dispatched
+        <div className="flex items-center gap-2 text-sage/80">
+          <span className="text-yellow font-bold font-mono">3.</span> Calendar syncs automatically + confirmation PDF dispatched
         </div>
-        <div className="flex items-center gap-2 text-teal font-bold">
-          <span className="text-teal">4.</span> Automated 2-hour reminder cuts no-shows by 80%
+        <div className="flex items-center gap-2 text-yellow font-bold">
+          <span className="text-yellow font-mono">4.</span> Automated 2-hour reminder cuts no-shows by 80%
         </div>
       </div>
     </div>

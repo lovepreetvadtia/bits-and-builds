@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/lib/services";
 import { AGENCY_PHONE, WHATSAPP_URL } from "@/lib/seo";
+import ThemeToggle from "@/components/ThemeToggle";
+import ServiceIcon from "@/components/ServiceIcon";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -21,224 +23,210 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 15);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menus on page change
   useEffect(() => {
     setServicesOpen(false);
     setMobileMenuOpen(false);
   }, [pathname]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-ink/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl"
-          : "bg-gradient-to-b from-ink/90 via-ink/40 to-transparent py-5"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-10">
-        {/* Brand Logo */}
-        <Link
-          href="/"
-          data-cursor-text="HOME"
-          className="group flex items-center gap-3 font-display text-xl font-bold tracking-tight text-paper transition-transform hover:scale-[1.02]"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 border border-teal/30 text-teal font-mono text-sm font-bold shadow-[0_0_15px_rgba(0,242,213,0.2)]">
-            B&B
-          </span>
-          <span className="tracking-tight">
-            Bits<span className="text-teal font-extrabold">&</span>Builds
-          </span>
-        </Link>
+    <>
+      {/* 1. Progressive Invisible Blur Veil (Active on scroll, smooth gradient mask blur without hard edges) */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none fixed top-0 left-0 right-0 h-[76px] sm:h-[84px] z-40 select-none transition-opacity duration-400 ease-out ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)",
+        }}
+      >
+        {/* Subtle atmospheric tint matching dark/light mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-transparent dark:from-[#171e19]/45 dark:via-[#171e19]/15 dark:to-transparent" />
+      </div>
 
-        {/* Live Availability Pill (LXL Creative style) */}
-        <div className="hidden xl:flex items-center gap-2 rounded-full border border-teal/20 bg-teal/5 px-3.5 py-1 text-[11px] font-mono text-paper/80">
-          <span className="h-2 w-2 rounded-full bg-teal animate-pulse" />
-          <span>Available for projects in India & Worldwide</span>
-        </div>
+      {/* 2. Fixed Header Bar (z-50) */}
+      <header className="fixed top-0 left-0 right-0 z-50 py-2.5 sm:py-3.5 px-4 sm:px-6 md:px-10 transition-all duration-300">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4">
+          {/* Left: Brand Logo Pill */}
+          <Link
+            href="/"
+            data-cursor-text="HOME"
+            className="flex items-center gap-2 rounded-full bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-charcoal/15 dark:border-white/15 px-3.5 sm:px-4 py-2 text-charcoal dark:text-white shadow-md dark:shadow-xl hover:border-yellow transition-all group shrink-0"
+          >
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs transition-transform group-hover:scale-105">
+              BB
+            </div>
+            <span className="font-anton text-sm sm:text-base tracking-tight text-charcoal dark:text-white">
+              BITS &amp; BUILDS
+            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-yellow inline-block animate-pulse" />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((item) =>
-            item.isMega ? (
-              <div
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
+          {/* Center: Floating Navigation Pill (Adapts between light & dark mode) */}
+          <nav className="hidden lg:flex items-center gap-1 rounded-full bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-charcoal/15 dark:border-white/15 px-4 py-2 text-charcoal dark:text-white shadow-md dark:shadow-xl transition-all">
+            {NAV_LINKS.map((item) =>
+              item.isMega ? (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    data-cursor-text="SERVICES"
+                    className={`flex items-center gap-1 rounded-full px-3 py-1 font-anton text-xs uppercase tracking-wider transition-colors ${
+                      pathname.startsWith("/services")
+                        ? "text-charcoal bg-yellow/40 dark:text-yellow dark:bg-white/10 font-bold"
+                        : "text-charcoal/75 hover:text-charcoal hover:bg-charcoal/5 dark:text-white/80 dark:hover:text-yellow dark:hover:bg-white/5"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-[10px] opacity-70">▾</span>
+                  </Link>
+
+                  {/* Mega Menu Dropdown */}
+                  {servicesOpen && (
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full w-[560px] pt-3 z-50">
+                      <div className="rounded-2xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-[#171e19] p-5 shadow-2xl backdrop-blur-2xl text-charcoal dark:text-white">
+                        <div className="mb-3 flex items-center justify-between border-b border-charcoal/10 dark:border-white/10 pb-2.5">
+                          <span className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60 dark:text-sage/70 font-bold">
+                            Growth &amp; Code Engines (7 Services)
+                          </span>
+                          <Link
+                            href="/services"
+                            className="font-anton text-xs uppercase text-charcoal dark:text-yellow hover:underline"
+                          >
+                            All Services →
+                          </Link>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2">
+                          {services.map((s) => (
+                            <Link
+                              key={s.slug}
+                              href={`/services/${s.slug}`}
+                              className="group/item flex items-center gap-2.5 rounded-xl p-2.5 transition-all bg-[#f4f6f4] dark:bg-[#151d17] hover:bg-[#e8ece8] dark:hover:bg-[#1d2720] border border-charcoal/10 dark:border-white/[0.08]"
+                            >
+                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white dark:bg-white/5 text-charcoal dark:text-yellow group-hover/item:bg-yellow group-hover/item:text-charcoal transition-colors">
+                                <ServiceIcon slug={s.slug} className="h-3.5 w-3.5" />
+                              </div>
+                              <span className="font-anton text-xs tracking-wide text-charcoal dark:text-white group-hover/item:text-charcoal dark:group-hover/item:text-yellow truncate">
+                                {s.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
                 <Link
+                  key={item.href}
                   href={item.href}
-                  data-cursor-text="SERVICES"
-                  className={`eyebrow !text-xs transition-colors ${
-                    pathname.startsWith("/services") ? "!text-teal font-bold" : "!text-paper/80 hover:!text-teal"
+                  data-cursor-text={item.label.toUpperCase()}
+                  className={`rounded-full px-3 py-1 font-anton text-xs uppercase tracking-wider transition-colors ${
+                    pathname === item.href
+                      ? "text-charcoal bg-yellow/40 dark:text-yellow dark:bg-white/10 font-bold"
+                      : "text-charcoal/75 hover:text-charcoal hover:bg-charcoal/5 dark:text-white/80 dark:hover:text-yellow dark:hover:bg-white/5"
                   }`}
                 >
                   {item.label}
-                  <span className="text-[10px] text-teal/70">▾</span>
                 </Link>
+              )
+            )}
+          </nav>
 
-                {/* Mega Menu Dropdown */}
-                {servicesOpen && (
-                  <div className="absolute left-1/2 top-full w-[640px] -translate-x-1/2 pt-4">
-                    <div className="rounded-2xl border border-white/10 bg-ink-card/95 p-5 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-                      <div className="mb-3 flex items-center justify-between border-b border-white/5 pb-2 px-1">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-paper/40">
-                          Studio Capabilities (7 Core Services)
-                        </span>
-                        <Link
-                          href="/services"
-                          className="font-mono text-[11px] text-teal hover:underline"
-                        >
-                          View All Services →
-                        </Link>
-                      </div>
+          {/* Right: Actions (Theme Toggle + WhatsApp + CTA) */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-charcoal/15 dark:border-white/15 px-3 py-1.5 text-charcoal dark:text-white shadow-md dark:shadow-xl transition-all">
+              {/* Theme Toggle */}
+              <ThemeToggle />
 
-                      <div className="grid grid-cols-2 gap-2">
-                        {services.map((s) => (
-                          <Link
-                            key={s.slug}
-                            href={`/services/${s.slug}`}
-                            data-cursor-text="VIEW"
-                            className="group flex flex-col justify-between rounded-xl border border-transparent p-3 transition-all duration-200 hover:border-teal/30 hover:bg-white/[0.04]"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="font-mono text-[11px] font-bold text-teal">{s.tag}</span>
-                              <span className="text-[10px] font-mono text-paper/40 group-hover:text-teal transition-colors">↗</span>
-                            </div>
-                            <span className="mt-1 font-display text-sm font-semibold text-paper group-hover:text-teal transition-colors">
-                              {s.title}
-                            </span>
-                            <span className="mt-0.5 text-xs text-paper/50 line-clamp-1">
-                              {s.short}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                data-cursor-text={item.label.toUpperCase()}
-                className={`eyebrow !text-xs transition-colors ${
-                  pathname === item.href ? "!text-teal font-bold" : "!text-paper/80 hover:!text-teal"
-                }`}
+              {/* Direct WhatsApp Pill */}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-anton uppercase text-charcoal/85 dark:text-white/90 hover:text-charcoal dark:hover:text-yellow transition-colors"
               >
-                {item.label}
-              </Link>
-            )
-          )}
-        </nav>
+                <span>💬 WhatsApp ↗</span>
+              </a>
+            </div>
 
-        {/* CTA Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor-text="CHAT"
-            className="flex items-center gap-2 rounded-full border border-teal/40 bg-teal/5 px-4 py-2 font-mono text-xs text-teal transition-all hover:border-teal hover:bg-teal/15"
-          >
-            <span className="text-sm">💬</span>
-            <span className="tracking-wide">WhatsApp</span>
-          </a>
+            {/* Primary CTA Button */}
+            <Link
+              href="/contact"
+              data-cursor-text="START"
+              className="group inline-flex items-center gap-2 rounded-full bg-yellow text-charcoal px-4 sm:px-5 py-2.5 font-anton text-xs uppercase tracking-wider shadow-md dark:shadow-lg hover:shadow-xl hover:bg-charcoal hover:text-white dark:hover:bg-white dark:hover:text-charcoal transition-all duration-300 hover:scale-105 active:scale-95 shrink-0 font-bold"
+            >
+              <span>Start a Project</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
+            </Link>
 
-          <Link
-            href="/contact"
-            data-cursor-text="START"
-            className="group flex items-center gap-2 rounded-full bg-teal px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-all hover:bg-teal-bright hover:shadow-[0_0_20px_rgba(0,242,213,0.4)]"
-          >
-            <span>Start a Project</span>
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </Link>
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-charcoal text-charcoal dark:text-white border border-charcoal/20 dark:border-white/20 shadow-md"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? "✕" : "☰"}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          aria-label="Toggle menu"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 lg:hidden"
-          onClick={() => setMobileMenuOpen((v) => !v)}
-        >
-          <span
-            className={`h-[2px] w-5 bg-paper transition-transform duration-300 ${
-              mobileMenuOpen ? "translate-y-[4px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`h-[2px] w-5 bg-paper transition-transform duration-300 ${
-              mobileMenuOpen ? "-translate-y-[4px] -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </div>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[73px] bottom-0 z-40 overflow-y-auto bg-ink/95 backdrop-blur-2xl border-t border-white/10 px-6 py-8 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300">
-          <div className="flex flex-col gap-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-teal">Navigation</p>
-            <nav className="flex flex-col gap-4">
+        {/* Mobile Drawer Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden mt-3 mx-2 rounded-3xl bg-white/95 dark:bg-black/95 backdrop-blur-2xl border border-charcoal/15 dark:border-white/15 p-6 text-charcoal dark:text-white shadow-2xl space-y-4">
+            <div className="flex flex-col gap-3">
               {NAV_LINKS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`font-display text-2xl font-semibold transition-colors ${
-                    pathname === item.href ? "text-teal" : "text-paper hover:text-teal"
-                  }`}
+                  className="font-anton text-xl uppercase tracking-wider text-charcoal dark:text-white hover:text-yellow transition-colors"
                 >
                   {item.label}
                 </Link>
               ))}
-            </nav>
-
-            <div className="mt-4 border-t border-white/10 pt-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-paper/40 mb-4">
-                Our Services
-              </p>
-              <div className="grid grid-cols-1 gap-2.5">
-                {services.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={`/services/${s.slug}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between rounded-lg bg-white/[0.03] p-3 text-sm text-paper/90 hover:bg-teal/10 hover:text-teal"
-                  >
-                    <span>{s.title}</span>
-                    <span className="font-mono text-xs text-teal">{s.tag}</span>
-                  </Link>
-                ))}
-              </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-3 pt-4 border-t border-white/10">
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full rounded-full bg-teal py-3 text-center font-mono text-xs font-bold uppercase tracking-wider text-ink"
-              >
-                Start a Project →
-              </Link>
+            <div className="pt-4 border-t border-charcoal/10 dark:border-white/10 flex flex-col gap-3">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full rounded-full border border-teal/40 py-3 text-center font-mono text-xs uppercase tracking-wider text-teal"
+                className="flex items-center justify-between rounded-xl bg-charcoal/5 dark:bg-white/10 p-3 font-anton text-xs uppercase text-charcoal dark:text-yellow"
               >
-                Chat on WhatsApp (+91 63676 37487)
+                <span>💬 Direct WhatsApp ({AGENCY_PHONE})</span>
+                <span>↗</span>
               </a>
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center rounded-full bg-yellow p-3 font-anton text-xs uppercase text-charcoal font-bold"
+              >
+                Start a Project →
+              </Link>
             </div>
           </div>
-        </div>
-      )}
-    </header>
+        )}
+      </header>
+    </>
   );
 }

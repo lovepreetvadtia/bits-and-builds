@@ -1,0 +1,32 @@
+# Bits and Builds
+
+> High-performance digital growth, Next.js web engineering, Google Maps 3-Pack SEO/AEO dominance, and 24/7 automated booking pipelines based in Sri Ganganagar, Rajasthan, India.
+
+Bits and Builds is a full-stack digital marketing and software engineering studio co-founded by **Lavi** (Co-Founder & Technical Director) and **Jass** (Co-Founder & Creative Director). We build server-rendered Next.js web applications, run high-ROAS Meta & Google Ad funnels, optimize businesses for Google Maps 3-Pack and Answer Engine Optimization (AEO/GEO), and deploy automated WhatsApp booking engines for hospitals, clinics, and restaurants.
+
+## Core Services
+
+- [Web Development](https://bits-and-builds.vercel.app/services/web-development): Sub-second Server-Side Rendered (SSR) Next.js web applications, 99/100 Google PageSpeed scores, zero-bloat architecture, and custom API integrations.
+- [SEO & AEO / GEO Optimization](https://bits-and-builds.vercel.app/services/seo): Google My Business (GMB) 3-Pack local ranking, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) for ChatGPT, Perplexity, and Gemini.
+- [PPC Advertising](https://bits-and-builds.vercel.app/services/ppc): High-ROAS paid media funnels across Meta Ads (Facebook & Instagram) and Google Ads (Search, Performance Max) with hyper-targeted geo-fencing.
+- [Local Brand Automation](https://bits-and-builds.vercel.app/services/automation): Automated WhatsApp booking workflows for hospitals (doctor OPD slots) and restaurants (table reservations) slashing no-shows by up to 80%.
+- [Social Media Marketing](https://bits-and-builds.vercel.app/services/social-media-marketing): Organic brand positioning, high-engagement content strategy, and multi-channel audience growth.
+- [Graphic Design & Branding](https://bits-and-builds.vercel.app/services/graphic-design): Brutalist & editorial identity design, conversion-focused UI/UX design systems, and vector logo design.
+- [Reels & Short-Form Video](https://bits-and-builds.vercel.app/services/video-editing): High-retention short-form video editing (Reels, TikToks, Shorts) with kinetic typography, SFX, and pacing optimized for virality.
+
+## Key Articles & Guides
+
+- [Why Local Businesses Need Server-Rendered Websites](https://bits-and-builds.vercel.app/blog/why-local-businesses-need-server-rendered-websites): The technical drawbacks of slow WordPress sites vs sub-second Next.js SSR for conversion rates.
+- [GMB Setup Checklist for Local SEO](https://bits-and-builds.vercel.app/blog/gmb-setup-checklist-for-local-seo): Step-by-step framework to rank in Google Maps 3-Pack for local clinic and service queries.
+- [Answer Engine Optimization (AEO) Explained](https://bits-and-builds.vercel.app/blog/answer-engine-optimisation-explained): Structuring schema and entity data so AI engines (ChatGPT, Perplexity) recommend your business.
+- [Booking Automation for Clinics and Restaurants](https://bits-and-builds.vercel.app/blog/booking-automation-for-clinics-and-restaurants): How automated WhatsApp pipelines eliminate front-desk hold times and reduce no-shows.
+
+## Leadership & Contact
+
+- **Headquarters**: Sri Ganganagar, Rajasthan 335002, India
+- **Global Operations**: Serving brands across Rajasthan, major Indian metros (Delhi, Mumbai, Bengaluru, Jaipur), and international clients (UK, US, UAE).
+- **Co-Founders**: Lavi (Co-Founder & Technical Director) & Jass (Co-Founder & Creative Director)
+- **Phone / WhatsApp**: +91 63676 37487 (https://wa.me/916367637487)
+- **Email**: bitss.builds@gmail.com
+- **Website**: https://bits-and-builds.vercel.app
+- **Project Estimator / Contact**: https://bits-and-builds.vercel.app/contact

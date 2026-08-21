@@ -10,7 +10,7 @@ const DEFAULT_FAQS = [
   },
   {
     q: "Who will I be working with directly?",
-    a: "You work directly with co-founders Lavi and Jass. Lavi oversees all technical architecture, Next.js code, and SEO/AEO search optimization. Jass leads paid ad funnels (Meta & Google Ads), creative direction, and viral video editing.",
+    a: "You work directly with co-founders Lavi (Co-Founder & Technical Director) and Jass (Co-Founder & Creative Director). Lavi oversees all Next.js web code, technical architecture, and search optimization. Jass leads paid ad funnels (Meta & Google Ads), creative direction, and short-form video production.",
   },
   {
     q: "How does the Hospital & Restaurant booking automation work?",
@@ -39,43 +39,59 @@ export default function FAQ({ items = DEFAULT_FAQS }) {
     const current = refs.current[openIndex];
     const next = refs.current[i];
 
-    if (current) gsap.to(current, { height: 0, duration: 0.35, ease: "power2.inOut" });
+    if (current) {
+      gsap.to(current, { height: 0, opacity: 0, duration: 0.3, ease: "power2.inOut" });
+    }
     if (isOpening && next) {
-      gsap.set(next, { height: "auto" });
-      gsap.from(next, { height: 0, duration: 0.35, ease: "power2.inOut" });
+      gsap.set(next, { height: "auto", opacity: 1 });
+      gsap.from(next, { height: 0, opacity: 0, duration: 0.35, ease: "power2.inOut" });
     }
     setOpenIndex(isOpening ? i : -1);
   };
 
+  const faqList = items && items.length > 0 ? items : DEFAULT_FAQS;
+
   return (
-    <div className="divide-y divide-white/10 border-y border-white/10">
-      {items.map((item, i) => (
-        <div key={item.q} className="group">
-          <button
-            data-cursor-text={openIndex === i ? "CLOSE" : "OPEN"}
-            onClick={() => toggle(i)}
-            className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-teal"
-          >
-            <span className="font-display text-lg md:text-xl font-medium text-paper">
-              {item.q}
-            </span>
-            <span
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 font-mono text-base text-teal transition-all duration-300 ${
-                openIndex === i ? "rotate-45 border-teal bg-teal text-ink" : "group-hover:border-teal"
-              }`}
+    <div className="divide-y divide-charcoal/15 dark:divide-white/15 border-y border-charcoal/15 dark:border-white/15">
+      {faqList.map((item, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div key={item.q || i} className="group py-2">
+            <button
+              type="button"
+              data-cursor-text={isOpen ? "CLOSE" : "OPEN"}
+              onClick={() => toggle(i)}
+              aria-expanded={isOpen}
+              className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-charcoal dark:hover:text-yellow focus:outline-none"
             >
-              +
-            </span>
-          </button>
-          <div
-            ref={(el) => (refs.current[i] = el)}
-            className="overflow-hidden transition-all"
-            style={{ height: openIndex === i ? "auto" : 0 }}
-          >
-            <p className="pb-6 max-w-3xl text-sm leading-relaxed text-paper/60">{item.a}</p>
+              <span className="font-anton text-xl md:text-2xl tracking-wide text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow transition-colors">
+                {item.q}
+              </span>
+              <span
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-charcoal/20 dark:border-white/20 font-mono text-lg font-bold transition-all duration-300 ${
+                  isOpen
+                    ? "rotate-45 border-yellow bg-yellow text-charcoal shadow-md"
+                    : "bg-charcoal/5 dark:bg-white/5 text-charcoal dark:text-white group-hover:border-yellow group-hover:bg-yellow group-hover:text-charcoal"
+                }`}
+              >
+                +
+              </span>
+            </button>
+            <div
+              ref={(el) => (refs.current[i] = el)}
+              className="overflow-hidden transition-all duration-300"
+              style={{
+                height: isOpen ? "auto" : 0,
+                opacity: isOpen ? 1 : 0,
+              }}
+            >
+              <p className="pb-6 max-w-3xl font-satoshi text-sm md:text-base leading-relaxed text-charcoal/75 dark:text-sage/85">
+                {item.a}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

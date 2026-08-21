@@ -5,7 +5,7 @@ import { services } from "@/lib/services";
 import { AGENCY_PHONE, WHATSAPP_URL } from "@/lib/seo";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState("idle"); // 'idle' | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState("idle");
   const [selectedService, setSelectedService] = useState("Web Development");
   const [budget, setBudget] = useState("₹25k - ₹50k");
 
@@ -37,27 +37,30 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-3xl border border-teal/40 bg-teal/5 p-8 md:p-10 shadow-[0_0_50px_rgba(0,242,213,0.15)] animate-in fade-in">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal/20 text-teal text-2xl font-bold mb-6">
+      <div className="rounded-3xl border-2 border-charcoal dark:border-yellow bg-yellow/20 dark:bg-yellow/10 p-8 md:p-10 shadow-brutalist dark:shadow-brutalist-yellow animate-fade-in text-charcoal dark:text-white">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-charcoal dark:bg-yellow text-yellow dark:text-charcoal font-anton text-2xl font-bold mb-6">
           ✓
         </div>
-        <h3 className="font-display text-2xl font-bold text-paper">Message Dispatched.</h3>
-        <p className="mt-3 text-sm text-paper/70 leading-relaxed max-w-md">
-          Thank you! Lavi or Jass will review your brief and get back to you within 24 hours.
+        <h3 className="font-anton text-3xl text-charcoal dark:text-white tracking-wide">
+          PROJECT BRIEF DISPATCHED.
+        </h3>
+        <p className="mt-3 font-satoshi text-sm md:text-base text-charcoal/80 dark:text-sage/90 leading-relaxed max-w-md">
+          Thank you! Lavi &amp; Jass will review your market details and get back to you within 24 hours.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-ink"
+            className="inline-flex items-center gap-2 rounded-full bg-charcoal dark:bg-yellow px-7 py-3.5 font-anton text-xs uppercase tracking-wider text-white dark:text-charcoal hover:bg-yellow hover:text-charcoal dark:hover:bg-white transition-colors shadow-sm"
           >
             <span>Need a faster reply? Chat on WhatsApp</span>
             <span>💬</span>
           </a>
           <button
+            type="button"
             onClick={() => setStatus("idle")}
-            className="rounded-full border border-white/10 px-6 py-3 font-mono text-xs text-paper/60 hover:text-paper"
+            className="rounded-full border border-charcoal/30 dark:border-white/30 px-6 py-3 font-anton text-xs uppercase text-charcoal dark:text-white hover:bg-white dark:hover:bg-white/10 transition-colors"
           >
             Send Another Brief
           </button>
@@ -67,11 +70,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 rounded-3xl border border-white/10 bg-ink-card p-8 md:p-10 backdrop-blur-xl">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 shadow-2xl text-charcoal dark:text-white transition-colors duration-300"
+    >
       {/* Service Selector Pills */}
       <div>
-        <label className="font-mono text-xs uppercase tracking-widest text-teal block mb-3 font-semibold">
-          Select Primary Service
+        <label className="font-anton text-sm uppercase tracking-wider text-charcoal dark:text-white block mb-3">
+          1. Select Primary Growth Engine
         </label>
         <div className="flex flex-wrap gap-2">
           {services.map((s) => (
@@ -79,10 +85,10 @@ export default function ContactForm() {
               type="button"
               key={s.slug}
               onClick={() => setSelectedService(s.title)}
-              className={`rounded-xl px-3.5 py-2 font-mono text-xs transition-all ${
+              className={`rounded-xl px-3.5 py-2 font-satoshi text-xs transition-all ${
                 selectedService === s.title
-                  ? "border border-teal/50 bg-teal/15 text-paper font-bold shadow-[0_0_15px_rgba(0,242,213,0.2)]"
-                  : "border border-white/5 bg-white/[0.02] text-paper/60 hover:border-white/20 hover:text-paper"
+                  ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow text-white dark:text-charcoal font-bold shadow-xs"
+                  : "border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-white/5 text-charcoal/70 dark:text-sage/75 hover:border-charcoal/40 dark:hover:border-white/40 hover:bg-yellow/10"
               }`}
             >
               {s.title}
@@ -90,93 +96,33 @@ export default function ContactForm() {
           ))}
           <button
             type="button"
-            onClick={() => setSelectedService("Full Stack Marketing Growth")}
-            className={`rounded-xl px-3.5 py-2 font-mono text-xs transition-all ${
-              selectedService === "Full Stack Marketing Growth"
-                ? "border border-teal/50 bg-teal/15 text-paper font-bold shadow-[0_0_15px_rgba(0,242,213,0.2)]"
-                : "border border-white/5 bg-white/[0.02] text-paper/60 hover:border-white/20 hover:text-paper"
+            onClick={() => setSelectedService("Full Stack Growth Blueprint")}
+            className={`rounded-xl px-3.5 py-2 font-satoshi text-xs transition-all ${
+              selectedService === "Full Stack Growth Blueprint"
+                ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow text-white dark:text-charcoal font-bold shadow-xs"
+                : "border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-white/5 text-charcoal/70 dark:text-sage/75 hover:border-charcoal/40 dark:hover:border-white/40 hover:bg-yellow/10"
             }`}
           >
-            🔥 Full Stack Growth
+            ✦ Full Stack Growth Blueprint (All 7)
           </button>
         </div>
       </div>
 
-      {/* Input Fields */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label className="font-mono text-xs uppercase tracking-wider text-paper/60 block mb-2" htmlFor="name">
-            Your Name *
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            placeholder="e.g. Rahul Sharma"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3.5 text-sm text-paper placeholder-paper/30 outline-none transition-colors focus:border-teal"
-          />
-        </div>
-
-        <div>
-          <label className="font-mono text-xs uppercase tracking-wider text-paper/60 block mb-2" htmlFor="email">
-            Email Address *
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            placeholder="e.g. rahul@brand.com"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3.5 text-sm text-paper placeholder-paper/30 outline-none transition-colors focus:border-teal"
-          />
-        </div>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label className="font-mono text-xs uppercase tracking-wider text-paper/60 block mb-2" htmlFor="phone">
-            Phone / WhatsApp Number *
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            placeholder="e.g. +91 98765 43210"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3.5 text-sm text-paper placeholder-paper/30 outline-none transition-colors focus:border-teal"
-          />
-        </div>
-
-        <div>
-          <label className="font-mono text-xs uppercase tracking-wider text-paper/60 block mb-2" htmlFor="business">
-            Business / Brand Name
-          </label>
-          <input
-            id="business"
-            name="business"
-            type="text"
-            placeholder="e.g. City Care Hospital / The Spice Bistro"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3.5 text-sm text-paper placeholder-paper/30 outline-none transition-colors focus:border-teal"
-          />
-        </div>
-      </div>
-
-      {/* Budget Tier */}
+      {/* Budget Selector */}
       <div>
-        <label className="font-mono text-xs uppercase tracking-widest text-teal block mb-2 font-semibold">
-          Estimated Project Budget
+        <label className="font-anton text-sm uppercase tracking-wider text-charcoal dark:text-white block mb-3">
+          2. Estimated Project Budget
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {["₹15k - ₹35k", "₹35k - ₹75k", "₹75k - ₹1.5L", "₹1.5L+ / Global"].map((tier) => (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs">
+          {["₹15k - ₹25k", "₹25k - ₹50k", "₹50k - ₹1L", "₹1L+ (Custom Sprint)"].map((tier) => (
             <button
               type="button"
               key={tier}
               onClick={() => setBudget(tier)}
-              className={`rounded-xl p-2.5 text-center font-mono text-xs transition-all ${
+              className={`rounded-xl p-3 text-center transition-all ${
                 budget === tier
-                  ? "border border-teal/50 bg-teal/15 text-paper font-bold"
-                  : "border border-white/5 bg-white/[0.02] text-paper/60 hover:text-paper"
+                  ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow text-white dark:text-charcoal font-bold"
+                  : "border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-white/5 text-charcoal/70 dark:text-sage/75 hover:border-charcoal/40 dark:hover:border-white/40"
               }`}
             >
               {tier}
@@ -185,50 +131,94 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Message */}
+      {/* Form Inputs Grid */}
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label className="font-anton text-xs uppercase tracking-wider text-charcoal dark:text-white block mb-2">
+            Your Full Name *
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Dr. Rajesh / Simran Kaur"
+            className="w-full rounded-xl border border-charcoal/20 dark:border-white/20 bg-[#f8f9fa] dark:bg-charcoal px-4 py-3 font-satoshi text-sm text-charcoal dark:text-white placeholder:text-charcoal/40 dark:placeholder:text-sage/40 focus:border-charcoal dark:focus:border-yellow focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="font-anton text-xs uppercase tracking-wider text-charcoal dark:text-white block mb-2">
+            Phone / WhatsApp Number *
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="+91 98765 43210"
+            className="w-full rounded-xl border border-charcoal/20 dark:border-white/20 bg-[#f8f9fa] dark:bg-charcoal px-4 py-3 font-satoshi text-sm text-charcoal dark:text-white placeholder:text-charcoal/40 dark:placeholder:text-sage/40 focus:border-charcoal dark:focus:border-yellow focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="font-anton text-xs uppercase tracking-wider text-charcoal dark:text-white block mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@brand.com"
+            className="w-full rounded-xl border border-charcoal/20 dark:border-white/20 bg-[#f8f9fa] dark:bg-charcoal px-4 py-3 font-satoshi text-sm text-charcoal dark:text-white placeholder:text-charcoal/40 dark:placeholder:text-sage/40 focus:border-charcoal dark:focus:border-yellow focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="font-anton text-xs uppercase tracking-wider text-charcoal dark:text-white block mb-2">
+            Business / Hospital / Brand Name
+          </label>
+          <input
+            type="text"
+            name="business"
+            placeholder="e.g. Apex Eye Hospital"
+            className="w-full rounded-xl border border-charcoal/20 dark:border-white/20 bg-[#f8f9fa] dark:bg-charcoal px-4 py-3 font-satoshi text-sm text-charcoal dark:text-white placeholder:text-charcoal/40 dark:placeholder:text-sage/40 focus:border-charcoal dark:focus:border-yellow focus:outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Project Goals / Message */}
       <div>
-        <label className="font-mono text-xs uppercase tracking-wider text-paper/60 block mb-2" htmlFor="message">
-          Project Goals &amp; Timeline *
+        <label className="font-anton text-xs uppercase tracking-wider text-charcoal dark:text-white block mb-2">
+          Project Goals &amp; Specific Requirements *
         </label>
         <textarea
-          id="message"
           name="message"
           rows={4}
           required
-          placeholder="Tell us about your business goals, target audience, and current challenges..."
-          className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3.5 text-sm text-paper placeholder-paper/30 outline-none transition-colors focus:border-teal"
+          placeholder="Tell Lavi & Jass what you want to achieve (e.g. Need 100+ patient bookings/month, Google Maps #1 rank in Sri Ganganagar, sub-second Next.js web application)..."
+          className="w-full rounded-xl border border-charcoal/20 dark:border-white/20 bg-[#f8f9fa] dark:bg-charcoal p-4 font-satoshi text-sm text-charcoal dark:text-white placeholder:text-charcoal/40 dark:placeholder:text-sage/40 focus:border-charcoal dark:focus:border-yellow focus:outline-none"
         />
       </div>
 
-      {/* Submit Button */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-        <button
-          type="submit"
-          data-cursor-text="SUBMIT"
-          disabled={status === "sending"}
-          className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-full bg-teal px-8 py-4 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-transform hover:scale-[1.02] disabled:opacity-50 shadow-[0_0_25px_rgba(0,242,213,0.3)]"
-        >
-          {status === "sending" ? "Sending Brief..." : "Submit Project Brief →"}
-        </button>
-
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-cursor-text="WHATSAPP"
-          className="text-xs font-mono text-teal hover:underline flex items-center gap-1.5"
-        >
-          <span>Or chat directly on WhatsApp ({AGENCY_PHONE})</span>
-          <span>↗</span>
-        </a>
-      </div>
-
       {status === "error" && (
-        <p className="text-xs font-mono text-red-400">
-          Something went wrong submitting the form. Please WhatsApp us directly at {AGENCY_PHONE} or
-          email bitss.builds@gmail.com.
-        </p>
+        <div className="rounded-xl border border-red-500 bg-red-500/10 p-4 font-satoshi text-xs text-red-500 font-bold">
+          ✕ Something went wrong while submitting. Please try again or chat directly on WhatsApp (+91 63676 37487).
+        </div>
       )}
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        data-cursor-text="SUBMIT"
+        className="group w-full rounded-full bg-charcoal dark:bg-yellow py-4 font-anton text-sm uppercase tracking-wider text-white dark:text-charcoal shadow-xl transition-all duration-300 hover:scale-[1.01] hover:bg-black dark:hover:bg-white active:scale-95 disabled:opacity-50 inline-flex items-center justify-center gap-2"
+      >
+        <span>{status === "sending" ? "DISPATCHING BRIEF..." : "DISPATCH PROJECT BRIEF TO FOUNDERS"}</span>
+        <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
+      </button>
+
+      <p className="text-center font-mono text-[11px] text-charcoal/50 dark:text-sage/60">
+        🔒 Direct confidentiality guaranteed. Lavi &amp; Jass personally respond within 24 hours.
+      </p>
     </form>
   );
 }

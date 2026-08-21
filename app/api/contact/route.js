@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendContactNotificationEmail } from "@/lib/mail";
 
 export const dynamic = "force-dynamic";
 
@@ -14,26 +15,36 @@ export async function POST(request) {
       );
     }
 
-    console.log("=== NEW BITS AND BUILDS INQUIRY ===");
-    console.log("Timestamp:", new Date().toISOString());
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Phone / WhatsApp:", phone);
-    console.log("Service:", data.service);
-    console.log("Budget:", data.budget);
-    console.log("Business Name:", data.business);
-    console.log("Message:", message);
-    console.log("===================================");
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: "Invalid email address format" },
+        { status: 400 }
+      );
+    }
+
+    // Send email notification via SMTP
+    const mailResult = await sendContactNotificationEmail({
+      name: name.trim(),
+      email: email.trim(),
+      phone: (phone || "").trim(),
+      business: (data.business || "").trim(),
+      service: data.service || "Web Development",
+      budget: data.budget || "₹25k - ₹50k",
+      message: message.trim(),
+    });
 
     return NextResponse.json({
       success: true,
-      message: "Inquiry successfully received by Bits and Builds founders.",
+      message: "Project brief successfully received by Bits and Builds founders.",
+      smtpDispatched: mailResult.sent,
     });
   } catch (err) {
     console.error("Contact API error:", err);
     return NextResponse.json(
-      { error: "Invalid request payload" },
-      { status: 400 }
+      { error: "An unexpected error occurred while processing your request." },
+      { status: 500 }
     );
   }
 }

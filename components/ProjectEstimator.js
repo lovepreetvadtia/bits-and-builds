@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AGENCY_PHONE } from "@/lib/seo";
+import GsapTextReveal from "@/components/GsapTextReveal";
 
 const SERVICES_LIST = [
   { id: "web", name: "Web Development (Next.js SSR)", baseWeeks: 2.5 },
@@ -9,14 +10,14 @@ const SERVICES_LIST = [
   { id: "ppc", name: "PPC (Meta & Google Ads)", baseWeeks: 1.5 },
   { id: "social", name: "Social Media Marketing", baseWeeks: 2 },
   { id: "design", name: "Graphic Design & Branding", baseWeeks: 1.5 },
-  { id: "video", name: "Video Editing & Reels", baseWeeks: 1 },
+  { id: "video", name: "Reels & Short-Form Video", baseWeeks: 1 },
   { id: "automation", name: "Local Brand Automation (Clinic/Restaurant)", baseWeeks: 2 },
 ];
 
 export default function ProjectEstimator() {
   const [selectedServices, setSelectedServices] = useState(["web", "seo"]);
-  const [businessType, setBusinessType] = useState("local"); // 'local' | 'ecommerce' | 'national'
-  const [targetMarket, setTargetMarket] = useState("pan-india"); // 'local' | 'pan-india' | 'worldwide'
+  const [businessType, setBusinessType] = useState("local");
+  const [targetMarket, setTargetMarket] = useState("pan-india");
 
   const toggleService = (id) => {
     if (selectedServices.includes(id)) {
@@ -28,7 +29,6 @@ export default function ProjectEstimator() {
     }
   };
 
-  // Calculate estimated timeline
   const selectedItems = SERVICES_LIST.filter((s) => selectedServices.includes(s.id));
   const totalWeeks = Math.max(
     ...selectedItems.map((s) => s.baseWeeks),
@@ -42,45 +42,62 @@ export default function ProjectEstimator() {
   };
 
   return (
-    <section className="relative border-t border-white/10 bg-ink-card py-28 px-6 md:px-10 overflow-hidden">
+    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal text-charcoal dark:text-white py-28 px-6 md:px-10 overflow-hidden grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
-        <div className="mb-14 text-center max-w-2xl mx-auto">
-          <div className="eyebrow-pill mb-4">
-            <span>Instant Scope &amp; Strategy</span>
+        <div className="mb-14 text-center max-w-3xl mx-auto space-y-4">
+          <div className="badge-editorial-light dark:badge-editorial">
+            <span className="h-2 w-2 rounded-full bg-yellow animate-ping" />
+            <span>Instant Project Calculator</span>
           </div>
-          <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-            Estimate your <span className="text-teal">project roadmap.</span>
-          </h2>
-          <p className="mt-3 text-sm text-paper/60">
-            Select the services your business needs to calculate an estimated delivery timeline and
-            strategic scope.
+          <GsapTextReveal
+            as="h2"
+            variant="words"
+            text="ESTIMATE YOUR PROJECT SCOPE."
+            highlightWord="SCOPE."
+            highlightClass="highlight-yellow"
+            className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+          />
+          <p className="font-satoshi text-base text-charcoal/70 dark:text-sage/80">
+            Select the capabilities your business requires to calculate an estimated sprint timeline and strategic deliverable roadmap.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Selectors */}
-          <div className="lg:col-span-7 space-y-8 rounded-3xl border border-white/10 bg-ink/80 p-5 sm:p-7 md:p-8 backdrop-blur-xl">
+          <div className="lg:col-span-7 space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-darkgray p-6 sm:p-8 shadow-xl">
             {/* Step 1: Services */}
             <div>
-              <label className="font-mono text-xs uppercase tracking-widest text-teal block mb-3 font-semibold">
-                1. Select Required Services (Multi-Select)
-              </label>
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
+                  01
+                </span>
+                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                  SELECT REQUIRED GROWTH ENGINES (MULTI-SELECT)
+                </h3>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {SERVICES_LIST.map((srv) => {
                   const isChecked = selectedServices.includes(srv.id);
                   return (
                     <button
                       key={srv.id}
+                      type="button"
                       onClick={() => toggleService(srv.id)}
                       data-cursor-text="TOGGLE"
-                      className={`flex items-center justify-between rounded-xl p-3.5 text-left text-xs font-mono transition-all ${
+                      className={`flex items-center justify-between rounded-2xl p-4 text-left text-xs font-satoshi transition-all duration-200 ${
                         isChecked
-                          ? "border border-teal/50 bg-teal/10 text-paper font-bold shadow-[0_0_15px_rgba(0,242,213,0.15)]"
-                          : "border border-white/5 bg-white/[0.02] text-paper/60 hover:border-white/20 hover:text-paper"
+                          ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
+                          : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
                       }`}
                     >
                       <span className="pr-2 leading-snug">{srv.name}</span>
-                      <span className={`text-xs shrink-0 ${isChecked ? "text-teal font-bold" : "text-paper/20"}`}>
+                      <span
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md font-anton text-xs ${
+                          isChecked
+                            ? "bg-yellow text-charcoal font-bold"
+                            : "border border-charcoal/20 dark:border-white/20 text-charcoal/40 dark:text-white/30"
+                        }`}
+                      >
                         {isChecked ? "✓" : "+"}
                       </span>
                     </button>
@@ -91,111 +108,147 @@ export default function ProjectEstimator() {
 
             {/* Step 2: Business Profile */}
             <div>
-              <label className="font-mono text-xs uppercase tracking-widest text-teal block mb-3 font-semibold">
-                2. Business Profile
-              </label>
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
+                  02
+                </span>
+                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                  BUSINESS PROFILE &amp; CATEGORY
+                </h3>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {[
-                  { id: "local", label: "Local Brand / Clinic / Restaurant" },
+                  { id: "local", label: "Local Clinic / Hospital / Restaurant" },
                   { id: "ecommerce", label: "D2C / E-Commerce Brand" },
-                  { id: "national", label: "Startup / B2B Corporate" },
-                ].map((b) => (
-                  <button
-                    key={b.id}
-                    onClick={() => setBusinessType(b.id)}
-                    className={`min-h-[58px] flex items-center justify-center rounded-xl px-4 py-3 text-center text-xs font-mono transition-all leading-snug ${
-                      businessType === b.id
-                        ? "border border-teal/50 bg-teal/10 text-paper font-bold shadow-[0_0_15px_rgba(0,242,213,0.15)]"
-                        : "border border-white/5 bg-white/[0.02] text-paper/60 hover:border-white/20 hover:text-paper"
-                    }`}
-                  >
-                    {b.label}
-                  </button>
-                ))}
+                  { id: "national", label: "National B2B / Startup" },
+                ].map((b) => {
+                  const isSelected = businessType === b.id;
+                  return (
+                    <button
+                      key={b.id}
+                      type="button"
+                      onClick={() => setBusinessType(b.id)}
+                      className={`min-h-[58px] flex items-center justify-center rounded-2xl px-4 py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
+                        isSelected
+                          ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
+                          : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
+                      }`}
+                    >
+                      {b.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Step 3: Target Market */}
             <div>
-              <label className="font-mono text-xs uppercase tracking-widest text-teal block mb-3 font-semibold">
-                3. Target Market &amp; Reach
-              </label>
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
+                  03
+                </span>
+                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                  TARGET MARKET &amp; REACH
+                </h3>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {[
                   { id: "local", label: "Sri Ganganagar / Local Region" },
                   { id: "pan-india", label: "Pan-India National Reach" },
-                  { id: "worldwide", label: "International / Global Reach" },
-                ].map((m) => (
-                  <button
-                    key={m.id}
-                    onClick={() => setTargetMarket(m.id)}
-                    className={`min-h-[58px] flex items-center justify-center rounded-xl px-4 py-3 text-center text-xs font-mono transition-all leading-snug ${
-                      targetMarket === m.id
-                        ? "border border-teal/50 bg-teal/10 text-paper font-bold shadow-[0_0_15px_rgba(0,242,213,0.15)]"
-                        : "border border-white/5 bg-white/[0.02] text-paper/60 hover:border-white/20 hover:text-paper"
-                    }`}
-                  >
-                    {m.label}
-                  </button>
-                ))}
+                  { id: "worldwide", label: "International / Global Delivery" },
+                ].map((m) => {
+                  const isSelected = targetMarket === m.id;
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => setTargetMarket(m.id)}
+                      className={`min-h-[58px] flex items-center justify-center rounded-2xl px-4 py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
+                        isSelected
+                          ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
+                          : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
+                      }`}
+                    >
+                      {m.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Scope Card */}
-          <div className="lg:col-span-5 rounded-3xl border border-white/10 bg-ink/95 p-5 sm:p-7 md:p-8 backdrop-blur-xl shadow-2xl">
-            <div className="border-b border-white/10 pb-5 sm:pb-6">
-              <span className="font-mono text-xs uppercase tracking-widest text-paper/40">
-                Recommended Strategy
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-paper mt-1">
-                Custom Multi-Channel Funnel
-              </h3>
-            </div>
-
-            <div className="py-5 sm:py-6 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white/[0.03] p-4">
-                <span className="font-mono text-xs text-paper/60">Estimated Timeline:</span>
-                <span className="font-display text-lg sm:text-xl font-bold text-teal">
-                  ~{totalWeeks.toFixed(1)} Weeks
-                </span>
+          {/* Right Column: Dynamic Timeline & Scope Card */}
+          <div className="lg:col-span-5 sticky top-28">
+            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray p-8 text-white shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-6">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-wider text-yellow font-semibold">
+                    Calculated Sprint Scope
+                  </span>
+                  <h3 className="font-anton text-2xl text-white mt-1">
+                    ESTIMATED BLUEPRINT
+                  </h3>
+                </div>
+                <div className="rounded-2xl border border-yellow/40 bg-yellow/10 p-3 text-center">
+                  <div className="font-anton text-3xl text-yellow leading-none">
+                    ~{totalWeeks}
+                  </div>
+                  <div className="font-mono text-[9px] uppercase tracking-wider text-sage/70 mt-1 font-semibold">
+                    Weeks Delivery
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white/[0.03] p-4">
-                <span className="font-mono text-xs text-paper/60">Selected Capabilities:</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-paper">
-                  {selectedServices.length} Core Stack Modules
-                </span>
-              </div>
-
-              <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4 space-y-2 text-xs text-paper/70">
-                <p className="font-bold text-paper font-mono text-[11px] uppercase tracking-wider">
-                  Engineered Outputs:
+              {/* Scope Checklist */}
+              <div className="my-6 space-y-3 font-satoshi text-xs">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-sage/50">
+                  Included Engine Modules ({selectedItems.length}):
                 </p>
-                <ul className="space-y-1.5 list-disc list-inside">
-                  <li>Server-rendered infrastructure with 95+ Core Web Vitals</li>
-                  <li>Direct WhatsApp lead routing &amp; automated notification flow</li>
-                  <li>Local business schema &amp; AI answer engine crawlability</li>
-                  <li>Weekly analytics &amp; direct founders access (Lavi &amp; Jass)</li>
-                </ul>
+                <div className="space-y-2">
+                  {selectedItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 text-white"
+                    >
+                      <span className="font-medium">{item.name}</span>
+                      <span className="font-mono text-xs text-yellow font-bold">~{item.baseWeeks}w</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="border-t border-white/10 pt-5 sm:pt-6 space-y-3">
-              <a
-                href={getWhatsAppMessage()}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-text="WHATSAPP"
-                className="w-full flex items-center justify-center gap-2 rounded-full bg-teal py-4 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(0,242,213,0.3)]"
-              >
-                <span>Send Brief to WhatsApp</span>
-                <span>💬</span>
-              </a>
+              {/* Strategic Deliverables Included */}
+              <div className="border-t border-white/10 pt-4 space-y-2 text-[11px] font-mono text-sage/75">
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow font-bold">✓</span>
+                  <span>100% Server-Side Rendered (SSR) Next.js Architecture</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow font-bold">✓</span>
+                  <span>Direct Partner Execution with Founders Lavi &amp; Jass</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow font-bold">✓</span>
+                  <span>Google Maps 3-Pack Schema &amp; AEO AI Engine Tagging</span>
+                </div>
+              </div>
 
-              <p className="text-center font-mono text-[11px] text-paper/40">
-                Direct phone/WhatsApp: {AGENCY_PHONE}
-              </p>
+              {/* Action Buttons */}
+              <div className="mt-8 space-y-3 border-t border-white/10 pt-6">
+                <a
+                  href={getWhatsAppMessage()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-text="LOCK"
+                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-yellow py-4 font-anton text-sm uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white active:scale-95"
+                >
+                  <span>Lock In Scope on WhatsApp ({AGENCY_PHONE})</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                </a>
+                <p className="text-center font-mono text-[10px] text-sage/50">
+                  ⚡ Pre-populates WhatsApp with your exact selected scope &amp; estimated timeline.
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -2,11 +2,12 @@ import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/lib/services";
 import { buildMetadata, WHATSAPP_URL } from "@/lib/seo";
+import GsapTextReveal from "@/components/GsapTextReveal";
 
 export const metadata = buildMetadata({
   title: "Services — Web Dev, SEO, PPC, Social Media, Design & Automation",
   description:
-    "Explore the 7 core services of Bits and Builds: Server-rendered Next.js web development, local SEO (GMB, AEO, GEO), Meta/Google PPC ads, social media, video editing and clinic/restaurant booking automation.",
+    "Explore the 7 core services of Bits and Builds: Server-rendered Next.js web development, local SEO (GMB, AEO, GEO), Meta/Google PPC ads, social media, reels & short-form video, and clinic/restaurant booking automation.",
   path: "/services",
 });
 
@@ -41,30 +42,28 @@ const COMPARISON = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="blueprint-grid relative px-6 pb-20 pt-40 md:px-10 overflow-hidden">
-        <div
-          className="pointer-events-none absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-teal/10 blur-[150px]"
-          aria-hidden="true"
-        />
-
+      {/* Hero Section */}
+      <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-6 pb-20 pt-36 md:px-10 overflow-hidden border-b border-charcoal/15 dark:border-white/15 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="eyebrow-pill mb-6">
+          <div className="badge-editorial-light dark:badge-editorial mb-6 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-yellow animate-pulse border border-charcoal/40" />
             <span>Capabilities &amp; Solutions</span>
           </div>
 
-          <h1 className="max-w-4xl font-display text-clampHero font-bold leading-[0.95] tracking-tightest2 text-paper">
-            Everything your brand needs to <span className="text-teal">dominate online.</span>
+          <h1 className="max-w-5xl font-anton text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase">
+            EVERYTHING YOUR BRAND NEEDS TO{" "}
+            <span className="highlight-yellow">DOMINATE ONLINE.</span>
           </h1>
 
-          <p className="mt-8 max-w-2xl text-base md:text-lg text-paper/70 leading-relaxed">
+          <p className="mt-8 max-w-2xl font-satoshi text-base sm:text-lg md:text-xl text-charcoal/75 dark:text-sage/80 leading-relaxed">
             Seven unified capabilities engineered for performance, search visibility, and revenue.
             Choose a standalone service or partner with us for full-stack growth.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="border-t border-white/10 px-6 py-24 md:px-10">
+      {/* Services Grid (7 Cards) */}
+      <section className="bg-[#fcfdfc] dark:bg-[#151b17] border-b border-charcoal/15 dark:border-white/15 px-6 py-24 md:px-10 grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
@@ -75,37 +74,42 @@ export default function ServicesPage() {
       </section>
 
       {/* Comparison Matrix: Us vs Generic Agencies */}
-      <section className="border-t border-white/10 bg-ink-card/30 px-6 py-28 md:px-10">
+      <section className="border-b border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal px-6 py-28 md:px-10 grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16">
-            <div className="eyebrow-pill mb-4">
-              <span>The Standard</span>
+          <div className="mb-16 border-b border-charcoal/10 dark:border-white/10 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <div className="badge-editorial-light dark:badge-editorial mb-4">
+                <span>The Standard</span>
+              </div>
+              <h2 className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+                WHY BRANDS CHOOSE <span className="highlight-yellow">BITS &amp; BUILDS.</span>
+              </h2>
             </div>
-            <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-              Why brands choose Bits &amp; Builds.
-            </h2>
+            <p className="font-satoshi text-sm md:text-base text-charcoal/70 dark:text-sage/80 max-w-md">
+              We eliminate agency middlemen, slow page builders, and vanity metrics in favor of pure engineering and measurable revenue.
+            </p>
           </div>
 
-          <div className="overflow-x-auto rounded-3xl border border-white/10 bg-ink">
+          <div className="overflow-x-auto rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-2 shadow-xl">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 bg-white/[0.02] font-mono text-xs uppercase tracking-wider text-paper/40">
+                <tr className="border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 font-mono text-xs uppercase tracking-wider text-charcoal/70 dark:text-sage/60">
                   <th className="p-6">Capability Metric</th>
-                  <th className="p-6 text-teal font-bold">Bits &amp; Builds</th>
-                  <th className="p-6 text-paper/50">Typical Agencies</th>
+                  <th className="p-6 text-charcoal dark:text-yellow font-anton text-sm tracking-wide">Bits &amp; Builds</th>
+                  <th className="p-6 text-charcoal/50 dark:text-sage/50">Typical Agencies</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-xs font-mono">
+              <tbody className="divide-y divide-charcoal/10 dark:divide-white/10 text-xs font-mono">
                 {COMPARISON.map((row, i) => (
-                  <tr key={i} className="hover:bg-white/[0.01]">
-                    <td className="p-6 font-display font-semibold text-paper text-sm">
+                  <tr key={i} className="hover:bg-yellow/10 dark:hover:bg-white/[0.03] transition-colors">
+                    <td className="p-6 font-anton text-charcoal dark:text-white text-base tracking-wide">
                       {row.feature}
                     </td>
-                    <td className="p-6 text-teal font-medium bg-teal/[0.02]">
+                    <td className="p-6 text-charcoal dark:text-yellow font-medium bg-yellow/20 dark:bg-yellow/10 rounded-xl">
                       ✓ {row.us}
                     </td>
-                    <td className="p-6 text-paper/50">
-                      ✗ {row.others}
+                    <td className="p-6 text-charcoal/60 dark:text-sage/60">
+                      ✕ {row.others}
                     </td>
                   </tr>
                 ))}
@@ -116,33 +120,39 @@ export default function ServicesPage() {
       </section>
 
       {/* Action CTA */}
-      <section className="border-t border-white/10 px-6 py-24 md:px-10">
-        <div className="mx-auto max-w-[1440px] rounded-3xl border border-white/10 bg-gradient-to-r from-teal/10 via-ink-card to-electric-blue/10 p-10 md:p-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+      <section className="bg-white dark:bg-charcoal px-6 py-24 md:px-10 transition-colors duration-300">
+        <div className="mx-auto max-w-[1440px] rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray text-white p-10 md:p-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-2xl">
           <div>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-paper">
-              Not sure which service stack you need?
+            <span className="font-mono text-xs uppercase tracking-widest text-yellow">
+              Custom Growth Architecture
+            </span>
+            <h2 className="font-anton text-3xl sm:text-4xl md:text-5xl text-white tracking-tight mt-1">
+              NOT SURE WHICH ENGINE YOU NEED?
             </h2>
-            <p className="mt-2 text-sm text-paper/60 max-w-xl">
-              Book a free 20-minute consultation with Lavi and Jass. We will audit your current
+            <p className="mt-3 font-satoshi text-sm md:text-base text-sage/80 max-w-xl leading-relaxed">
+              Book a 20-minute consultation with founders Lavi and Jass. We will audit your current
               presence and give you an actionable growth roadmap.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 shrink-0">
             <Link
               href="/contact"
               data-cursor-text="START"
-              className="rounded-full bg-teal px-8 py-4 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-transform hover:scale-105 shadow-[0_0_25px_rgba(0,242,213,0.3)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-8 py-4 font-anton text-sm uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95"
             >
-              Request Free Audit →
+              <span>Request Free Audit</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
             </Link>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-teal/40 px-6 py-4 font-mono text-xs text-teal hover:bg-teal/10 transition-colors"
+              data-cursor-text="WHATSAPP"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-white/10 px-7 py-4 font-anton text-sm uppercase tracking-wider text-white hover:bg-white hover:text-charcoal transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
             >
-              Chat on WhatsApp
+              <span>Chat on WhatsApp</span>
+              <span className="transition-transform duration-300 group-hover:scale-110">💬</span>
             </a>
           </div>
         </div>

@@ -1,21 +1,25 @@
 import Link from "next/link";
-import AnimatedText from "@/components/AnimatedText";
+import NextSpotlightHero from "@/components/NextSpotlightHero";
 import Marquee from "@/components/Marquee";
-import ServiceCard from "@/components/ServiceCard";
+import ProblemSolutionSection from "@/components/ProblemSolutionSection";
+import BentoGridSection from "@/components/BentoGridSection";
 import InteractiveServiceShowcase from "@/components/InteractiveServiceShowcase";
+import HowItWorksSection from "@/components/HowItWorksSection";
 import AutomationSimulator from "@/components/AutomationSimulator";
 import ProjectEstimator from "@/components/ProjectEstimator";
 import FoundersSection from "@/components/FoundersSection";
+import TestimonialSection from "@/components/TestimonialSection";
 import FAQ from "@/components/FAQ";
-import { services } from "@/lib/services";
+import FinalCTASection from "@/components/FinalCTASection";
+import GsapTextReveal from "@/components/GsapTextReveal";
+import { caseStudies } from "@/lib/caseStudies";
 import { posts } from "@/lib/blog";
-import { caseStudies, clientTestimonials } from "@/lib/caseStudies";
-import { buildMetadata, WHATSAPP_URL, AGENCY_PHONE, AGENCY_LOCATION } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Bits and Builds — Digital Marketing, Web Studio & Automation, Sri Ganganagar",
   description:
-    "Next.js web development, SEO (GMB, AEO, GEO), PPC ads, social media, video editing and clinic/restaurant booking automation. Founded by Lavi & Jass in Sri Ganganagar, Rajasthan.",
+    "Next.js web development, SEO (GMB, AEO, GEO), PPC ads, social media, reels & short-form video, and clinic/restaurant booking automation. Founded by Lavi & Jass in Sri Ganganagar, Rajasthan.",
   path: "/",
 });
 
@@ -25,7 +29,7 @@ const MARQUEE_TRACK_1 = [
   "PPC (Meta & Google Ads)",
   "SEO (GMB, AEO & GEO)",
   "Graphic Design & Branding",
-  "Viral Video Editing",
+  "Reels & Short-Form Video",
   "Local Brand Automation",
 ];
 
@@ -38,176 +42,57 @@ const MARQUEE_TRACK_2 = [
   "Founded by Lavi & Jass",
 ];
 
-const PROCESS_STEPS = [
-  {
-    step: "01",
-    title: "Discovery & Blueprint",
-    desc: "We audit your local competitors, map keyword search volumes in your city, and outline a high-converting digital architecture.",
-  },
-  {
-    step: "02",
-    title: "Code & Creative Sprint",
-    desc: "We write clean Next.js code with SSR, design high-craft visual assets, and program WhatsApp booking workflows.",
-  },
-  {
-    step: "03",
-    title: "Launch & Local SEO Blast",
-    desc: "We deploy on global edge servers, inject LocalBusiness JSON-LD schemas, and optimize your Google Business Profile (GMB).",
-  },
-  {
-    step: "04",
-    title: "Scale, Ads & Autopilot",
-    desc: "We activate targeted Meta & Google Ads, publish high-retention video Reels, and let your automated booking engine run 24/7.",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
-      {/* ---------- HERO SECTION ---------- */}
-      <section className="blueprint-grid relative flex min-h-screen flex-col justify-end overflow-hidden px-6 pb-20 pt-40 md:px-10">
-        {/* Glow ambient background halos */}
-        <div
-          className="pointer-events-none absolute -right-32 top-24 h-[550px] w-[550px] rounded-full bg-teal/15 blur-[160px]"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute -left-32 bottom-24 h-[450px] w-[450px] rounded-full bg-electric-blue/10 blur-[160px]"
-          aria-hidden="true"
-        />
+      {/* ---------- 1. SPOTLIGHT REVEAL HERO ---------- */}
+      <NextSpotlightHero />
 
-        <div className="relative mx-auto w-full max-w-[1440px]">
-          {/* Eyebrow location badge */}
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <div className="eyebrow-pill">
-              <span className="h-2 w-2 rounded-full bg-teal animate-pulse" />
-              <span>{AGENCY_LOCATION}</span>
-            </div>
-            <span className="font-mono text-xs text-paper/40 hidden sm:inline">
-              ✦ Serving Clients Across India &amp; Worldwide
-            </span>
-          </div>
+      {/* ---------- 2. KINETIC TICKER 1 ---------- */}
+      <Marquee items={MARQUEE_TRACK_1} speed={35} />
 
-          {/* Kinetic Headline */}
-          <AnimatedText
-            as="h1"
-            immediate
-            text="We build brands that show up, load fast and get booked."
-            className="max-w-6xl font-display text-clampHero font-bold leading-[0.94] tracking-tightest2 text-paper"
-          />
+      {/* ---------- 3. PROBLEM VS SOLUTION ---------- */}
+      <ProblemSolutionSection />
 
-          {/* Subtitle & Action Grid */}
-          <div className="mt-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-            <p className="max-w-xl text-base md:text-lg leading-relaxed text-paper/70">
-              <strong>Bits and Builds</strong> is a digital marketing &amp; web engineering studio
-              founded by <strong>Lavi &amp; Jass</strong>. We combine server-rendered Next.js
-              technology, Google Maps SEO dominance, high-ROAS paid ads, and automated WhatsApp
-              booking systems for local clinics, restaurants, and scaling brands.
-            </p>
+      {/* ---------- 4. BENTO CAPABILITIES GRID ---------- */}
+      <BentoGridSection />
 
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-text="WHATSAPP"
-                className="flex items-center gap-2.5 rounded-full border border-teal/40 bg-teal/10 px-7 py-4 font-mono text-xs font-bold uppercase tracking-wider text-teal transition-all hover:bg-teal hover:text-ink hover:shadow-[0_0_25px_rgba(0,242,213,0.3)]"
-              >
-                <span>Chat on WhatsApp</span>
-                <span>💬</span>
-              </a>
+      {/* ---------- 5. KINETIC TICKER 2 (REVERSE) ---------- */}
+      <Marquee items={MARQUEE_TRACK_2} speed={40} reverse />
 
-              <Link
-                href="/contact"
-                data-cursor-text="START"
-                className="group flex items-center gap-3 rounded-full bg-teal px-8 py-4 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-transform hover:scale-105 shadow-[0_0_30px_rgba(0,242,213,0.4)]"
-              >
-                <span>Start a Project</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Metric Bar */}
-          <div className="mt-16 grid grid-cols-2 gap-4 border-t border-white/10 pt-8 sm:grid-cols-4 lg:gap-8">
-            <div>
-              <div className="font-display text-2xl md:text-3xl font-bold text-teal">7 Core</div>
-              <div className="font-mono text-xs text-paper/50 mt-0.5">Stack Services</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl md:text-3xl font-bold text-paper">99/100</div>
-              <div className="font-mono text-xs text-paper/50 mt-0.5">PageSpeed Score</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl md:text-3xl font-bold text-teal">24/7</div>
-              <div className="font-mono text-xs text-paper/50 mt-0.5">WhatsApp Booking</div>
-            </div>
-            <div>
-              <div className="font-display text-2xl md:text-3xl font-bold text-paper">Pan-India</div>
-              <div className="font-mono text-xs text-paper/50 mt-0.5">+ Global Delivery</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- DUAL INFINITE MARQUEE (Produx Style) ---------- */}
-      <Marquee items={MARQUEE_TRACK_1} className="bg-ink-card" />
-      <Marquee items={MARQUEE_TRACK_2} reverse speed="fast" className="bg-ink" />
-
-      {/* ---------- STUDIO ETHOS & INTRO ---------- */}
-      <section className="px-6 py-28 md:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="grid gap-12 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-3">
-              <span className="eyebrow">The Philosophy</span>
-              <h3 className="font-display text-2xl font-bold text-paper mt-2">
-                Bits<span className="text-teal">&</span>Builds
-              </h3>
-            </div>
-            <div className="lg:col-span-9 space-y-6">
-              <AnimatedText
-                as="p"
-                text="Bits are the code, the ad targeting parameters, the JSON-LD schemas, and the micro-conversions. Builds are the websites, the automated appointment pipelines, and the revenue they generate."
-                className="font-display text-clamp2 font-medium leading-snug tracking-tight text-paper/90"
-              />
-              <p className="max-w-2xl text-base text-paper/60 leading-relaxed">
-                Most agencies give you disconnected pieces: a designer who doesn't understand SEO,
-                a developer who doesn't care about conversion rates, and a media buyer who blames
-                the website. We unify the entire stack under one roof in Sri Ganganagar, delivering
-                digital systems that actually run your business.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- INTERACTIVE SERVICES SHOWCASE (LXL Style) ---------- */}
+      {/* ---------- 6. INTERACTIVE SERVICE SHOWCASE & SIMULATORS ---------- */}
       <InteractiveServiceShowcase />
 
-      {/* ---------- LOCAL BRAND AUTOMATION SPOTLIGHT ---------- */}
+      {/* ---------- 7. 4-STEP EXECUTION FRAMEWORK ---------- */}
+      <HowItWorksSection />
+
+      {/* ---------- 8. LIVE AUTOMATION SIMULATOR ---------- */}
       <AutomationSimulator />
 
-      {/* ---------- FOUNDERS SPOTLIGHT (Lavi & Jass) ---------- */}
-      <FoundersSection />
-
-      {/* ---------- CASE STUDIES & TRANSFORMATIONS ---------- */}
-      <section className="border-t border-white/10 bg-ink-card/30 px-6 py-28 md:px-10">
+      {/* ---------- 9. CASE STUDIES & RESULTS ---------- */}
+      <section className="border-t border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-charcoal px-6 py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-8">
             <div>
-              <div className="eyebrow-pill mb-4">
-                <span>Proven Results</span>
+              <div className="badge-editorial-light dark:badge-editorial mb-4">
+                <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
+                <span>Proven Transformations</span>
               </div>
-              <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-                Transformations that speak in <span className="text-teal">revenue.</span>
-              </h2>
+              <GsapTextReveal
+                as="h2"
+                variant="words"
+                text="TRANSFORMATIONS THAT SPEAK IN REVENUE."
+                highlightWord="REVENUE."
+                highlightClass="highlight-yellow"
+                className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+              />
             </div>
             <Link
               href="/contact"
               data-cursor-text="START"
-              className="font-mono text-xs uppercase tracking-widest text-teal hover:underline"
+              className="font-anton text-xs uppercase tracking-widest text-charcoal dark:text-yellow hover:text-charcoal/70 dark:hover:text-white transition-colors underline decoration-yellow decoration-2 underline-offset-4"
             >
-              Get results like these →
+              Get Results Like These →
             </Link>
           </div>
 
@@ -215,24 +100,31 @@ export default function HomePage() {
             {caseStudies.map((cs) => (
               <div
                 key={cs.id}
-                className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-ink-card p-8 transition-all hover:border-teal/40 hover:shadow-[0_0_30px_rgba(0,242,213,0.1)]"
+                className="group flex flex-col justify-between rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 shadow-lg card-editorial"
               >
                 <div>
-                  <div className="flex items-center justify-between font-mono text-xs text-paper/40 mb-3">
-                    <span>{cs.category}</span>
-                    <span className="text-teal">{cs.location}</span>
+                  <div className="flex items-center justify-between font-mono text-xs text-charcoal/50 dark:text-white/50 mb-4 border-b border-charcoal/10 dark:border-white/10 pb-3">
+                    <span className="font-bold uppercase text-charcoal dark:text-white">{cs.category}</span>
+                    <span className="bg-yellow/40 dark:bg-yellow/20 px-2 py-0.5 rounded text-charcoal dark:text-yellow font-bold">
+                      {cs.location}
+                    </span>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-paper group-hover:text-teal transition-colors">
+                  <h3 className="font-anton text-2xl text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow transition-colors tracking-wide">
                     {cs.title}
                   </h3>
-                  <p className="mt-4 text-xs leading-relaxed text-paper/60">{cs.summary}</p>
+                  <p className="mt-4 font-satoshi text-xs md:text-sm leading-relaxed text-charcoal/70 dark:text-sage/80">
+                    {cs.summary}
+                  </p>
                 </div>
 
-                <div className="mt-8 border-t border-white/5 pt-6 space-y-3">
+                <div className="mt-8 border-t border-charcoal/10 dark:border-white/10 pt-6 space-y-3">
                   {cs.results.map((r, i) => (
-                    <div key={i} className="flex items-center justify-between text-xs font-mono">
-                      <span className="text-paper/50">{r.label}:</span>
-                      <span className="font-bold text-teal text-sm">{r.value}</span>
+                    <div
+                      key={i}
+                      className="flex items-center justify-between text-xs font-mono bg-[#f8f9fa] dark:bg-charcoal/60 p-2.5 rounded-xl border border-charcoal/5 dark:border-white/5"
+                    >
+                      <span className="text-charcoal/60 dark:text-sage/70">{r.label}:</span>
+                      <span className="font-anton text-charcoal dark:text-yellow text-base">{r.value}</span>
                     </div>
                   ))}
                 </div>
@@ -242,108 +134,61 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- INTERACTIVE PROJECT ESTIMATOR ---------- */}
+      {/* ---------- 10. INTERACTIVE PROJECT ESTIMATOR ---------- */}
       <ProjectEstimator />
 
-      {/* ---------- 4-STEP PROCESS ---------- */}
-      <section className="border-t border-white/10 px-6 py-28 md:px-10">
+      {/* ---------- 11. FOUNDERS SPOTLIGHT (Lavi & Jass) ---------- */}
+      <FoundersSection />
+
+      {/* ---------- 12. TESTIMONIAL HIGH-CONTRAST CARDS ---------- */}
+      <TestimonialSection />
+
+      {/* ---------- 13. EDITORIAL BLOG TEASER ---------- */}
+      <section className="border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal px-6 py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16 text-center max-w-2xl mx-auto">
-            <div className="eyebrow-pill mb-4">
-              <span>Execution Framework</span>
-            </div>
-            <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-              Four steps, zero guesswork.
-            </h2>
-            <p className="mt-3 text-sm text-paper/60">
-              How we take your local business or national brand from kickoff to market dominance.
-            </p>
-          </div>
-
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {PROCESS_STEPS.map((step) => (
-              <div key={step.step} className="bg-ink p-8 flex flex-col justify-between min-h-[260px]">
-                <div>
-                  <span className="font-mono text-sm font-bold text-teal">{step.step}</span>
-                  <h3 className="mt-4 font-display text-xl font-bold text-paper">{step.title}</h3>
-                </div>
-                <p className="mt-4 text-xs leading-relaxed text-paper/60">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- CLIENT TESTIMONIALS ---------- */}
-      <section className="border-t border-white/10 bg-ink-card/40 px-6 py-28 md:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16">
-            <div className="eyebrow-pill mb-4">
-              <span>Client Voices</span>
-            </div>
-            <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-              What founders say about working with us.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {clientTestimonials.map((item, i) => (
-              <div
-                key={i}
-                className="flex flex-col justify-between rounded-3xl border border-white/10 bg-ink p-8"
-              >
-                <div className="text-amber-400 text-sm mb-4">★★★★★</div>
-                <p className="text-sm text-paper/80 leading-relaxed italic mb-8">
-                  &quot;{item.quote}&quot;
-                </p>
-                <div className="border-t border-white/5 pt-4">
-                  <p className="font-display font-bold text-paper text-sm">{item.author}</p>
-                  <p className="font-mono text-[11px] text-teal">{item.role}</p>
-                  <p className="text-[10px] text-paper/40 font-mono mt-0.5">{item.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- BLOG TEASER ---------- */}
-      <section className="border-t border-white/10 px-6 py-28 md:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="mb-14 flex items-end justify-between">
+          <div className="mb-14 flex items-end justify-between border-b border-charcoal/10 dark:border-white/10 pb-8">
             <div>
-              <div className="eyebrow-pill mb-4">
-                <span>Knowledge &amp; Insights</span>
+              <div className="badge-editorial-light dark:badge-editorial mb-4">
+                <span>Knowledge &amp; Studio Notes</span>
               </div>
-              <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-                Latest notes from the studio.
-              </h2>
+              <GsapTextReveal
+                as="h2"
+                variant="words"
+                text="LATEST NOTES FROM THE STUDIO."
+                highlightWord="STUDIO."
+                highlightClass="highlight-yellow"
+                className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+              />
             </div>
             <Link
               href="/blog"
               data-cursor-text="BLOG"
-              className="font-mono text-xs uppercase tracking-widest text-teal hover:underline hidden sm:inline-block"
+              className="font-anton text-xs uppercase tracking-widest text-charcoal dark:text-yellow hover:text-charcoal/70 dark:hover:text-white transition-colors hidden sm:inline-block underline decoration-yellow decoration-2 underline-offset-4"
             >
-              Read all articles →
+              Read All Articles →
             </Link>
           </div>
 
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="divide-y divide-charcoal/15 dark:divide-white/15 border-y border-charcoal/15 dark:border-white/15">
             {posts.slice(0, 3).map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 data-cursor-text="READ"
-                className="group grid gap-4 py-8 transition-colors hover:bg-white/[0.02] md:grid-cols-12 md:items-center"
+                className="group grid gap-4 py-8 transition-colors hover:bg-yellow/10 dark:hover:bg-white/5 md:grid-cols-12 md:items-center px-4 rounded-xl"
               >
-                <span className="font-mono text-xs font-bold text-teal md:col-span-2">{post.tag}</span>
+                <span className="font-mono text-xs font-bold text-charcoal dark:text-charcoal bg-yellow px-2.5 py-1 rounded w-max md:col-span-2 shadow-xs">
+                  {post.tag}
+                </span>
                 <div className="md:col-span-7">
-                  <h3 className="font-display text-xl font-bold text-paper group-hover:text-teal transition-colors">
+                  <h3 className="font-anton text-2xl text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow transition-colors tracking-wide">
                     {post.title}
                   </h3>
-                  <p className="mt-1 text-xs text-paper/60 line-clamp-1">{post.excerpt}</p>
+                  <p className="mt-1 font-satoshi text-xs text-charcoal/70 dark:text-sage/80 line-clamp-1">
+                    {post.excerpt}
+                  </p>
                 </div>
-                <div className="flex items-center justify-between md:col-span-3 md:flex-col md:items-end md:gap-1 text-xs font-mono text-paper/40">
+                <div className="flex items-center justify-between md:col-span-3 md:flex-col md:items-end md:gap-1 text-xs font-mono text-charcoal/50 dark:text-white/50">
                   <span>By {post.author}</span>
                   <span>{post.readTime}</span>
                 </div>
@@ -353,21 +198,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- FAQ SECTION ---------- */}
-      <section className="border-t border-white/10 bg-ink-card/50 px-6 py-28 md:px-10">
+      {/* ---------- 14. FAQ SECTION ---------- */}
+      <section className="border-t border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-charcoal px-6 py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="mb-14">
-            <div className="eyebrow-pill mb-4">
-              <span>Frequently Asked Questions</span>
+          <div className="mb-14 border-b border-charcoal/10 dark:border-white/10 pb-8">
+            <div className="badge-editorial-light dark:badge-editorial mb-4">
+              <span>Client Queries</span>
             </div>
-            <h2 className="font-display text-clamp2 font-bold tracking-tightest2 text-paper">
-              Everything you need to know.
-            </h2>
+            <GsapTextReveal
+              as="h2"
+              variant="words"
+              text="FREQUENTLY ASKED QUESTIONS."
+              highlightWord="QUESTIONS."
+              highlightClass="highlight-yellow"
+              className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+            />
           </div>
 
           <FAQ />
         </div>
       </section>
+
+      {/* ---------- 15. FINAL CALL TO ACTION ---------- */}
+      <FinalCTASection />
     </>
   );
 }
