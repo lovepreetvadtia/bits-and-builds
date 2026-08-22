@@ -43,7 +43,7 @@ export default function InteractiveServiceShowcase() {
         </div>
 
         {/* 2-Column Interactive Hub */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           {/* Left Column: Interactive Service Navigation Tabs */}
           <div className="lg:col-span-5 flex flex-col gap-2.5">
             {services.map((s) => {
@@ -53,13 +53,13 @@ export default function InteractiveServiceShowcase() {
                   key={s.slug}
                   onClick={() => setActiveSlug(s.slug)}
                   data-cursor-text="PREVIEW"
-                  className={`group relative flex items-start gap-4 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300 ${isActive
+                  className={`group relative flex items-start gap-3 sm:gap-4 rounded-2xl p-3.5 sm:p-5 text-left transition-all duration-300 ${isActive
                       ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-[#222a24] text-white shadow-brutalist dark:shadow-brutalist-yellow"
                       : "border border-charcoal/15 dark:border-white/10 bg-[#f8f9fa] dark:bg-darkgray text-charcoal dark:text-white hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10"
                     }`}
                 >
                   <span
-                    className={`font-anton text-sm font-bold transition-colors ${isActive
+                    className={`font-anton text-xs sm:text-sm font-bold transition-colors ${isActive
                         ? "text-yellow"
                         : "text-charcoal/70 dark:text-sage/70 group-hover:text-charcoal dark:group-hover:text-yellow"
                       }`}
@@ -70,7 +70,7 @@ export default function InteractiveServiceShowcase() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
                       <span
-                        className={`font-anton text-lg sm:text-xl tracking-wide transition-colors block ${isActive
+                        className={`font-anton text-base sm:text-lg md:text-xl tracking-wide transition-colors block ${isActive
                             ? "text-white"
                             : "text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow"
                           }`}
@@ -99,15 +99,15 @@ export default function InteractiveServiceShowcase() {
           </div>
 
           {/* Right Column: Live Interactive Visualizer Preview */}
-          <div className="lg:col-span-7 sticky top-28">
-            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray text-white p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
+          <div className="lg:col-span-7 lg:sticky lg:top-28">
+            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray text-white p-5 sm:p-8 backdrop-blur-xl shadow-2xl">
               {/* Header Info */}
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5 sm:pb-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 sm:pb-6">
                 <div>
                   <span className="font-mono text-xs text-yellow uppercase tracking-wider font-semibold">
                     {activeService.badge} · {activeService.tag}
                   </span>
-                  <h3 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white mt-1 tracking-tight">
+                  <h3 className="font-anton text-xl sm:text-3xl md:text-4xl text-white mt-1 tracking-tight">
                     {activeService.title}
                   </h3>
                 </div>

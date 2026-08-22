@@ -34,10 +34,10 @@ const REVIEWS = [
 
 export default function TestimonialSection() {
   return (
-    <section className="relative px-6 py-28 md:px-10 bg-white dark:bg-charcoal grid-editorial-light dark:grid-editorial-40 text-charcoal dark:text-white overflow-hidden transition-colors duration-300">
+    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-charcoal px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
         {/* Section Header */}
-        <div className="mb-20 text-center max-w-3xl mx-auto space-y-4">
+        <div className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto space-y-4">
           <div className="badge-editorial-light dark:badge-editorial">
             <span className="h-2 w-2 rounded-full bg-yellow animate-ping" />
             <span>High-Impact Proof</span>
@@ -48,17 +48,17 @@ export default function TestimonialSection() {
             text="VERIFIED CLIENT TRANSFORMATIONS."
             highlightWord="TRANSFORMATIONS."
             highlightClass="highlight-yellow"
-            className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+            className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
           />
-          <p className="font-satoshi text-base md:text-lg text-charcoal/70 dark:text-sage/80">
+          <p className="font-satoshi text-sm sm:text-base md:text-lg text-charcoal/70 dark:text-sage/80">
             Real revenue, automated workflows, and Google Maps dominance delivered for ambitious founders.
           </p>
         </div>
 
         {/* 3-Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch pt-4">
           {/* Card 1: Side Card */}
-          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
+          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
             <div>
               {/* 5 Stars with strong light/dark contrast */}
               <div className="flex items-center gap-1.5 text-amber-500 dark:text-yellow text-xl mb-6">
@@ -70,7 +70,7 @@ export default function TestimonialSection() {
               </div>
 
               {/* Satoshi-medium body text */}
-              <p className="font-satoshi font-medium text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-8">
+              <p className="font-satoshi font-medium text-base sm:text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-6 sm:mb-8">
                 &quot;{REVIEWS[0].quote}&quot;
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function TestimonialSection() {
           </div>
 
           {/* Card 2: Center Featured Card */}
-          <div className="relative rounded-3xl bg-charcoal dark:bg-darkgray text-white p-8 md:p-10 flex flex-col justify-between shadow-2xl border-2 border-yellow lg:-translate-y-4 card-editorial">
+          <div className="relative rounded-3xl bg-charcoal dark:bg-darkgray text-white p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-2xl border-2 border-yellow lg:-translate-y-4 card-editorial">
             <div className="absolute -top-3.5 right-8 rounded-full bg-yellow px-4 py-1 font-mono text-[10px] font-bold text-charcoal uppercase tracking-widest shadow-md">
               Featured Case
             </div>
@@ -136,7 +136,7 @@ export default function TestimonialSection() {
           </div>
 
           {/* Card 3: Side Card */}
-          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
+          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
             <div>
               {/* 5 Stars with strong light/dark contrast */}
               <div className="flex items-center gap-1.5 text-amber-500 dark:text-yellow text-xl mb-6">
@@ -148,7 +148,7 @@ export default function TestimonialSection() {
               </div>
 
               {/* Satoshi-medium body text */}
-              <p className="font-satoshi font-medium text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-8">
+              <p className="font-satoshi font-medium text-base sm:text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-6 sm:mb-8">
                 &quot;{REVIEWS[2].quote}&quot;
               </p>
             </div>

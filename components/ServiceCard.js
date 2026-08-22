@@ -6,7 +6,7 @@ export default function ServiceCard({ service }) {
     <Link
       href={`/services/${service.slug}`}
       data-cursor-text="EXPLORE"
-      className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 transition-all duration-300 hover:border-yellow dark:hover:border-yellow hover:shadow-[0_15px_35px_rgba(23,30,25,0.1)] dark:hover:shadow-editorial-dark card-editorial min-h-[320px] text-charcoal dark:text-white"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 transition-all duration-300 hover:border-yellow dark:hover:border-yellow hover:shadow-[0_15px_35px_rgba(23,30,25,0.1)] dark:hover:shadow-editorial-dark card-editorial min-h-[280px] sm:min-h-[320px] text-charcoal dark:text-white"
     >
       {/* Top row: Icon + Tag + Arrow */}
       <div className="flex items-start justify-between">

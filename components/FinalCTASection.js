@@ -14,7 +14,7 @@ export default function FinalCTASection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-yellow px-6 py-28 md:px-10 text-charcoal">
+    <section className="relative overflow-hidden bg-yellow px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-charcoal">
       {/* Background Decorative Elements: Massive 'Anton' text overlays with 10% opacity */}
       <div className="pointer-events-none absolute inset-0 flex flex-col justify-between overflow-hidden select-none opacity-10">
         <div className="font-anton text-[14vw] whitespace-nowrap leading-none tracking-tighter text-charcoal -translate-x-10">
@@ -27,24 +27,24 @@ export default function FinalCTASection() {
 
       <div className="relative mx-auto max-w-[1440px] z-10">
         {/* Centralized Stack */}
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6 sm:space-y-8">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-charcoal/30 bg-charcoal/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-charcoal">
+          <div className="inline-flex items-center gap-2 rounded-full border border-charcoal/30 bg-charcoal/10 px-3.5 sm:px-4 py-1 sm:py-1.5 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-charcoal">
             <span className="h-2 w-2 rounded-full bg-charcoal animate-ping" />
             <span>Ready for your digital breakthrough?</span>
           </div>
 
-          {/* Anton Headline (8xl, leading-0.9) */}
-          <h2 className="font-anton text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-charcoal tracking-tight leading-[0.9] uppercase">
+          {/* Anton Headline */}
+          <h2 className="font-anton text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-charcoal tracking-tight leading-[0.9] uppercase">
             LET&apos;S BUILD YOUR <br />
-            <span className="bg-charcoal text-yellow px-4 py-1 inline-block -rotate-1 rounded-lg shadow-brutalist">
+            <span className="bg-charcoal text-yellow px-3 sm:px-4 py-0.5 sm:py-1 inline-block -rotate-1 rounded-lg shadow-brutalist">
               NEXT UNFAIR
             </span>{" "}
             ADVANTAGE.
           </h2>
 
-          {/* Satoshi Subtext (2xl, max-w-2xl) */}
-          <p className="font-satoshi text-lg sm:text-xl md:text-2xl text-charcoal/85 max-w-2xl leading-relaxed font-medium">
+          {/* Satoshi Subtext */}
+          <p className="font-satoshi text-base sm:text-xl md:text-2xl text-charcoal/85 max-w-2xl leading-relaxed font-medium">
             Next.js web engineering, Google Maps 3-Pack rank dominance, and 24/7 automated WhatsApp pipelines. Let&apos;s talk numbers.
           </p>
 

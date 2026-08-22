@@ -1,5 +1,6 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import FoundersSection from "@/components/FoundersSection";
+import ScrollRevealSection from "@/components/ScrollRevealSection";
 import { buildMetadata, WHATSAPP_URL, AGENCY_LOCATION, FOUNDERS } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -8,6 +9,27 @@ export const metadata = buildMetadata({
     "Learn about Bits and Builds, founded by Lavi and Jass in Sri Ganganagar, Rajasthan (335002). We deliver server-rendered Next.js web development, local SEO, PPC, and booking automation across India and worldwide.",
   path: "/about",
 });
+
+const FoundersSection = dynamic(
+  () =>
+    Promise.all([
+      import("@/components/FoundersSection"),
+    ]).then(([mod]) => mod),
+  {
+    loading: () => (
+      <div
+        aria-hidden="true"
+        className="w-full flex items-center justify-center p-8 text-charcoal/40 dark:text-sage/40 font-mono text-xs"
+        style={{ minHeight: "550px" }}
+      >
+        <div className="flex items-center gap-2.5 rounded-full border border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 px-4 py-2">
+          <span className="h-2 w-2 rounded-full bg-yellow animate-ping" />
+          <span>Hydrating Founders Section...</span>
+        </div>
+      </div>
+    ),
+  }
+);
 
 const CORE_PILLARS = [
   {
@@ -53,20 +75,20 @@ const TIMELINE = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-6 pb-24 pt-36 md:px-10 overflow-hidden border-b border-charcoal/15 dark:border-white/15 transition-colors duration-300">
+      {/* Hero (Immediate LCP render) */}
+      <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-4 sm:px-6 pb-16 sm:pb-24 pt-28 sm:pt-36 md:px-10 overflow-hidden border-b border-charcoal/15 dark:border-white/15 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
           <div className="badge-editorial-light dark:badge-editorial mb-6 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-yellow animate-pulse border border-charcoal/40" />
             <span>About Bits &amp; Builds Studio</span>
           </div>
 
-          <h1 className="font-anton text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase max-w-5xl">
+          <h1 className="font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase max-w-5xl">
             FOUNDED IN SRI GANGANAGAR, BUILDING FOR{" "}
             <span className="highlight-yellow">AMBITIOUS BRANDS</span> EVERYWHERE.
           </h1>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-12 items-start">
+          <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 lg:grid-cols-12 items-start">
             <p className="lg:col-span-8 font-satoshi text-base sm:text-lg md:text-xl text-charcoal/75 dark:text-sage/80 leading-relaxed">
               Bits and Builds was created with a clear mission: to bring Silicon Valley-grade web
               engineering, Google Maps map-pack dominance, and automated WhatsApp booking systems
@@ -75,7 +97,7 @@ export default function AboutPage() {
               high craft with relentless conversion focus.
             </p>
 
-            <div className="lg:col-span-4 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-6 font-mono text-xs text-charcoal dark:text-white space-y-3 shadow-lg">
+            <div className="lg:col-span-4 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-5 sm:p-6 font-mono text-xs text-charcoal dark:text-white space-y-3 shadow-lg">
               <div className="font-anton text-base text-charcoal dark:text-yellow uppercase border-b border-charcoal/10 dark:border-white/10 pb-2">
                 ✦ Studio Quick Facts:
               </div>
@@ -88,120 +110,128 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founders Spotlight */}
-      <FoundersSection />
+      {/* Founders Spotlight (Loaded on scroll) */}
+      <ScrollRevealSection minHeight="550px">
+        <FoundersSection />
+      </ScrollRevealSection>
 
-      {/* Core Pillars */}
-      <section className="border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal px-6 py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16 border-b border-charcoal/10 dark:border-white/10 pb-8">
-            <div className="badge-editorial-light dark:badge-editorial mb-4">
-              <span>Core Principles</span>
-            </div>
-            <h2 className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
-              WHAT WE <span className="highlight-yellow">STAND FOR.</span>
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {CORE_PILLARS.map((p) => (
-              <div
-                key={p.n}
-                className="bg-[#f8f9fa] dark:bg-darkgray rounded-3xl border border-charcoal/15 dark:border-white/15 p-8 flex flex-col justify-between min-h-[320px] shadow-lg card-editorial text-charcoal dark:text-white"
-              >
-                <div>
-                  <span className="font-anton text-2xl text-charcoal bg-yellow px-2.5 py-1 rounded">
-                    {p.n}
-                  </span>
-                  <h3 className="mt-5 font-anton text-2xl text-charcoal dark:text-white tracking-wide">
-                    {p.title}
-                  </h3>
-                </div>
-                <p className="mt-4 font-satoshi text-xs sm:text-sm leading-relaxed text-charcoal/70 dark:text-sage/75">
-                  {p.text}
-                </p>
+      {/* Core Pillars (Loaded on scroll) */}
+      <ScrollRevealSection minHeight="450px">
+        <section className="border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
+          <div className="mx-auto max-w-[1440px]">
+            <div className="mb-12 sm:mb-16 border-b border-charcoal/10 dark:border-white/10 pb-6 sm:pb-8">
+              <div className="badge-editorial-light dark:badge-editorial mb-4">
+                <span>Core Principles</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Agency Timeline */}
-      <section className="border-t border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-[#1a211c] px-6 py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="mb-16 border-b border-charcoal/10 dark:border-white/10 pb-8">
-            <div className="badge-editorial-light dark:badge-editorial mb-4">
-              <span>Studio Journey</span>
+              <h2 className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+                WHAT WE <span className="highlight-yellow">STAND FOR.</span>
+              </h2>
             </div>
-            <h2 className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
-              THE ROAD <span className="highlight-yellow">SO FAR.</span>
-            </h2>
-          </div>
 
-          <div className="space-y-6">
-            {TIMELINE.map((item, i) => (
-              <div
-                key={i}
-                className="grid gap-6 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 md:grid-cols-12 md:items-center shadow-lg card-editorial"
-              >
-                <div className="md:col-span-3">
-                  <span className="font-anton text-xs uppercase tracking-widest text-charcoal bg-yellow px-2 py-0.5 rounded shadow-xs font-bold">
-                    {item.year}
-                  </span>
-                  <h3 className="font-anton text-2xl text-charcoal dark:text-white mt-2 tracking-wide">
-                    {item.title}
-                  </h3>
+            <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {CORE_PILLARS.map((p) => (
+                <div
+                  key={p.n}
+                  className="bg-[#f8f9fa] dark:bg-darkgray rounded-3xl border border-charcoal/15 dark:border-white/15 p-6 sm:p-8 flex flex-col justify-between min-h-[280px] sm:min-h-[320px] shadow-lg card-editorial text-charcoal dark:text-white"
+                >
+                  <div>
+                    <span className="font-anton text-xl sm:text-2xl text-charcoal bg-yellow px-2.5 py-1 rounded">
+                      {p.n}
+                    </span>
+                    <h3 className="mt-4 sm:mt-5 font-anton text-xl sm:text-2xl text-charcoal dark:text-white tracking-wide">
+                      {p.title}
+                    </h3>
+                  </div>
+                  <p className="mt-4 font-satoshi text-xs sm:text-sm leading-relaxed text-charcoal/80 dark:text-sage/85">
+                    {p.text}
+                  </p>
                 </div>
-                <div className="md:col-span-9 font-satoshi text-sm text-charcoal/75 dark:text-sage/80 leading-relaxed">
-                  <p>{item.desc}</p>
-                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollRevealSection>
+
+      {/* Agency Timeline (Loaded on scroll) */}
+      <ScrollRevealSection minHeight="450px">
+        <section className="border-t border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-[#1a211c] px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
+          <div className="mx-auto max-w-[1440px]">
+            <div className="mb-12 sm:mb-16 border-b border-charcoal/10 dark:border-white/10 pb-6 sm:pb-8">
+              <div className="badge-editorial-light dark:badge-editorial mb-4">
+                <span>Studio Journey</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <h2 className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+                THE ROAD <span className="highlight-yellow">SO FAR.</span>
+              </h2>
+            </div>
 
-      {/* Mega CTA Banner */}
-      <section className="border-t border-charcoal/15 dark:border-white/15 bg-yellow px-6 py-24 md:px-10 text-charcoal overflow-hidden relative">
-        <div className="mx-auto max-w-[1440px] flex flex-col lg:flex-row lg:items-center justify-between gap-8 z-10 relative">
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-charcoal/80">
-              Start a Conversation
-            </span>
-            <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-charcoal mt-2 tracking-tight leading-[0.92]">
-              READY TO PARTNER WITH <br />
-              <span className="bg-charcoal text-yellow px-3 py-1 inline-block -rotate-1 rounded-lg">
-                LAVI &amp; JASS?
+            <div className="space-y-4 sm:space-y-6">
+              {TIMELINE.map((item, i) => (
+                <div
+                  key={i}
+                  className="grid gap-4 sm:gap-6 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 md:grid-cols-12 md:items-center shadow-lg card-editorial"
+                >
+                  <div className="md:col-span-3">
+                    <span className="font-anton text-xs uppercase tracking-widest text-charcoal bg-yellow px-2 py-0.5 rounded shadow-xs font-bold">
+                      {item.year}
+                    </span>
+                    <h3 className="font-anton text-xl sm:text-2xl text-charcoal dark:text-white mt-2 tracking-wide">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="md:col-span-9 font-satoshi text-xs sm:text-sm text-charcoal/80 dark:text-sage/85 leading-relaxed">
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollRevealSection>
+
+      {/* Mega CTA Banner (Loaded on scroll) */}
+      <ScrollRevealSection minHeight="250px">
+        <section className="border-t border-charcoal/15 dark:border-white/15 bg-yellow px-4 sm:px-6 py-16 sm:py-20 md:py-24 md:px-10 text-charcoal overflow-hidden relative">
+          <div className="mx-auto max-w-[1440px] flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8 z-10 relative">
+            <div>
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-charcoal/80">
+                Start a Conversation
               </span>
-            </h2>
-            <p className="mt-3 font-satoshi text-base text-charcoal/80 max-w-xl font-medium">
-              Tell us about your business goals and where you want to take your brand. We will
-              deliver a custom scope and strategy within 24 hours.
-            </p>
-          </div>
+              <h2 className="font-anton text-3xl sm:text-5xl md:text-6xl text-charcoal mt-2 tracking-tight leading-[0.92]">
+                READY TO PARTNER WITH <br />
+                <span className="bg-charcoal text-yellow px-2.5 sm:px-3 py-0.5 sm:py-1 inline-block -rotate-1 rounded-lg">
+                  LAVI &amp; JASS?
+                </span>
+              </h2>
+              <p className="mt-3 font-satoshi text-sm sm:text-base text-charcoal/80 max-w-xl font-medium">
+                Tell us about your business goals and where you want to take your brand. We will
+                deliver a custom scope and strategy within 24 hours.
+              </p>
+            </div>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="/contact"
-              data-cursor-text="CONTACT"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-charcoal hover:bg-black text-white px-8 py-4 font-anton text-sm sm:text-base uppercase tracking-wider shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              <span>Get in Touch</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor-text="WHATSAPP"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-charcoal bg-white/90 backdrop-blur-md px-7 py-4 font-anton text-sm sm:text-base uppercase tracking-wider text-charcoal hover:bg-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
-            >
-              <span>Chat on WhatsApp</span>
-              <span className="transition-transform duration-300 group-hover:scale-110">💬</span>
-            </a>
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <Link
+                href="/contact"
+                data-cursor-text="CONTACT"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-charcoal hover:bg-black text-white px-7 sm:px-8 py-3.5 sm:py-4 font-anton text-xs sm:text-base uppercase tracking-wider shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-bold"
+              >
+                <span>Get in Touch</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor-text="WHATSAPP"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-charcoal bg-white/90 backdrop-blur-md px-6 sm:px-7 py-3.5 sm:py-4 font-anton text-xs sm:text-base uppercase tracking-wider text-charcoal hover:bg-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
+              >
+                <span>Chat on WhatsApp</span>
+                <span className="transition-transform duration-300 group-hover:scale-110">💬</span>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollRevealSection>
     </>
   );
 }

@@ -43,17 +43,17 @@ const NEW_WAY_ITEMS = [
 
 export default function ProblemSolutionSection() {
   return (
-    <section className="relative w-full border-t border-b border-charcoal/10 dark:border-white/10 overflow-hidden transition-colors duration-300">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
-        {/* LEFT HALF: THE OLD WAY (Problem) - Light: bg-[#f4f6f4], Dark: bg-charcoal */}
-        <div className="bg-[#f4f6f4] dark:bg-charcoal px-8 py-16 md:px-14 lg:py-24 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-charcoal/10 dark:border-white/10 transition-colors duration-300">
-          <div className="space-y-8">
+    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal text-charcoal dark:text-white transition-colors duration-300">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* LEFT HALF: THE PROBLEM - Light: bg-[#f8f9fa], Dark: bg-charcoal */}
+        <div className="relative bg-[#f8f9fa] dark:bg-charcoal px-5 sm:px-8 py-14 sm:py-16 md:px-14 lg:py-24 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-charcoal/15 dark:border-white/15 transition-colors duration-300">
+          <div className="space-y-6 sm:space-y-8">
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3.5 py-1 font-mono text-xs uppercase tracking-widest text-red-600 dark:text-red-400 mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3.5 py-1 font-mono text-xs uppercase tracking-widest text-red-600 dark:text-red-400 mb-4 sm:mb-6">
                 <span>✕ The Status Quo</span>
               </div>
-              <h2 className="font-anton text-5xl md:text-6xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+              <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
                 THE OLD <span className="text-charcoal/60 dark:text-sage/60">WAY.</span>
               </h2>
               <p className="mt-4 font-satoshi text-sm md:text-base text-charcoal/80 dark:text-sage/85 max-w-lg leading-relaxed">
@@ -87,15 +87,15 @@ export default function ProblemSolutionSection() {
         </div>
 
         {/* RIGHT HALF: THE SOLUTION - Light: bg-white, Dark: bg-darkgray with yellow accent border */}
-        <div className="relative bg-white dark:bg-darkgray px-8 py-16 md:px-14 lg:py-24 flex flex-col justify-between border-t-4 lg:border-t-0 lg:border-l-4 border-yellow transition-colors duration-300">
-          <div className="space-y-8">
+        <div className="relative bg-white dark:bg-darkgray px-5 sm:px-8 py-14 sm:py-16 md:px-14 lg:py-24 flex flex-col justify-between border-t-4 lg:border-t-0 lg:border-l-4 border-yellow transition-colors duration-300">
+          <div className="space-y-6 sm:space-y-8">
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-yellow/40 bg-yellow/20 dark:border-yellow/30 dark:bg-yellow/10 px-3.5 py-1 font-mono text-xs uppercase tracking-widest text-charcoal dark:text-yellow mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-yellow/40 bg-yellow/20 dark:border-yellow/30 dark:bg-yellow/10 px-3.5 py-1 font-mono text-xs uppercase tracking-widest text-charcoal dark:text-yellow mb-4 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-amber-500 dark:bg-yellow animate-ping" />
                 <span className="font-bold">✓ The Engineered Standard</span>
               </div>
-              <h2 className="font-anton text-5xl md:text-6xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+              <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
                 THE <span className="highlight-yellow">BITS &amp; BUILDS</span> WAY.
               </h2>
               <p className="mt-4 font-satoshi text-sm md:text-base text-charcoal/75 dark:text-white/80 max-w-lg leading-relaxed">

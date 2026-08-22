@@ -10,20 +10,20 @@ export default function AutomationSimulator() {
   const [restaurantStep, setRestaurantStep] = useState(1);
 
   return (
-    <section className="relative border-t border-charcoal/15 bg-charcoal text-white py-28 px-6 md:px-10 overflow-hidden grid-editorial-40">
+    <section className="relative border-t border-charcoal/15 bg-charcoal text-white py-20 sm:py-24 md:py-28 px-4 sm:px-6 md:px-10 overflow-hidden grid-editorial-40">
       <div className="mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Context & Value Prop */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6">
             <div className="badge-editorial">
               <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
               <span>Local Brand Automation Spotlight</span>
             </div>
-            <h2 className="font-anton text-5xl md:text-7xl text-white tracking-tight leading-[0.92]">
+            <h2 className="font-anton text-4xl sm:text-5xl md:text-7xl text-white tracking-tight leading-[0.92]">
               CLINIC APPOINTMENTS &amp; TABLE BOOKINGS THAT{" "}
               <span className="highlight-yellow">RUN THEMSELVES.</span>
             </h2>
-            <p className="font-satoshi text-base text-sage/80 leading-relaxed max-w-xl">
+            <p className="font-satoshi text-sm sm:text-base text-sage/80 leading-relaxed max-w-xl">
               Never let your front-desk receptionist miss a high-value customer during rush hours.
               We build end-to-end WhatsApp &amp; SMS automation for local hospitals, diagnostic
               centers, and restaurants in Sri Ganganagar, Rajasthan and across India.

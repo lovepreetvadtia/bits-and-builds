@@ -33,10 +33,10 @@ export default function BentoGridSection() {
   };
 
   return (
-    <section className="relative px-6 py-28 md:px-10 bg-white dark:bg-charcoal grid-editorial-light dark:grid-editorial-40 text-charcoal dark:text-white transition-colors duration-300">
+    <section className="relative px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 bg-white dark:bg-charcoal grid-editorial-light dark:grid-editorial-40 text-charcoal dark:text-white transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
         {/* Section Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-8">
+        <div className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-6 sm:pb-8">
           <div>
             <div className="badge-editorial-light dark:badge-editorial mb-4">
               <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
@@ -48,18 +48,18 @@ export default function BentoGridSection() {
               text="BUILT FOR SPEED. ENGINEERED FOR REVENUE."
               highlightWord="ENGINEERED"
               highlightClass="highlight-yellow"
-              className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
+              className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
             />
           </div>
-          <p className="max-w-md font-satoshi text-base text-charcoal/70 dark:text-sage/80 leading-relaxed">
+          <p className="max-w-md font-satoshi text-sm sm:text-base text-charcoal/70 dark:text-sage/80 leading-relaxed">
             Every layer of our stack is purpose-built to reduce friction, dominate Google search results, and convert visitors into recurring customers.
           </p>
         </div>
 
         {/* 3-Column Bento Grid with auto-rows ~400px */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Card 1: Feature 1 (SPANS 2 COLUMNS) - bg-#171e19 (Contrast dark) */}
-          <div className="md:col-span-2 relative min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
+          <div className="md:col-span-2 relative min-h-[380px] sm:min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-6 sm:p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
             {/* Top row */}
             <div className="flex items-center justify-between z-10">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow font-bold">
@@ -107,7 +107,7 @@ export default function BentoGridSection() {
           </div>
 
           {/* Card 2: 1 COLUMN - Light/Dark adapted */}
-          <div className="relative min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
+          <div className="relative min-h-[380px] sm:min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-6 sm:p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
             <div className="flex items-center justify-between">
               <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-bold">
                 <span>💬 24/7 Lead Capture</span>
@@ -142,7 +142,7 @@ export default function BentoGridSection() {
             </div>
 
             <div>
-              <h3 className="font-anton text-3xl text-charcoal dark:text-white tracking-tight">
+              <h3 className="font-anton text-2xl sm:text-3xl text-charcoal dark:text-white tracking-tight">
                 WHATSAPP AUTOMATION
               </h3>
               <p className="mt-2 font-satoshi text-xs text-charcoal/80 dark:text-sage/85 leading-relaxed">
@@ -152,7 +152,7 @@ export default function BentoGridSection() {
           </div>
 
           {/* Card 3: 1 COLUMN */}
-          <div className="relative min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
+          <div className="relative min-h-[380px] sm:min-h-[420px] rounded-3xl bg-[#f8f9fa] dark:bg-charcoal-card p-6 sm:p-8 text-charcoal dark:text-white flex flex-col justify-between border border-charcoal/10 dark:border-white/15 shadow-lg card-editorial">
             <div className="flex items-center justify-between">
               <div className="inline-flex items-center gap-2 rounded-full bg-charcoal/5 dark:bg-white/10 px-3 py-1 font-mono text-xs text-charcoal dark:text-yellow font-bold">
                 <span>📍 Local Pack Radar</span>
@@ -183,7 +183,7 @@ export default function BentoGridSection() {
             </div>
 
             <div>
-              <h3 className="font-anton text-3xl text-charcoal dark:text-white tracking-tight">
+              <h3 className="font-anton text-2xl sm:text-3xl text-charcoal dark:text-white tracking-tight">
                 GOOGLE MAPS 3-PACK
               </h3>
               <p className="mt-2 font-satoshi text-xs text-charcoal/80 dark:text-sage/85 leading-relaxed">
@@ -193,7 +193,7 @@ export default function BentoGridSection() {
           </div>
 
           {/* Card 4: Feature 4 (SPANS 2 COLUMNS) - bg-#171e19 (Contrast dark) */}
-          <div className="md:col-span-2 relative min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
+          <div className="md:col-span-2 relative min-h-[380px] sm:min-h-[420px] rounded-3xl bg-charcoal dark:bg-darkgray p-6 sm:p-8 md:p-10 text-white flex flex-col justify-between overflow-hidden shadow-2xl border border-sage/15 dark:border-white/10 card-editorial group">
             <div className="flex items-center justify-between z-10">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 font-mono text-xs text-yellow font-bold">
                 <span>⚡ AI Search Optimization</span>

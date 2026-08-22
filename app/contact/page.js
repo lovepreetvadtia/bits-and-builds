@@ -16,33 +16,33 @@ export const metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-6 pb-28 pt-36 md:px-10 overflow-hidden min-h-screen transition-colors duration-300">
+    <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-4 sm:px-6 pb-20 sm:pb-28 pt-28 sm:pt-36 md:px-10 overflow-hidden min-h-screen transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
         <div className="badge-editorial-light dark:badge-editorial mb-6 shadow-sm">
           <span className="h-2 w-2 rounded-full bg-yellow animate-pulse border border-charcoal/40" />
           <span>Kickoff Consultation &amp; Scope</span>
         </div>
 
-        <h1 className="max-w-4xl font-anton text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase">
+        <h1 className="max-w-4xl font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase">
           TELL US WHAT YOU&apos;RE <span className="highlight-yellow">BUILDING.</span>
         </h1>
 
-        <p className="mt-6 max-w-xl font-satoshi text-base sm:text-lg md:text-xl text-charcoal/75 dark:text-sage/80 leading-relaxed">
+        <p className="mt-4 sm:mt-6 max-w-xl font-satoshi text-base sm:text-lg md:text-xl text-charcoal/75 dark:text-sage/80 leading-relaxed">
           Whether you need a full-stack Next.js web application, Google Maps SEO dominance,
           high-ROAS Meta &amp; Google Ads, or automated WhatsApp booking for your clinic or
           restaurant — we are ready to build.
         </p>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-12 items-start">
+        <div className="mt-10 sm:mt-16 grid gap-8 lg:gap-12 lg:grid-cols-12 items-start">
           {/* Left Column: Direct Studio Contact Channels */}
           <div className="lg:col-span-5 space-y-6">
             {/* WhatsApp Priority Card */}
-            <div className="rounded-3xl border-2 border-charcoal dark:border-white/20 bg-yellow p-8 md:p-10 shadow-brutalist text-charcoal">
+            <div className="rounded-3xl border-2 border-charcoal dark:border-white/20 bg-yellow p-6 sm:p-8 md:p-10 shadow-brutalist text-charcoal">
               <div className="flex items-center gap-2 text-charcoal font-mono text-xs uppercase tracking-wider font-bold mb-3">
                 <span className="h-2 w-2 rounded-full bg-charcoal animate-ping" />
                 <span>Fastest Response Channel</span>
               </div>
-              <h3 className="font-anton text-3xl text-charcoal tracking-tight">
+              <h3 className="font-anton text-2xl sm:text-3xl text-charcoal tracking-tight">
                 DIRECT WHATSAPP WITH FOUNDERS
               </h3>
               <p className="mt-2 font-satoshi text-sm text-charcoal/85 leading-relaxed font-medium">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-text="WHATSAPP"
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-charcoal py-4 font-anton text-xs uppercase tracking-wider text-white transition-transform hover:scale-[1.02] hover:bg-black shadow-md"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-charcoal py-3.5 sm:py-4 font-anton text-xs uppercase tracking-wider text-white transition-transform hover:scale-[1.02] hover:bg-black shadow-md font-bold"
               >
                 <span>Chat on WhatsApp ({AGENCY_PHONE})</span>
                 <span>💬</span>

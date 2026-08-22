@@ -5,19 +5,19 @@ import { AGENCY_PHONE, AGENCY_EMAIL, WHATSAPP_URL } from "@/lib/seo";
 
 export default function FoundersSection() {
   return (
-    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal py-28 px-6 md:px-10 text-charcoal dark:text-white overflow-hidden grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
+    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal py-20 sm:py-24 md:py-28 px-4 sm:px-6 md:px-10 text-charcoal dark:text-white overflow-hidden grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
       <div className="mx-auto max-w-[1440px]">
         {/* Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-8">
+        <div className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-charcoal/10 dark:border-white/10 pb-6 sm:pb-8">
           <div>
             <div className="badge-editorial-light dark:badge-editorial mb-4">
               <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
               <span>Leadership &amp; Engineering Craft</span>
             </div>
-            <h2 className="font-anton text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
+            <h2 className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
               BUILT BY FOUNDERS. <span className="highlight-yellow">RUN BY FOUNDERS.</span>
             </h2>
-            <p className="mt-4 max-w-xl font-satoshi text-base text-charcoal/75 dark:text-sage/80 leading-relaxed">
+            <p className="mt-4 max-w-xl font-satoshi text-sm sm:text-base text-charcoal/75 dark:text-sage/80 leading-relaxed">
               No junior interns or layers of bureaucracy. You work directly with Lavi and Jass from kickoff blueprint through live launch.
             </p>
           </div>
@@ -33,9 +33,9 @@ export default function FoundersSection() {
         </div>
 
         {/* 2 Founders Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Founder 1: Lavi */}
-          <div className="group relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-8 md:p-10 transition-all duration-300 hover:border-yellow dark:hover:border-yellow shadow-lg card-editorial text-charcoal dark:text-white">
+          <div className="group relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-6 sm:p-8 md:p-10 transition-all duration-300 hover:border-yellow dark:hover:border-yellow shadow-lg card-editorial text-charcoal dark:text-white">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow text-charcoal font-anton text-3xl font-bold shadow-brutalist border border-charcoal">
@@ -84,7 +84,7 @@ export default function FoundersSection() {
           </div>
 
           {/* Founder 2: Jass */}
-          <div className="group relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-8 md:p-10 transition-all duration-300 hover:border-yellow dark:hover:border-yellow shadow-lg card-editorial text-charcoal dark:text-white">
+          <div className="group relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-6 sm:p-8 md:p-10 transition-all duration-300 hover:border-yellow dark:hover:border-yellow shadow-lg card-editorial text-charcoal dark:text-white">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-charcoal dark:bg-white text-yellow dark:text-charcoal font-anton text-3xl font-bold shadow-brutalist border border-charcoal">

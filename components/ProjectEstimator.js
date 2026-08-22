@@ -64,14 +64,14 @@ export default function ProjectEstimator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Selectors */}
-          <div className="lg:col-span-7 space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-darkgray p-6 sm:p-8 shadow-xl">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-darkgray p-4 sm:p-6 md:p-8 shadow-xl">
             {/* Step 1: Services */}
             <div>
               <div className="flex items-center gap-2.5 mb-3.5">
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
                   01
                 </span>
-                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                <h3 className="font-anton text-sm sm:text-base tracking-wide text-charcoal dark:text-white">
                   SELECT REQUIRED GROWTH ENGINES (MULTI-SELECT)
                 </h3>
               </div>
@@ -84,7 +84,7 @@ export default function ProjectEstimator() {
                       type="button"
                       onClick={() => toggleService(srv.id)}
                       data-cursor-text="TOGGLE"
-                      className={`flex items-center justify-between rounded-2xl p-4 text-left text-xs font-satoshi transition-all duration-200 ${
+                      className={`flex items-center justify-between rounded-2xl p-3.5 sm:p-4 text-left text-xs font-satoshi transition-all duration-200 ${
                         isChecked
                           ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
                           : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
@@ -112,7 +112,7 @@ export default function ProjectEstimator() {
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
                   02
                 </span>
-                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                <h3 className="font-anton text-sm sm:text-base tracking-wide text-charcoal dark:text-white">
                   BUSINESS PROFILE &amp; CATEGORY
                 </h3>
               </div>
@@ -128,7 +128,7 @@ export default function ProjectEstimator() {
                       key={b.id}
                       type="button"
                       onClick={() => setBusinessType(b.id)}
-                      className={`min-h-[58px] flex items-center justify-center rounded-2xl px-4 py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
+                      className={`min-h-[52px] sm:min-h-[58px] flex items-center justify-center rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
                         isSelected
                           ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
                           : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
@@ -147,7 +147,7 @@ export default function ProjectEstimator() {
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-yellow text-charcoal font-anton text-xs font-bold shadow-xs">
                   03
                 </span>
-                <h3 className="font-anton text-base tracking-wide text-charcoal dark:text-white">
+                <h3 className="font-anton text-sm sm:text-base tracking-wide text-charcoal dark:text-white">
                   TARGET MARKET &amp; REACH
                 </h3>
               </div>
@@ -163,7 +163,7 @@ export default function ProjectEstimator() {
                       key={m.id}
                       type="button"
                       onClick={() => setTargetMarket(m.id)}
-                      className={`min-h-[58px] flex items-center justify-center rounded-2xl px-4 py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
+                      className={`min-h-[52px] sm:min-h-[58px] flex items-center justify-center rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs font-satoshi transition-all duration-200 leading-snug ${
                         isSelected
                           ? "border-2 border-charcoal dark:border-yellow bg-charcoal dark:bg-yellow/15 text-white dark:text-white font-bold shadow-brutalist dark:shadow-[0_0_15px_rgba(255,225,124,0.15)]"
                           : "border border-charcoal/15 dark:border-white/10 bg-white dark:bg-charcoal/80 text-charcoal/80 dark:text-white/80 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-yellow/10 dark:hover:bg-white/5"
@@ -178,19 +178,19 @@ export default function ProjectEstimator() {
           </div>
 
           {/* Right Column: Dynamic Timeline & Scope Card */}
-          <div className="lg:col-span-5 sticky top-28">
-            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray p-8 text-white shadow-2xl backdrop-blur-xl">
-              <div className="flex items-center justify-between border-b border-white/10 pb-6">
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <div className="rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray p-5 sm:p-7 md:p-8 text-white shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-5 sm:pb-6">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-yellow font-semibold">
                     Calculated Sprint Scope
                   </span>
-                  <h3 className="font-anton text-2xl text-white mt-1">
+                  <h3 className="font-anton text-xl sm:text-2xl text-white mt-1">
                     ESTIMATED BLUEPRINT
                   </h3>
                 </div>
-                <div className="rounded-2xl border border-yellow/40 bg-yellow/10 p-3 text-center">
-                  <div className="font-anton text-3xl text-yellow leading-none">
+                <div className="rounded-2xl border border-yellow/40 bg-yellow/10 p-2.5 sm:p-3 text-center shrink-0">
+                  <div className="font-anton text-2xl sm:text-3xl text-yellow leading-none">
                     ~{totalWeeks}
                   </div>
                   <div className="font-mono text-[9px] uppercase tracking-wider text-sage/70 mt-1 font-semibold">
@@ -200,7 +200,7 @@ export default function ProjectEstimator() {
               </div>
 
               {/* Scope Checklist */}
-              <div className="my-6 space-y-3 font-satoshi text-xs">
+              <div className="my-5 sm:my-6 space-y-3 font-satoshi text-xs">
                 <p className="font-mono text-[11px] uppercase tracking-widest text-sage/50">
                   Included Engine Modules ({selectedItems.length}):
                 </p>
@@ -211,7 +211,7 @@ export default function ProjectEstimator() {
                       className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 text-white"
                     >
                       <span className="font-medium">{item.name}</span>
-                      <span className="font-mono text-xs text-yellow font-bold">~{item.baseWeeks}w</span>
+                      <span className="font-mono text-xs text-yellow font-bold shrink-0 ml-2">~{item.baseWeeks}w</span>
                     </div>
                   ))}
                 </div>
@@ -234,19 +234,19 @@ export default function ProjectEstimator() {
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-8 space-y-3 border-t border-white/10 pt-6">
+              <div className="mt-6 sm:mt-8 space-y-3 border-t border-white/10 pt-5 sm:pt-6">
                 <a
                   href={getWhatsAppMessage()}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-text="LOCK"
-                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-yellow py-4 font-anton text-sm uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white active:scale-95"
+                  className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-yellow px-4 sm:px-6 py-3.5 sm:py-4 font-anton text-xs sm:text-sm md:text-base uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white active:scale-95 text-center font-bold"
                 >
-                  <span>Lock In Scope on WhatsApp ({AGENCY_PHONE})</span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                  <span className="leading-tight">Lock In Scope on WhatsApp</span>
+                  <span className="shrink-0 font-bold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                 </a>
-                <p className="text-center font-mono text-[10px] text-sage/50">
-                  ⚡ Pre-populates WhatsApp with your exact selected scope &amp; estimated timeline.
+                <p className="text-center font-mono text-[10px] sm:text-[11px] text-sage/70 leading-relaxed">
+                  ⚡ Pre-populates WhatsApp (<span className="text-yellow font-semibold">{AGENCY_PHONE}</span>) with your exact selected scope &amp; estimated timeline.
                 </p>
               </div>
             </div>

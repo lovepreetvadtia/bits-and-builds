@@ -23,23 +23,23 @@ const STEPS = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="relative border-t border-charcoal/10 bg-charcoal px-6 py-28 md:px-10 text-white overflow-hidden">
+    <section className="relative border-t border-charcoal/10 bg-charcoal px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-white overflow-hidden">
       <div className="mx-auto max-w-[1440px]">
         {/* Two-Column Layout (1:2 ratio) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Sticky Anton Title (text-7xl) - 4 cols */}
-          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          {/* Left Column: Sticky Anton Title - 4 cols */}
+          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-4 sm:space-y-6">
             <div className="badge-editorial">
               <span className="h-2 w-2 rounded-full bg-yellow animate-pulse" />
               <span>Execution Blueprint</span>
             </div>
 
-            <h2 className="font-anton text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.9]">
+            <h2 className="font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.9]">
               HOW IT <br />
               <span className="highlight-yellow">WORKS.</span>
             </h2>
 
-            <p className="font-satoshi text-base text-sage/80 leading-relaxed max-w-sm">
+            <p className="font-satoshi text-sm sm:text-base text-sage/80 leading-relaxed max-w-sm">
               Three systematic stages from initial audit to automated revenue generation. Zero fluff, zero guesswork.
             </p>
 
@@ -54,13 +54,13 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Right Column: Vertical stack of three steps - 8 cols */}
-          <div className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
             {STEPS.map((step) => (
               <div
                 key={step.num}
-                className="group relative rounded-3xl border border-sage/15 bg-charcoal-card p-8 md:p-12 transition-all duration-300 hover:border-yellow hover:bg-[#222b25] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-start justify-between gap-8"
+                className="group relative rounded-3xl border border-sage/15 bg-charcoal-card p-6 sm:p-8 md:p-12 transition-all duration-300 hover:border-yellow hover:bg-[#222b25] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-8"
               >
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 space-y-3 sm:space-y-4">
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs font-bold text-yellow uppercase tracking-widest">
                       PHASE {step.num}
@@ -68,11 +68,11 @@ export default function HowItWorksSection() {
                     <span className="h-px flex-1 bg-white/10" />
                   </div>
 
-                  <h3 className="font-anton text-3xl md:text-4xl text-white tracking-wide group-hover:text-yellow transition-colors">
+                  <h3 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white tracking-wide group-hover:text-yellow transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="font-satoshi text-base text-sage/80 leading-relaxed">
+                  <p className="font-satoshi text-sm sm:text-base text-sage/80 leading-relaxed">
                     {step.desc}
                   </p>
 
@@ -82,8 +82,8 @@ export default function HowItWorksSection() {
                   </div>
                 </div>
 
-                {/* Massive 8xl numeral in #ffe17c/20% that changes to full opacity on hover */}
-                <div className="font-anton text-7xl md:text-8xl lg:text-9xl text-yellow/20 group-hover:text-yellow transition-colors duration-300 select-none self-end md:self-start leading-none shrink-0">
+                {/* Massive numeral that changes to full opacity on hover */}
+                <div className="font-anton text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-yellow/20 group-hover:text-yellow transition-colors duration-300 select-none self-end md:self-start leading-none shrink-0">
                   {step.num}
                 </div>
               </div>

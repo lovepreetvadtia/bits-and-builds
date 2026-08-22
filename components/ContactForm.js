@@ -72,7 +72,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-8 md:p-10 shadow-2xl text-charcoal dark:text-white transition-colors duration-300"
+      className="space-y-6 sm:space-y-8 rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 shadow-2xl text-charcoal dark:text-white transition-colors duration-300"
     >
       {/* Service Selector Pills */}
       <div>

@@ -114,7 +114,7 @@ export default function NextSpotlightHero() {
 
       {/* Layer 3: Central Headline Stack (z-10) */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-none"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-none -translate-y-4 sm:translate-y-0"
         style={{ zIndex: 10 }}
       >
         {/* Staggered Dual-Typography Headline */}
@@ -141,7 +141,7 @@ export default function NextSpotlightHero() {
 
         {/* Crisp Subtitle */}
         <p
-          className="mt-3 sm:mt-4 max-w-xl font-satoshi text-xs sm:text-sm md:text-base text-white/80 leading-relaxed hero-anim hero-fade px-4"
+          className="mt-3 sm:mt-4 max-w-xl font-satoshi text-xs sm:text-sm md:text-base text-white/85 leading-relaxed hero-anim hero-fade px-3 sm:px-4"
           style={{ animationDelay: "0.58s" }}
         >
           High-performance Next.js engineering, Google Maps 3-Pack rank dominance,
@@ -165,7 +165,7 @@ export default function NextSpotlightHero() {
 
       {/* Layer 5: Bottom-Right CTA Card (z-10) */}
       <div
-        className="absolute bottom-7 left-5 right-5 sm:left-auto sm:right-8 md:right-12 max-w-full sm:max-w-[260px] flex flex-col items-start gap-2.5 hero-anim hero-fade pointer-events-auto bg-white/90 dark:bg-black/60 backdrop-blur-md p-4 rounded-2xl border border-charcoal/15 dark:border-white/15 shadow-xl transition-colors duration-300"
+        className="absolute bottom-4 sm:bottom-7 left-4 right-4 sm:left-auto sm:right-8 md:right-12 max-w-full sm:max-w-[260px] flex flex-col items-start gap-2 sm:gap-2.5 hero-anim hero-fade pointer-events-auto bg-white/95 dark:bg-black/75 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-charcoal/15 dark:border-white/15 shadow-xl transition-colors duration-300"
         style={{ zIndex: 10, animationDelay: "0.85s" }}
       >
         <div className="flex items-center gap-1.5 text-charcoal dark:text-yellow font-mono text-[11px] uppercase tracking-wider font-bold">
