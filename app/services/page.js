@@ -164,6 +164,4 @@ export default function ServicesPage() {
       </ScrollRevealSection>
     </>
   );
-} </>
-  );
 }
