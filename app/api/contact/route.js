@@ -35,10 +35,21 @@ export async function POST(request) {
       message: message.trim(),
     });
 
+    if (!mailResult.sent) {
+      console.error("❌ Email dispatch failed:", mailResult.reason);
+      return NextResponse.json(
+        {
+          error: "Failed to dispatch email notification: " + mailResult.reason,
+          smtpDispatched: false,
+        },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       message: "Project brief successfully received by Bits and Builds founders.",
-      smtpDispatched: mailResult.sent,
+      smtpDispatched: true,
     });
   } catch (err) {
     console.error("Contact API error:", err);

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/lib/services";
@@ -65,10 +66,17 @@ export default function Header() {
           <Link
             href="/"
             data-cursor-text="HOME"
-            className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-charcoal/15 dark:border-white/15 px-3 sm:px-4 py-1.5 sm:py-2 text-charcoal dark:text-white shadow-md dark:shadow-xl hover:border-yellow transition-all group shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 rounded-full bg-white/95 dark:bg-black/90 backdrop-blur-xl border border-charcoal/15 dark:border-white/15 px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-charcoal dark:text-white shadow-md dark:shadow-xl hover:border-yellow transition-all group shrink-0"
           >
-            <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-yellow text-charcoal font-anton text-[10px] sm:text-xs font-bold shadow-xs transition-transform group-hover:scale-105">
-              BB
+            <div className="relative flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+              <Image
+                src="/icons/logo.svg"
+                alt="Bits and Builds Logo"
+                width={28}
+                height={28}
+                className="h-full w-full object-contain drop-shadow-[0_2px_8px_rgba(255,225,124,0.3)]"
+                priority
+              />
             </div>
             <span className="font-anton text-xs sm:text-sm md:text-base tracking-tight text-charcoal dark:text-white">
               BITS &amp; BUILDS

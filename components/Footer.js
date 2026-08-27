@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/lib/services";
@@ -72,11 +73,17 @@ export default function Footer() {
           {/* Column 1: Brand Info & Primary Action (Span 5) */}
           <div className="lg:col-span-5 space-y-4">
             {/* Brand Logo & Name */}
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-charcoal dark:bg-white text-yellow dark:text-charcoal font-anton text-xs font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">
-                BB
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src="/icons/logo.svg"
+                  alt="Bits and Builds Logo"
+                  width={36}
+                  height={36}
+                  className="h-full w-full object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_12px_rgba(255,225,124,0.25)]"
+                />
               </div>
-              <span className="font-satoshi font-bold text-base tracking-tight text-charcoal dark:text-white">
+              <span className="font-satoshi font-bold text-base sm:text-lg tracking-tight text-charcoal dark:text-white">
                 Bits and Builds
               </span>
             </Link>

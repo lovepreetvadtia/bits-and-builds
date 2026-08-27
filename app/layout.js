@@ -68,6 +68,28 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  icons: {
+    icon: [
+      { url: "/icons/favicon.ico" },
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/icons/android-chrome-192x192.png",
+      },
+      {
+        rel: "android-chrome-512x512",
+        url: "/icons/android-chrome-512x512.png",
+      },
+    ],
+  },
+  manifest: "/icons/site.webmanifest",
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
   },
@@ -86,6 +108,12 @@ export default function RootLayout({ children }) {
       className={`${anton.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable}`}
     >
       <head>
+        <link rel="icon" href="/icons/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/icons/site.webmanifest" />
         <link
           rel="preload"
           as="image"

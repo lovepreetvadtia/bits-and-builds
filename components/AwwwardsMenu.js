@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { services } from "@/lib/services";
 import {
@@ -90,10 +91,16 @@ export default function AwwwardsMenu({ isOpen, onClose }) {
         <Link
           href="/"
           onClick={onClose}
-          className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 sm:py-1.5 text-white hover:border-yellow transition-all group"
+          className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-2.5 sm:px-3 py-1 sm:py-1.5 text-white hover:border-yellow transition-all group"
         >
-          <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-yellow text-charcoal font-anton text-[10px] sm:text-xs font-bold shadow-xs transition-transform group-hover:scale-105">
-            BB
+          <div className="relative flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+            <Image
+              src="/icons/logo.svg"
+              alt="Bits and Builds Logo"
+              width={24}
+              height={24}
+              className="h-full w-full object-contain drop-shadow-[0_1px_6px_rgba(255,225,124,0.3)]"
+            />
           </div>
           <span className="font-anton text-xs sm:text-sm tracking-tight text-white">
             BITS &amp; BUILDS

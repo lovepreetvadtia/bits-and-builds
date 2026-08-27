@@ -6,12 +6,14 @@ import { AGENCY_PHONE, WHATSAPP_URL } from "@/lib/seo";
 
 export default function ContactForm() {
   const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [selectedService, setSelectedService] = useState("Web Development");
   const [budget, setBudget] = useState("₹25k - ₹50k");
 
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
     const form = new FormData(e.target);
     const payload = {
       ...Object.fromEntries(form.entries()),
@@ -26,11 +28,16 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      const resData = await res.json().catch(() => ({}));
+      if (!res.ok || !resData.success) {
+        throw new Error(resData.error || "Failed to submit project brief.");
+      }
+
       setStatus("success");
       e.target.reset();
     } catch (err) {
-      console.error(err);
+      console.error("Contact form error:", err);
+      setErrorMessage(err.message || "Something went wrong while submitting. Please try again or chat directly on WhatsApp.");
       setStatus("error");
     }
   }
@@ -201,7 +208,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <div className="rounded-xl border border-red-500 bg-red-500/10 p-4 font-satoshi text-xs text-red-500 font-bold">
-          ✕ Something went wrong while submitting. Please try again or chat directly on WhatsApp (+91 63676 37487).
+          ✕ {errorMessage || "Something went wrong while submitting. Please try again or chat directly on WhatsApp (+91 63676 37487)."}
         </div>
       )}
 
