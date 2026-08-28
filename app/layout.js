@@ -2,6 +2,7 @@ import { Anton, JetBrains_Mono, Plus_Jakarta_Sans, Playfair_Display } from "next
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageLoader from "@/components/PageLoader";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -147,6 +148,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
         <ThemeProvider>
+          <PageLoader />
           <SmoothScroll>
             <CustomCursor />
             <div className="noise-overlay" aria-hidden="true" />

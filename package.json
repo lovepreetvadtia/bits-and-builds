@@ -4,10 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:nodemon": "nodemon server.js",
     "build": "next build",
     "start": "next start",
-    "start:server": "node server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,12 +16,16 @@
     "nodemailer": "^9.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "shaders": "^3.1.463",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.19",
-    "nodemon": "^3.1.14",
     "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7"
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.9.3"
   }
 }

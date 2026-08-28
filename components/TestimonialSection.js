@@ -1,19 +1,19 @@
 "use client";
 
-import GsapTextReveal from "@/components/GsapTextReveal";
+import React from "react";
 
 const REVIEWS = [
   {
-    author: "DR. RAJESH VERMA",
+    author: "Dr. Rajesh Verma",
     role: "Chief Medical Officer · City Super Specialty Clinic",
     location: "Sri Ganganagar, Rajasthan",
     quote:
-      "Bits and Builds overhauled our website to Next.js and built our automated WhatsApp OPD booking system. Our patient booking drop-off rate fell by 68%, and we now dominate local Google Maps search results.",
+      "Bits and Builds overhauled our website to Next.js and built our automated WhatsApp OPD booking system. Our patient drop-off rate fell by 68%, and we now dominate local Google Maps search results.",
     avatarText: "RV",
     stats: "+340% Patient Bookings",
   },
   {
-    author: "AMIT SHARMA",
+    author: "Amit Sharma",
     role: "Founder & Managing Director · Royale Dine Hospitality",
     location: "Jaipur, Rajasthan",
     quote:
@@ -22,11 +22,11 @@ const REVIEWS = [
     stats: "99/100 PageSpeed · 4.8x ROAS",
   },
   {
-    author: "PRIYA AGARWAL",
+    author: "Priya Agarwal",
     role: "E-Commerce Founder · Luxe Ayurveda D2C",
     location: "Delhi NCR & Pan-India",
     quote:
-      "Unlike traditional marketing agencies that talk in fluff, Bits and Builds engineered high-converting landing pages that dropped our Meta Ad CAC by 42% in our very first month.",
+      "Unlike traditional marketing agencies that talk in vanity metrics, Bits and Builds engineered high-converting landing pages that dropped our Meta Ad CAC by 42% in our very first month.",
     avatarText: "PA",
     stats: "-42% Customer Acq. Cost",
   },
@@ -34,140 +34,123 @@ const REVIEWS = [
 
 export default function TestimonialSection() {
   return (
-    <section className="relative border-t border-charcoal/15 dark:border-white/15 bg-[#fcfdfc] dark:bg-charcoal px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
-      <div className="mx-auto max-w-[1440px]">
+    <section className="bg-white dark:bg-[#0A0A0A] text-gray-900 dark:text-white pt-20 sm:pt-28 pb-20 sm:pb-28 border-t border-gray-200 dark:border-white/10 transition-colors duration-300 overflow-hidden">
+      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto space-y-4">
-          <div className="badge-editorial-light dark:badge-editorial">
-            <span className="h-2 w-2 rounded-full bg-yellow animate-ping" />
-            <span>High-Impact Proof</span>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gray-900 dark:bg-[#F2C230] text-white dark:text-gray-900 text-[11px] sm:text-[12px] font-semibold flex items-center justify-center select-none flex-shrink-0">
+              10
+            </span>
+            <span className="text-[12px] sm:text-[13px] font-medium text-gray-900 dark:text-white border border-gray-200 dark:border-white/15 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 select-none">
+              Verified Client Reviews
+            </span>
           </div>
-          <GsapTextReveal
-            as="h2"
-            variant="words"
-            text="VERIFIED CLIENT TRANSFORMATIONS."
-            highlightWord="TRANSFORMATIONS."
-            highlightClass="highlight-yellow"
-            className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]"
-          />
-          <p className="font-satoshi text-sm sm:text-base md:text-lg text-charcoal/70 dark:text-sage/80">
-            Real revenue, automated workflows, and Google Maps dominance delivered for ambitious founders.
+
+          <h2 className="text-[clamp(1.75rem,5vw,3.5rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 dark:text-white">
+            Client transformations that speak in revenue.
+          </h2>
+
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+            Real revenue, automated workflows, and Google Maps category dominance delivered for ambitious founders.
           </p>
         </div>
 
         {/* 3-Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch pt-4">
-          {/* Card 1: Side Card */}
-          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
+          {/* Card 1 */}
+          <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-[#F5F5F5] dark:bg-[#141414] hover:bg-white dark:hover:bg-[#1a1a1a] p-8 sm:p-10 flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-md">
             <div>
-              {/* 5 Stars with strong light/dark contrast */}
-              <div className="flex items-center gap-1.5 text-amber-500 dark:text-yellow text-xl mb-6">
+              <div className="flex items-center gap-1 text-[#F2C230] text-lg mb-6">
                 {"★★★★★".split("").map((star, i) => (
-                  <span key={i} className="drop-shadow-sm">
-                    {star}
-                  </span>
+                  <span key={i}>{star}</span>
                 ))}
               </div>
 
-              {/* Satoshi-medium body text */}
-              <p className="font-satoshi font-medium text-base sm:text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-6 sm:mb-8">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200 font-medium mb-8">
                 &quot;{REVIEWS[0].quote}&quot;
               </p>
             </div>
 
-            {/* Avatar Footer */}
-            <div className="pt-6 border-t border-charcoal/10 dark:border-white/10 flex items-center gap-4">
-              <div className="h-12 w-12 shrink-0 rounded-full bg-charcoal dark:bg-black text-yellow font-anton text-lg flex items-center justify-center grayscale shadow-sm border border-charcoal/20 dark:border-white/20">
-                {REVIEWS[0].avatarText}
-              </div>
-              <div>
-                <h3 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
-                  {REVIEWS[0].author}
-                </h3>
-                <p className="font-satoshi text-xs text-charcoal/75 dark:text-sage/80 line-clamp-1">
-                  {REVIEWS[0].role}
-                </p>
-                <p className="font-mono text-[10px] text-charcoal/60 dark:text-sage/60 mt-0.5">
-                  {REVIEWS[0].location}
-                </p>
+            <div className="pt-6 border-t border-gray-200/70 dark:border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 shrink-0 rounded-full bg-gray-900 dark:bg-white/10 text-white dark:text-[#F2C230] text-sm font-semibold flex items-center justify-center">
+                  {REVIEWS[0].avatarText}
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                    {REVIEWS[0].author}
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+                    {REVIEWS[0].role}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Center Featured Card */}
-          <div className="relative rounded-3xl bg-charcoal dark:bg-darkgray text-white p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-2xl border-2 border-yellow lg:-translate-y-4 card-editorial">
-            <div className="absolute -top-3.5 right-8 rounded-full bg-yellow px-4 py-1 font-mono text-[10px] font-bold text-charcoal uppercase tracking-widest shadow-md">
+          {/* Card 2: Center Featured Card (Deep Black) */}
+          <div className="relative rounded-3xl bg-[#0A0A0A] text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl border border-white/10 lg:-translate-y-4">
+            <div className="absolute -top-3 right-8 rounded-full bg-[#F2C230] px-3.5 py-1 text-[11px] font-semibold text-gray-900 uppercase tracking-wider shadow-sm">
               Featured Case
             </div>
 
             <div>
-              {/* 5 Stars */}
-              <div className="flex items-center gap-1.5 text-yellow text-xl mb-6">
+              <div className="flex items-center gap-1 text-[#F2C230] text-lg mb-6">
                 {"★★★★★".split("").map((star, i) => (
-                  <span key={i} className="drop-shadow-sm">
-                    {star}
-                  </span>
+                  <span key={i}>{star}</span>
                 ))}
               </div>
 
-              {/* Satoshi-medium body text */}
-              <p className="font-satoshi font-medium text-lg leading-relaxed text-white italic mb-8">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-200 font-medium mb-8">
                 &quot;{REVIEWS[1].quote}&quot;
               </p>
             </div>
 
-            {/* Avatar Footer */}
-            <div className="pt-6 border-t border-white/10 flex items-center gap-4">
-              <div className="h-12 w-12 shrink-0 rounded-full bg-white text-charcoal font-anton text-lg flex items-center justify-center grayscale shadow-sm border border-white/20">
-                {REVIEWS[1].avatarText}
-              </div>
-              <div>
-                <h3 className="font-anton text-base text-yellow tracking-wide">
-                  {REVIEWS[1].author}
-                </h3>
-                <p className="font-satoshi text-xs text-sage/80 line-clamp-1">
-                  {REVIEWS[1].role}
-                </p>
-                <p className="font-mono text-[10px] text-sage/60 mt-0.5">
-                  {REVIEWS[1].location}
-                </p>
+            <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 shrink-0 rounded-full bg-[#F2C230] text-gray-900 text-sm font-bold flex items-center justify-center">
+                  {REVIEWS[1].avatarText}
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">
+                    {REVIEWS[1].author}
+                  </h3>
+                  <p className="text-xs text-gray-400 line-clamp-1">
+                    {REVIEWS[1].role}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Card 3: Side Card */}
-          <div className="relative rounded-3xl border border-charcoal/15 dark:border-white/15 bg-white dark:bg-darkgray p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-lg card-editorial">
+          {/* Card 3 */}
+          <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-[#F5F5F5] dark:bg-[#141414] hover:bg-white dark:hover:bg-[#1a1a1a] p-8 sm:p-10 flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-md">
             <div>
-              {/* 5 Stars with strong light/dark contrast */}
-              <div className="flex items-center gap-1.5 text-amber-500 dark:text-yellow text-xl mb-6">
+              <div className="flex items-center gap-1 text-[#F2C230] text-lg mb-6">
                 {"★★★★★".split("").map((star, i) => (
-                  <span key={i} className="drop-shadow-sm">
-                    {star}
-                  </span>
+                  <span key={i}>{star}</span>
                 ))}
               </div>
 
-              {/* Satoshi-medium body text */}
-              <p className="font-satoshi font-medium text-base sm:text-lg leading-relaxed text-charcoal/90 dark:text-white/90 italic mb-6 sm:mb-8">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200 font-medium mb-8">
                 &quot;{REVIEWS[2].quote}&quot;
               </p>
             </div>
 
-            {/* Avatar Footer */}
-            <div className="pt-6 border-t border-charcoal/10 dark:border-white/10 flex items-center gap-4">
-              <div className="h-12 w-12 shrink-0 rounded-full bg-charcoal dark:bg-black text-yellow font-anton text-lg flex items-center justify-center grayscale shadow-sm border border-charcoal/20 dark:border-white/20">
-                {REVIEWS[2].avatarText}
-              </div>
-              <div>
-                <h3 className="font-anton text-base text-charcoal dark:text-white tracking-wide">
-                  {REVIEWS[2].author}
-                </h3>
-                <p className="font-satoshi text-xs text-charcoal/75 dark:text-sage/80 line-clamp-1">
-                  {REVIEWS[2].role}
-                </p>
-                <p className="font-mono text-[10px] text-charcoal/60 dark:text-sage/60 mt-0.5">
-                  {REVIEWS[2].location}
-                </p>
+            <div className="pt-6 border-t border-gray-200/70 dark:border-white/10 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 shrink-0 rounded-full bg-gray-900 dark:bg-white/10 text-white dark:text-[#F2C230] text-sm font-semibold flex items-center justify-center">
+                  {REVIEWS[2].avatarText}
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                    {REVIEWS[2].author}
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+                    {REVIEWS[2].role}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -54,8 +54,10 @@ export default function ScrollRevealSection({
     <div
       id={id}
       ref={containerRef}
-      className={`relative transition-opacity duration-700 ease-out ${
-        isIntersected ? "opacity-100" : "opacity-95"
+      className={`relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isIntersected
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
       } ${className}`}
       style={{ minHeight: isIntersected ? undefined : minHeight }}
     >

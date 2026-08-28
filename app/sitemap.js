@@ -3,11 +3,19 @@ import { posts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap() {
-  const staticRoutes = ["", "/services", "/about", "/contact", "/blog"].map((path) => ({
+  const staticRoutes = [
+    "",
+    "/services",
+    "/about",
+    "/contact",
+    "/blog",
+    "/privacy",
+    "/terms",
+  ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: path === "" ? 1.0 : 0.8,
+    changeFrequency: path === "" || path === "/services" ? "weekly" : "monthly",
+    priority: path === "" ? 1.0 : path.startsWith("/services") ? 0.9 : 0.8,
   }));
 
   const serviceRoutes = services.map((s) => ({

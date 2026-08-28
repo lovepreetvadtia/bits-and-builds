@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 export default function Marquee({
   items,
   reverse = false,
@@ -10,7 +12,7 @@ export default function Marquee({
 
   return (
     <div
-      className={`marquee-container overflow-hidden border-y border-charcoal/15 py-5 bg-charcoal text-white ${className}`}
+      className={`marquee-container overflow-hidden border-y border-white/10 py-4 bg-[#0A0A0A] text-white ${className}`}
     >
       <div
         className={`marquee-track ${reverse ? "reverse" : ""} ${
@@ -20,10 +22,10 @@ export default function Marquee({
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="mx-8 flex items-center gap-8 whitespace-nowrap font-anton text-2xl md:text-3xl tracking-wide text-white/90 transition-colors hover:text-yellow uppercase"
+            className="mx-8 flex items-center gap-8 whitespace-nowrap text-sm sm:text-base font-medium tracking-tight text-gray-300 transition-colors hover:text-[#F2C230]"
           >
             <span>{item}</span>
-            <span className="font-mono text-yellow text-sm">✦</span>
+            <span className="text-[#F2C230] text-xs">✦</span>
           </span>
         ))}
       </div>

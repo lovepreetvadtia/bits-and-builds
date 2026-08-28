@@ -1,9 +1,11 @@
+import React from "react";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import ScrollRevealSection from "@/components/ScrollRevealSection";
+import TextRollButton from "@/components/TextRollButton";
+import GsapTextReveal from "@/components/GsapTextReveal";
 import { services } from "@/lib/services";
 import { buildMetadata, WHATSAPP_URL } from "@/lib/seo";
-import GsapTextReveal from "@/components/GsapTextReveal";
 
 export const metadata = buildMetadata({
   title: "Services — Web Dev, SEO, PPC, Social Media, Design & Automation",
@@ -42,21 +44,29 @@ const COMPARISON = [
 
 export default function ServicesPage() {
   return (
-    <>
+    <div className="w-full bg-white dark:bg-[#0A0A0A] text-gray-900 dark:text-white pt-20 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative bg-white dark:bg-charcoal text-charcoal dark:text-white grid-editorial-light dark:grid-editorial-40 px-4 sm:px-6 pb-16 sm:pb-20 pt-28 sm:pt-36 md:px-10 overflow-hidden border-b border-charcoal/15 dark:border-white/15 transition-colors duration-300">
+      <section className="px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-16 sm:pb-20 border-b border-gray-200 dark:border-white/10">
         <div className="mx-auto max-w-[1440px]">
-          <div className="badge-editorial-light dark:badge-editorial mb-6 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-yellow animate-pulse border border-charcoal/40" />
-            <span>Capabilities &amp; Solutions</span>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gray-900 dark:bg-[#F2C230] text-white dark:text-gray-900 text-[11px] sm:text-[12px] font-semibold flex items-center justify-center select-none flex-shrink-0">
+              1
+            </span>
+            <span className="text-[12px] sm:text-[13px] font-medium text-gray-900 dark:text-white border border-gray-200 dark:border-white/15 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 select-none">
+              Capabilities &amp; Solutions
+            </span>
           </div>
 
-          <h1 className="max-w-5xl font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-white tracking-tight leading-[0.92] uppercase">
-            EVERYTHING YOUR BRAND NEEDS TO{" "}
-            <span className="highlight-yellow">DOMINATE ONLINE.</span>
-          </h1>
+          <GsapTextReveal
+            as="h1"
+            text="Everything your brand needs to dominate online."
+            variant="chars"
+            className="max-w-5xl text-[clamp(2.2rem,5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 dark:text-white"
+            highlightWord="dominate"
+            highlightClass="text-[#F2C230]"
+          />
 
-          <p className="mt-6 sm:mt-8 max-w-2xl font-satoshi text-base sm:text-lg md:text-xl text-charcoal/75 dark:text-sage/80 leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
             Seven unified capabilities engineered for performance, search visibility, and revenue.
             Choose a standalone service or partner with us for full-stack growth.
           </p>
@@ -64,9 +74,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid (7 Cards) */}
-      <section className="bg-[#fcfdfc] dark:bg-[#151b17] border-b border-charcoal/15 dark:border-white/15 px-4 sm:px-6 py-16 sm:py-20 md:py-24 md:px-10 grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
+      <section className="bg-[#F5F5F5] dark:bg-[#0E0E0E] border-b border-gray-200 dark:border-white/10 px-5 sm:px-8 lg:px-12 py-16 sm:py-24 transition-colors duration-300">
         <div className="mx-auto max-w-[1440px]">
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <ServiceCard key={s.slug} service={s} />
             ))}
@@ -74,43 +84,53 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Comparison Matrix: Us vs Generic Agencies (Loaded on scroll) */}
+      {/* Comparison Matrix: Us vs Generic Agencies */}
       <ScrollRevealSection minHeight="500px">
-        <section className="border-b border-charcoal/15 dark:border-white/15 bg-white dark:bg-charcoal px-4 sm:px-6 py-20 sm:py-24 md:py-28 md:px-10 grid-editorial-light dark:grid-editorial-40 transition-colors duration-300">
+        <section className="border-b border-gray-200 dark:border-white/10 bg-white dark:bg-[#0A0A0A] px-5 sm:px-8 lg:px-12 py-20 sm:py-28 transition-colors duration-300">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 sm:mb-16 border-b border-charcoal/10 dark:border-white/10 pb-6 sm:pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="mb-12 sm:mb-16 border-b border-gray-200 dark:border-white/10 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
-                <div className="badge-editorial-light dark:badge-editorial mb-4">
-                  <span>The Standard</span>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-6 h-6 rounded-full bg-gray-900 dark:bg-[#F2C230] text-white dark:text-gray-900 text-[11px] font-semibold flex items-center justify-center">
+                    2
+                  </span>
+                  <span className="text-[12px] font-medium text-gray-900 dark:text-white border border-gray-200 dark:border-white/15 rounded-full px-3 py-1">
+                    The Standard
+                  </span>
                 </div>
-                <h2 className="font-anton text-4xl sm:text-5xl md:text-7xl text-charcoal dark:text-white tracking-tight leading-[0.92]">
-                  WHY BRANDS CHOOSE <span className="highlight-yellow">BITS &amp; BUILDS.</span>
-                </h2>
+                <GsapTextReveal
+                  as="h2"
+                  text="Why brands choose Bits and Builds."
+                  variant="words"
+                  className="text-[clamp(1.75rem,5vw,3.5rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 dark:text-white"
+                  highlightWord="Bits"
+                  highlightClass="text-[#F2C230]"
+                />
               </div>
-              <p className="font-satoshi text-sm md:text-base text-charcoal/70 dark:text-sage/80 max-w-md">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-md leading-relaxed font-normal">
                 We eliminate agency middlemen, slow page builders, and vanity metrics in favor of pure engineering and measurable revenue.
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-3xl border border-charcoal/15 dark:border-white/15 bg-[#f8f9fa] dark:bg-darkgray p-2 shadow-xl">
+            <div className="overflow-x-auto rounded-3xl border border-gray-200 dark:border-white/10 bg-[#F5F5F5] dark:bg-[#141414] p-3 shadow-sm">
               <table className="w-full text-left text-sm min-w-[540px]">
                 <thead>
-                  <tr className="border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 font-mono text-xs uppercase tracking-wider text-charcoal/80 dark:text-sage/80 font-semibold">
-                    <th className="p-4 sm:p-6">Capability Metric</th>
-                    <th className="p-4 sm:p-6 text-charcoal dark:text-yellow font-anton text-sm tracking-wide">Bits &amp; Builds</th>
-                    <th className="p-4 sm:p-6 text-charcoal/70 dark:text-sage/70 font-semibold">Typical Agencies</th>
+                  <tr className="border-b border-gray-200 dark:border-white/10 bg-white dark:bg-[#1c1c1c] rounded-xl text-xs uppercase tracking-wider text-gray-700 dark:text-gray-200 font-semibold">
+                    <th className="p-5 sm:p-6 rounded-l-xl">Capability Metric</th>
+                    <th className="p-5 sm:p-6 text-gray-900 dark:text-white font-semibold">Bits &amp; Builds</th>
+                    <th className="p-5 sm:p-6 text-gray-500 dark:text-gray-400 font-medium rounded-r-xl">Typical Agencies</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-charcoal/10 dark:divide-white/10 text-xs font-mono">
+                <tbody className="divide-y divide-gray-200 dark:divide-white/10 text-xs">
                   {COMPARISON.map((row, i) => (
-                    <tr key={i} className="hover:bg-yellow/10 dark:hover:bg-white/[0.03] transition-colors">
-                      <td className="p-4 sm:p-6 font-anton text-charcoal dark:text-white text-sm sm:text-base tracking-wide">
+                    <tr key={i} className="hover:bg-white dark:hover:bg-white/5 transition-colors">
+                      <td className="p-5 sm:p-6 text-gray-900 dark:text-white text-sm font-semibold">
                         {row.feature}
                       </td>
-                      <td className="p-4 sm:p-6 text-charcoal dark:text-yellow font-bold bg-yellow/20 dark:bg-yellow/10 rounded-xl">
+                      <td className="p-5 sm:p-6 text-gray-900 dark:text-[#F2C230] font-semibold bg-[#F2C230]/20 rounded-xl">
                         ✓ {row.us}
                       </td>
-                      <td className="p-4 sm:p-6 text-charcoal/75 dark:text-sage/80">
+                      <td className="p-5 sm:p-6 text-gray-600 dark:text-gray-400">
                         ✕ {row.others}
                       </td>
                     </tr>
@@ -122,46 +142,42 @@ export default function ServicesPage() {
         </section>
       </ScrollRevealSection>
 
-      {/* Action CTA (Loaded on scroll) */}
+      {/* Action CTA */}
       <ScrollRevealSection minHeight="300px">
-        <section className="bg-white dark:bg-charcoal px-4 sm:px-6 py-16 sm:py-20 md:py-24 md:px-10 transition-colors duration-300">
-          <div className="mx-auto max-w-[1440px] rounded-3xl border border-charcoal/15 dark:border-white/15 bg-charcoal dark:bg-darkgray text-white p-6 sm:p-10 md:p-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-2xl">
+        <section className="bg-white dark:bg-[#0A0A0A] px-5 sm:px-8 lg:px-12 py-16 sm:py-24 transition-colors duration-300">
+          <div className="mx-auto max-w-[1440px] rounded-3xl border border-white/10 bg-[#0A0A0A] text-white p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-2xl">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-yellow">
+              <span className="text-xs uppercase tracking-wider text-[#F2C230] font-semibold">
                 Custom Growth Architecture
               </span>
-              <h2 className="font-anton text-2xl sm:text-4xl md:text-5xl text-white tracking-tight mt-1">
-                NOT SURE WHICH ENGINE YOU NEED?
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white mt-2">
+                Not sure which engine you need?
               </h2>
-              <p className="mt-3 font-satoshi text-sm md:text-base text-sage/80 max-w-xl leading-relaxed">
+              <p className="mt-3 text-sm sm:text-base text-gray-300 max-w-xl leading-relaxed font-normal">
                 Book a 20-minute consultation with founders Lavi and Jass. We will audit your current
-                presence and give you an actionable growth roadmap.
+                digital presence and give you an actionable growth roadmap.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <Link
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
+              <TextRollButton
+                text="Schedule a sprint call"
                 href="/contact"
-                data-cursor-text="START"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-7 sm:px-8 py-3.5 sm:py-4 font-anton text-xs sm:text-sm uppercase tracking-wider text-charcoal shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95 font-bold"
-              >
-                <span>Request Free Audit</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1 font-bold">→</span>
-              </Link>
+                variant="gold"
+              />
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor-text="WHATSAPP"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-white/10 px-6 sm:px-7 py-3.5 sm:py-4 font-anton text-xs sm:text-sm uppercase tracking-wider text-white hover:bg-white hover:text-charcoal transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-6 py-3.5 text-xs font-medium text-white transition-colors"
               >
-                <span>Chat on WhatsApp</span>
-                <span className="transition-transform duration-300 group-hover:scale-110">💬</span>
+                <span>WhatsApp Direct</span>
+                <span className="text-[#F2C230]">↗</span>
               </a>
             </div>
           </div>
         </section>
       </ScrollRevealSection>
-    </>
+    </div>
   );
 }

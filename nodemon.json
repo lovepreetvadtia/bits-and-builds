@@ -1,6 +1,0 @@
-{
-  "watch": ["server.js", "lib/mail.js", "app/api"],
-  "ext": "js,json",
-  "ignore": [".next", "node_modules", "public", ".git"],
-  "delay": "1000"
-}

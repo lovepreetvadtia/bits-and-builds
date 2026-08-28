@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 
 const DEFAULT_FAQS = [
@@ -10,7 +10,7 @@ const DEFAULT_FAQS = [
   },
   {
     q: "Who will I be working with directly?",
-    a: "You work directly with co-founders Lavi (Co-Founder & Technical Director) and Jass (Co-Founder & Creative Director). Lavi oversees all Next.js web code, technical architecture, and search optimization. Jass leads paid ad funnels (Meta & Google Ads), creative direction, and short-form video production.",
+    a: "You work directly with co-founders Lavi (Technical Director) and Jass (Creative Director). Lavi oversees all Next.js web code, technical architecture, and search optimization. Jass leads paid ad funnels (Meta & Google Ads), creative direction, and short-form video production.",
   },
   {
     q: "How does the Hospital & Restaurant booking automation work?",
@@ -52,26 +52,25 @@ export default function FAQ({ items = DEFAULT_FAQS }) {
   const faqList = items && items.length > 0 ? items : DEFAULT_FAQS;
 
   return (
-    <div className="divide-y divide-charcoal/15 dark:divide-white/15 border-y border-charcoal/15 dark:border-white/15">
+    <div className="divide-y divide-gray-200 dark:divide-white/10 border-y border-gray-200 dark:border-white/10 transition-colors duration-300">
       {faqList.map((item, i) => {
         const isOpen = openIndex === i;
         return (
           <div key={item.q || i} className="group py-2">
             <button
               type="button"
-              data-cursor-text={isOpen ? "CLOSE" : "OPEN"}
               onClick={() => toggle(i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-charcoal dark:hover:text-yellow focus:outline-none"
+              className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-[#D9AC1F] focus:outline-none"
             >
-              <span className="font-anton text-xl md:text-2xl tracking-wide text-charcoal dark:text-white group-hover:text-charcoal dark:group-hover:text-yellow transition-colors">
+              <span className="text-lg sm:text-xl font-medium tracking-tight text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-[#F2C230] transition-colors">
                 {item.q}
               </span>
               <span
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-charcoal/20 dark:border-white/20 font-mono text-lg font-bold transition-all duration-300 ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-base font-semibold transition-all duration-300 ${
                   isOpen
-                    ? "rotate-45 border-yellow bg-yellow text-charcoal shadow-md"
-                    : "bg-charcoal/5 dark:bg-white/5 text-charcoal dark:text-white group-hover:border-yellow group-hover:bg-yellow group-hover:text-charcoal"
+                    ? "rotate-45 bg-[#F2C230] text-gray-900 shadow-sm"
+                    : "border border-gray-200 dark:border-white/15 bg-white dark:bg-white/10 text-gray-700 dark:text-white group-hover:bg-gray-100 dark:group-hover:bg-white/20"
                 }`}
               >
                 +
@@ -79,13 +78,11 @@ export default function FAQ({ items = DEFAULT_FAQS }) {
             </button>
             <div
               ref={(el) => (refs.current[i] = el)}
-              className="overflow-hidden transition-all duration-300"
-              style={{
-                height: isOpen ? "auto" : 0,
-                opacity: isOpen ? 1 : 0,
-              }}
+              className={`overflow-hidden transition-all ${
+                isOpen ? "block pb-6" : "hidden"
+              }`}
             >
-              <p className="pb-6 max-w-3xl font-satoshi text-sm md:text-base leading-relaxed text-charcoal/75 dark:text-sage/85">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-3xl">
                 {item.a}
               </p>
             </div>
@@ -95,3 +92,4 @@ export default function FAQ({ items = DEFAULT_FAQS }) {
     </div>
   );
 }
+
