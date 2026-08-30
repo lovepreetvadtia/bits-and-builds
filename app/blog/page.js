@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { posts } from "@/lib/blog";
 import { buildMetadata, WHATSAPP_URL } from "@/lib/seo";
 import TextRollButton from "@/components/TextRollButton";
@@ -45,28 +46,50 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group grid gap-4 sm:gap-6 py-8 sm:py-10 transition-colors hover:bg-[#F5F5F5] dark:hover:bg-white/5 md:grid-cols-12 md:items-center px-4 rounded-2xl"
+              className="group grid gap-5 sm:gap-6 py-8 sm:py-10 transition-colors hover:bg-[#F5F5F5] dark:hover:bg-white/5 md:grid-cols-12 md:items-center px-4 rounded-2xl"
             >
-              <div className="md:col-span-2">
-                <span className="inline-flex rounded-full bg-[#F2C230] px-3 py-1 text-xs font-semibold text-gray-900">
-                  {post.tag}
-                </span>
-              </div>
+              {post.coverImage ? (
+                <div className="md:col-span-3">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 shadow-xs">
+                    <Image
+                      src={post.coverImage.src}
+                      alt={post.coverImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 260px"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="md:col-span-2">
+                  <span className="inline-flex rounded-full bg-[#F2C230] px-3 py-1 text-xs font-semibold text-gray-900">
+                    {post.tag}
+                  </span>
+                </div>
+              )}
 
-              <div className="md:col-span-7">
+              <div className={post.coverImage ? "md:col-span-6" : "md:col-span-7"}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex rounded-full bg-[#F2C230] px-2.5 py-0.5 text-[11px] font-semibold text-gray-900">
+                    {post.tag}
+                  </span>
+                </div>
                 <h2 className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white group-hover:text-[#D9AC1F] dark:group-hover:text-[#F2C230] transition-colors tracking-tight">
                   {post.title}
                 </h2>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 dark:text-gray-300 font-normal">
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 dark:text-gray-300 font-normal line-clamp-2">
                   {post.excerpt}
                 </p>
               </div>
 
               <div className="flex items-center justify-between md:col-span-3 md:flex-col md:items-end md:gap-1 text-xs text-gray-500 dark:text-gray-400 font-medium">
                 <span className="text-gray-900 dark:text-white font-semibold">
-                  By {post.author} ({post.authorRole})
+                  By {post.author}
                 </span>
-                <span>
+                <span className="text-[11px] text-gray-500 dark:text-gray-400">
+                  {post.authorRole}
+                </span>
+                <span className="mt-1">
                   {new Date(post.date).toLocaleDateString("en-IN", {
                     day: "numeric",
                     month: "short",
