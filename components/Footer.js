@@ -129,7 +129,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <Image
-                  src="/icons/logo.svg"
+                  src="/icons/logo.webp"
                   alt="Bits and Builds Logo"
                   width={36}
                   height={36}

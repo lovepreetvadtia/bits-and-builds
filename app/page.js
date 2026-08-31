@@ -17,17 +17,11 @@ import {
   OdometerCounter,
 } from "@/components/ReflexTextAnimations";
 
-// Client-only WebGL/WebGPU shader overlay to ensure 100% stable SSR
+// Dynamic client-only import for HeroShaderBackground
 const HeroShaderBackground = dynamic(
   () => import("@/components/HeroShaderBackground"),
   {
     ssr: false,
-    loading: () => (
-      <div
-        className="absolute inset-0 z-10 pointer-events-none bg-[#0A0A0A]"
-        aria-hidden="true"
-      />
-    ),
   }
 );
 
@@ -136,7 +130,7 @@ export default function HomePage() {
           SECTION 1: HERO (Full viewport height with Animated Shader Stack)
           ========================================================================= */}
       <section className="relative w-full h-screen min-h-[640px] flex flex-col justify-between overflow-hidden bg-[#0A0A0A]">
-        {/* Full-screen animated shader overlay */}
+        {/* Animated shader overlay */}
         <HeroShaderBackground />
 
         {/* Spacer to push content to the bottom of the viewport */}
@@ -187,7 +181,7 @@ export default function HomePage() {
               {/* B&B shield icon */}
               <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black flex items-center justify-center p-0.5 flex-shrink-0">
                 <Image
-                  src="/icons/logo.svg"
+                  src="/icons/logo.webp"
                   alt="B&B Shield Mark"
                   width={22}
                   height={22}

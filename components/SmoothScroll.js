@@ -18,15 +18,18 @@ export default function SmoothScroll({ children }) {
       return;
     }
 
-    // Initialize ultra-smooth Lenis instance
+    // Check if device is touch or mobile to prevent touch hijacking & forced reflows
+    const isTouch = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 1024;
+
+    // Initialize ultra-smooth Lenis instance for desktop mouse wheels
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.1,
-      touchMultiplier: 1.6,
+      smoothWheel: !isTouch,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 0, // Never hijack native touch momentum on mobile devices
       infinite: false,
     });
 
@@ -34,22 +37,43 @@ export default function SmoothScroll({ children }) {
     window.__lenis = lenis;
 
     const progressBar = document.getElementById("scroll-progress");
+    let ticking = false;
 
-    lenis.on("scroll", (e) => {
+    const onScrollUpdate = (scrollVal) => {
       ScrollTrigger.update();
 
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? e.scroll / totalHeight : 0;
+      const docEl = document.documentElement;
+      const totalHeight = docEl.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? scrollVal / totalHeight : 0;
       const clamped = Math.min(Math.max(progress, 0), 1);
 
       setScrollProgress(Math.round(clamped * 100));
-      setShowScrollTop(e.scroll > 400);
+      setShowScrollTop(scrollVal > 400);
 
       if (progressBar) {
         progressBar.style.transform = `scaleX(${clamped})`;
       }
+      ticking = false;
+    };
+
+    lenis.on("scroll", (e) => {
+      if (!ticking) {
+        requestAnimationFrame(() => onScrollUpdate(e.scroll));
+        ticking = true;
+      }
     });
+
+    // Native scroll listener for touch devices when Lenis is bypassed
+    const handleNativeScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => onScrollUpdate(window.scrollY));
+        ticking = true;
+      }
+    };
+
+    if (isTouch) {
+      window.addEventListener("scroll", handleNativeScroll, { passive: true });
+    }
 
     // Handle internal anchor links with smooth glide
     const handleAnchorClick = (e) => {
@@ -77,6 +101,9 @@ export default function SmoothScroll({ children }) {
 
     return () => {
       document.removeEventListener("click", handleAnchorClick);
+      if (isTouch) {
+        window.removeEventListener("scroll", handleNativeScroll);
+      }
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       delete window.__lenis;

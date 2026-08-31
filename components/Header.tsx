@@ -145,7 +145,7 @@ export default function Header() {
               >
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black flex items-center justify-center p-1.5 overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-xs">
                   <Image
-                    src="/icons/logo.svg"
+                    src="/icons/logo.webp"
                     alt="Bits and Builds Logo"
                     width={32}
                     height={32}

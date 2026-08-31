@@ -62,8 +62,14 @@ export function ScrollWordReveal({
   const words = text.split(" ");
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
+    let ticking = false;
+    let observer;
+
+    const updateWordReveal = () => {
+      if (!containerRef.current) {
+        ticking = false;
+        return;
+      }
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
@@ -81,11 +87,40 @@ export function ScrollWordReveal({
         const count = Math.floor(progress * words.length);
         setRevealedCount(count);
       }
+      ticking = false;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateWordReveal);
+        ticking = true;
+      }
+    };
+
+    // Only listen to scroll when the container is actually near or inside the viewport
+    if (typeof IntersectionObserver !== "undefined" && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry.isIntersecting) {
+            window.addEventListener("scroll", handleScroll, { passive: true });
+            handleScroll();
+          } else {
+            window.removeEventListener("scroll", handleScroll);
+          }
+        },
+        { rootMargin: "150px 0px 150px 0px" }
+      );
+      observer.observe(containerRef.current);
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (observer) observer.disconnect();
+    };
   }, [words.length]);
 
   return (

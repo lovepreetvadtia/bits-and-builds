@@ -8,7 +8,7 @@ import ServiceIcon from "@/components/ServiceIcon";
 import TextRollButton from "@/components/TextRollButton";
 import GsapTextReveal from "@/components/GsapTextReveal";
 import Tilt3DCard from "@/components/Tilt3DCard";
-import { AGENCY_PHONE, WHATSAPP_URL, serviceDetailSchema } from "@/lib/seo";
+import { AGENCY_PHONE, WHATSAPP_URL, serviceDetailSchema, buildMetadata } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -17,10 +17,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   if (!service) return {};
-  return {
+  return buildMetadata({
     title: `${service.title} — Bits and Builds`,
     description: service.description.slice(0, 160),
-  };
+    path: `/services/${service.slug}`,
+    keywords: [
+      service.title,
+      service.badge,
+      ...(service.tools || []),
+      "Bits and Builds",
+      "Services",
+    ],
+  });
 }
 
 export default function ServiceDetailPage({ params }) {

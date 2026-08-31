@@ -1,12 +1,13 @@
-import { Anton, JetBrains_Mono, Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Anton, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { SITE_URL, SITE_NAME, GOOGLE_SITE_VERIFICATION, localBusinessSchema } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, GOOGLE_SITE_VERIFICATION, GA_TRACKING_ID, localBusinessSchema } from "@/lib/seo";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -28,15 +29,6 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-mono",
-  display: "swap",
-  preload: true,
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  style: ["italic", "normal"],
-  variable: "--font-playfair",
   display: "swap",
   preload: true,
 });
@@ -106,22 +98,15 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${anton.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable}`}
+      className={`${anton.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
+        <link rel="icon" type="image/webp" href="/icons/logo.webp" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/icons/site.webmanifest" />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero-base.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -141,6 +126,20 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        {/* Google tag (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${GA_TRACKING_ID}');
+          `}
+        </Script>
       </head>
       <body className="bg-white dark:bg-charcoal text-charcoal dark:text-white selection:bg-yellow selection:text-charcoal antialiased overflow-x-hidden transition-colors duration-300">
         <script
